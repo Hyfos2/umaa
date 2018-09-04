@@ -1,0 +1,556 @@
+.slider-bg{
+	padding:0px;	
+}
+.about-us{
+	background-image:url(../img/about-us.jpg);
+	background-repeat:no-repeat;
+	background-position:center;
+	height:262px;
+
+}
+.int-linkages{
+	background-image:url(../img/int-linkages.jpg);	
+}
+.become-member{
+	background-image:url(../img/membership.jpg);	
+}
+.industry-segment{
+	background-image:url(../img/industry-segment.jpg);	
+}
+.become-member{
+	background-image:url(../img/membership.jpg);	
+}
+.organogram{
+	background-image:url(../img/organogram.jpg);
+}
+.visionMission{
+	background-image:url(../img/vision-mission.jpg);
+}
+.ourTeam{
+	background-image:url(../img/our-team.jpg);	
+}
+.message_ceo{
+	background-image:url(../img/message-ceo.jpg);		
+}
+.press_release{
+	background-image:url(../img/press-release.jpg);		
+}
+.events{
+	background-image:url(../img/events.jpg);	
+}
+.competitiveness{
+	background-image:url(../img/competitiveness-reports.jpg);	
+}
+.contact{
+	background-image:url(../img/contact-us-banner.jpg);		
+}
+.gallery{
+	background-image:url(../img/photo-gallery.jpg);			
+}
+.faqs{
+	background-image:url(../img/faqs.jpg);	
+}
+.career{
+	background-image:url(../img/career.jpg);		
+}
+.about-us h1{
+	font-size: 30px;
+    font-weight: normal;
+    color: #fff;
+    width: 348px;
+    overflow: hidden;
+	margin:0px;
+	padding-top:206px;
+}
+.about-us span.heading{
+	float: left;
+    width: 264px;
+    background-color: #f15a2b;
+	padding: 2px 0px 2px 30px;	
+}
+.content_area{
+	padding:0px;	
+}
+.aboutContent{
+	background-color:#fff;
+	overflow:hidden;
+	border:1px solid #a5a5a5;	
+	padding:35px 30px 20px 30px;	
+	margin-top:5px;
+	margin-bottom:5px;
+	
+}
+.aboutContent p{
+	line-height:1.8;
+	margin:0px;
+	margin-bottom:20px;
+	color:#464646;
+}
+.organogramContent .leftNav{
+	margin-top:35px;	
+}
+.organogramContent{
+	padding-top:8px;
+	padding-bottom:20px;	
+}
+.organogramMainCnt, .about{
+	text-align:center;
+	float:right;
+	width:74%;	
+}
+.organogramMainCnt h2{
+	background-color:#ececec;
+	padding:15px 0px 15px 283px;
+	font-size:20px;
+	text-align:left;	
+}
+.vision{
+	/*width:800px;*/
+	width:82%;
+	/*margin:auto;*/
+	background-color:#d3eef9;
+	padding:10px 40px 10px 0px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	border-radius:15px;	
+	margin-bottom:30px;
+	margin-right:0px;
+}
+.vision h2{
+	background-color:#f15a2b;
+	color:#fff;	
+	/*text-align:right;*/
+	padding:5px;
+	/*width:160px;*/
+	width:90px;
+	padding-left:12px;
+}
+.aboutContent .vision p{
+	/*margin-left:95px;	*/
+	margin-left:28px;
+}
+/*.................Our Team.................*/
+.our_team{
+	width:46%;
+	float:left;
+	margin-left:25px;
+	margin-bottom:30px;	
+}
+.our_team img{
+	float:left;
+	margin-right:20px;
+	/*margin-top:6px;*/
+}
+.our_team p{
+	margin:0px;
+	font-size: 12px;
+    color: #5b5b5b;
+	line-height:2.0;
+}
+.our_team a{
+	/*color: #5b5b5b;*/
+	color:#0474bb;
+	font-size: 12px;	
+}
+.our_team h5{
+	font-size:12px;
+	color: #5b5b5b;
+	margin:0px;
+	margin-top:8%;
+}
+.our_team a:hover{
+	text-decoration:underline;
+}
+.ceo_leftSide{
+	background-image:url(../img/ceo-leftSide-bg.png);
+	background-repeat:repeat-x;
+	width:200px;
+	padding:15px 10px;
+	float:left;
+	text-align:center;	
+	margin-right:25px;
+	height:515px;
+}
+.ceo_leftSide p{
+	margin-top:10px;
+	color:#fff;	
+}
+.ceo_rightSide p{
+	margin:0px;
+	margin-bottom:22px;
+
+	
+}
+.press-heading{
+	background-color: #39F;
+	color: #f7f7f7;
+	height: 40px;
+	padding-left: 18px;
+	padding-top: 15px;
+	padding-bottom: 0px;
+	font-size: 18px;
+	font-weight: normal;
+	margin-bottom: 10px;
+	text-align: left;
+}
+/*.................END Our Team.................*/
+/*................Updated Work...................*/
+.leftNav{
+	float:left;
+	/*width:170px;*/
+	width:185px;	
+}
+.leftNav li{
+	margin-bottom:10px;
+	border-bottom:1px solid #959595;
+	padding-bottom:10px;	
+}
+.leftNav li a{
+	color:#0474bb;
+}
+.leftNav li a:hover{
+	font-weight:bold;	
+}
+.leftNav li:last-child{
+	border-bottom:none;	
+}
+.about{
+	/*text-align:left;*/
+	text-align:justify;
+}
+.about p{
+	font-size:12px;	
+}
+.about .vision p{
+	font-size:14px;
+	margin-bottom:0px;
+	margin-top:10px;	
+}
+.marginBottom, .ceo_rightSide p.marginBottom{
+	margin-bottom:0px;	
+}
+.about-us.competitiveness h1{
+	width:455px;	
+}
+.about-us.competitiveness span.heading{
+	width:360px;	
+}
+.pdf_icon{
+	width:165px;
+	float:left;	
+	text-align:center;
+	margin-right:35px;
+}
+.pdf_icon img{
+	border:1px solid #000;
+	padding:16px;	
+}
+.pdf_icon p{
+	font-size:12px;
+	line-height: 1.5;
+    margin-top: 10px;	
+	margin-bottom:8px;
+}
+.pdf_icon a{
+	background-image:url(../img/view-icon.jpg);
+	background-repeat:no-repeat;
+	background-position:right center;
+	color:#000;
+	font-weight:bold;	
+	padding:12px 45px 12px 0px;
+	display:inline-table;
+}
+.pressrlease-head{
+	width: 818px;
+	height: 30px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	background: #25a8e0;
+	margin-left: 292px;
+	margin-bottom: 20px;
+	padding-left: 20px;
+	padding-top: 20px;
+	
+}
+.contactAddress{
+	float:left;
+	width:22%;	
+	color:#5b5b5b;
+}
+.contactAddress h5{
+	font-size:14px;
+	font-weight:bold;	
+	margin-bottom:25px;
+}
+.aboutContent .contactAddress p, .contactAddress p a{
+	font-size:12px;	
+	margin-bottom:8px;
+	color:#5b5b5b;
+}
+.contactAddress p a:hover{
+	text-decoration:underline;	
+}
+.contactForm{
+	width:65%;
+	float:right;	
+}
+.contactForm h5{
+	font-size:14px;
+	font-weight:bold;
+	margin-bottom:8px;
+	margin-top:5px;	
+}
+.contactForm label, .photo_Gallery label{
+	margin-top:12px;
+	margin-bottom:8px;
+	color:#5b5b5b;	
+	display:block;
+}
+.contactForm input[type="text"], .contactForm select, .photo_Gallery input[type="text"]{
+	width:38%;
+	/*height:px;*/
+	padding:5px;
+	border:1px solid #5b5b5b;
+}
+.contactForm select{
+	width:39.5%;
+	color:#5b5b5b;
+}
+.contactForm textarea, .photo_Gallery textarea{
+	width:56%;
+	height:110px;
+	padding:5px;
+	border:1px solid #5b5b5b;
+	display:block;	
+}
+.contactForm input[type="submit"], .contactForm input[type="reset"], .photo_Gallery input[type="submit"]{
+	background-color:#f15a2b;
+	border:none;	
+	color:#fff;
+	margin-top:15px;
+	padding:6px 20px 6px 20px;
+	margin-right:10px;
+	cursor:pointer;
+}
+.contactForm input[type="submit"]:hover, .contactForm input[type="reset"]:hover, .photo_Gallery input[type="submit"]:hover{
+	color:#000;	
+}
+.read_leftSide{
+	background-image:url(../img/readmore-leftSide-bg.png);	
+}
+.read_leftSide p{
+	color:#000;	
+}
+/*................END Updated Work...................*/
+
+/*............Photo Gallery...............*/
+.photoGallery{
+	margin:15px 10px 15px 0px;
+	float:left;
+}
+.photoGallery img{
+	margin-bottom:5px;	
+	display:block;
+	border:1px solid #000;
+}
+.photoGallery a{
+	font-size:18px;
+	color:#34383b;	
+}
+.photoGallery a:hover{
+	text-decoration:underline;	
+}
+.photo_Gallery{
+	overflow:hidden;
+	width:90%;
+	margin:auto;	
+}
+/*............END Photo Gallery...............*/
+/*.........Career...........*/
+.photo_Gallery input[type="submit"]{
+	display:block;	
+}
+.photo_Gallery textarea{
+	width:38%;
+}
+.WebCodeCaptcha input[type="text"]{
+	width:13%;
+	display:block;
+	margin-top:10px;
+}
+.WebCodeCaptcha a{
+    display: flex;
+    margin-top: 6px;
+}
+/*.........END Career...........*/
+
+
+.events h3{
+	color: #000;
+    font-size: 14px;
+    margin: 0px;
+    font-weight: normal;
+	width:100%;	
+}
+.events h3:hover{
+	text-decoration:underline;	
+}
+@media only screen 
+and (min-width: 240px) 
+and (max-width: 800px) 
+{
+	.about-us{
+		background-size:100%;
+		height:70px;	
+	}
+	.aboutContent{
+		padding:15px 15px 15px 15px;	
+	}
+	.about-us h1{
+		width:auto;
+		font-size:25px;
+		padding-top:15px;	
+	}	
+	.about-us span.heading{
+		width: 188px;
+		padding: 4px 0px 5px 30px;	
+	}
+	.organogramContent img{
+		width:100%;
+	}
+	.organogramContent{
+		padding-left:10px;
+		padding-right:10px;	
+	}
+	.vision{
+		width:auto;
+		padding:10px 20px 10px 0px;
+		margin-top:10px;
+		margin-bottom:10px;	
+	}
+	.aboutContent .vision p{
+		margin-left: 15px;	
+	}
+	.our_team{
+		width:auto !important;	
+		float:none;
+		margin-bottom:15px;
+		margin-left:0px !important;
+	}
+	.our_team img{
+		margin-right:0px;
+		float:none;	
+	}
+	.ceo_leftSide{
+		background-image:none;
+		margin-right:0px;
+		float:none;
+		width:auto;
+		height:auto !important;	
+	}
+	.ceo_leftSide p{
+		color:#000;	
+	}
+	.messageHeading{
+		font-size:20px;
+		padding:8px 0px 7px 30px !important;	
+	}
+	.leftNav{
+		float:none;
+		margin-bottom:10px;
+	}
+	.organogramContent .leftNav{
+		margin-top:0px;	
+	}
+	.organogramMainCnt, .about{
+		width:auto;
+		float:none;	
+	}
+	.vision h2{
+		text-align:left;
+		width:145px;
+		padding-left:15px;	
+	}
+	.our_team p{
+		line-height:2.0 !important;	
+	}
+	.pdf_icon{
+		margin-bottom:20px;	
+	}
+	.about-us.competitiveness span.heading{
+		width:192px;	
+		padding: 10px 0px 10px 30px;
+	}
+	.about-us.competitiveness h1{
+		font-size:16px;	
+	}
+	.contactAddress, .contactForm{
+		width:auto;
+		float:none;	
+		margin-bottom:15px;
+	}
+	.contactForm input[type="text"], .contactForm select, .contactForm textarea, .photo_Gallery input[type="text"], .photo_Gallery textarea{
+		width:92%;
+	}
+	.contactForm select{
+		width:96.5%;	
+	}
+	.our_team h5{
+		margin-top:10px;	
+	}
+	.photo_Gallery{
+		width:auto;	
+	}
+	.photoGallery img{
+		width:100%;	
+	}
+	.WebCodeCaptcha input[type="text"]{
+		width:30%;	
+	}
+	.events{
+		width:46%;
+		margin-bottom:15px;
+		margin-right:10px;	
+		    /*display: table-caption;*/
+	}
+	.events img{
+		width:70%;	
+	}
+}
+
+@media only screen and (max-width: 1224px) 
+{
+	.our_team{
+		width:48%;
+		margin-left:10px;	
+	}
+	.ceo_leftSide{
+		height:580px;	
+	}
+	.our_team p{
+		line-height:1.5;	
+	}
+}
+
+.news-updates{
+	margin:20px;
+	background-color:#25a8e0;
+	font-size:20px;
+	color:#FFF;
+	padding:20px;
+}
+
+.news-updates-detail{
+	margin:20px;
+	font-size:12px;
+	line-height:20px;
+}
+.news-updates-pic{
+	margin:15px;
+	width:360px;
+	height:240px;
+	float:left;
+	
+}
+	

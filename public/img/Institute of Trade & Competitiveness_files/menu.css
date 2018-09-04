@@ -1,0 +1,407 @@
+.navbar{
+	float:right;
+}
+.navbar ul li{
+	border-right:1px solid #c7c7c7;
+	margin-top:1%;
+}
+.dropRight{
+	right:0;	
+}
+#mobnav-btn {
+	display: none;
+	font-size: 20px;
+	font-weight:normal;
+	color: white;
+	padding: 10px;
+	cursor: pointer;
+	background-image:url(../img/menu-bg.png);
+	background-repeat:no-repeat;
+	background-position:center right;
+	-webkit-border-radius:5px 5px 0px 0px;
+	border-radius:5px 5px 0px 0px;
+	background-color:#59595c;
+	margin-top: 5px;
+}
+.mobnav-subarrow {
+	display: none;
+}
+.sf-menu, .sf-menu * {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.sf-menu li {
+	position: relative;
+	/*padding:16px 10px 10px 10px;*/
+}
+.sf-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+	background-image: url(../img/bg-menu-1.png);
+	background-repeat: repeat;
+	background-color:#0CF;
+}
+
+.sf-menu ul ul ul {
+	background-image: url(../img/bg-menu.png) !important;
+	background-repeat: repeat;
+}
+.sf-menu > li {
+	float: left;
+}
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul {
+	display: block;
+}
+.sf-menu a {
+	display: block;
+	position: relative;
+}
+.sf-menu ul ul {
+	top: 0;
+	left: 100%;
+}
+/*** DEMO SKIN ***/
+.sf-menu {
+	float: left;
+	/*width:69%;
+	margin-left:70px;
+	margin-top:51px;*/
+}
+.sf-menu ul {
+	box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+	min-width:224px;
+}
+.sf-menu a{
+	text-decoration: none;
+	zoom: 1;
+	font-size: 14px;
+	padding-bottom:5px;
+	color: #000;
+	font-weight: normal;
+	padding:10px 15px 10px 15px;
+}
+.sf-menu li ul li{
+	border-bottom:1px solid #c7c7c7;
+	border-right: none;
+}
+.sf-menu li ul li a:hover {
+	/*color: #ffffff;*/
+	color:#ffde01;	
+	/*background-color: #0081c2;
+	background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+	background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+	background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+	background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+	background-repeat: repeat-x;*/
+}
+.sf-menu li ul a{
+	font-size:14px;
+	padding:8px 12px;
+	color:#fff;
+	margin:0px;
+}
+.sf-menu li:last-child{
+	border:none;	
+}
+.sf-menu li ul li:first-child{
+	padding-top:7px;
+}
+.sf-menu li ul li:last-child{
+	border:none;
+	padding-bottom:7px;
+}
+.sf-menu li {
+	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
+	background-image: url(../img/border-right.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	border-right:1px solid #fff;
+	color:#000;
+}
+.sf-menu li.dropdown{
+	z-index:5;
+}
+.sf-menu li.patientPortal {
+	float: right;
+	padding-bottom: 0px;
+}
+.sf-menu li.patientPortal a{
+	color:#F00;
+}
+.sf-menu li.patientPortal a span {
+	font-size:11px;
+	color:#F00;
+	display:block;
+	text-align:right;
+}
+.sf-menu li:last-child{
+	background-image:none;
+}
+.sf-menu ul li {
+	background-image: url(../img/bg-menu.png);
+	background-repeat: repeat;
+}
+.sf-menu li:hover{
+	border-top:5px solid #F00;
+	background-color:#0CF;
+    margin-top:0.4%;	
+}
+.sf-menu li:hover a{
+	color:#fff;	
+}
+.sf-menu li:hover li{
+	border-top:none;
+	background:none;
+    margin-top:0%;
+}
+.sf-menu li:hover,
+.sf-menu li.sfHover, .sf-menu li.activeMe{
+
+	/* only transition out, not in */
+
+	-webkit-transition: none;
+
+	transition: none;
+
+	background-image:url(../img/bg-menu.png);
+
+	background-repeat:repeat;
+	/*background-color:#793c91;*/
+
+	color:#fff;
+	/*padding-bottom: 44px;*/
+	position: relative;
+	/*bottom: -8px;
+	padding-top: 8px;*/
+	z-index:5;
+}
+.sf-menu li a:hover{
+
+	color:#fff;
+
+}
+
+/*** arrows (for all except IE7) **/
+
+.sf-arrows .sf-with-ul {
+
+	padding-right: 2.5em;
+
+	*padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
+
+}
+
+/* styling for both css and generated arrows */
+
+.sf-arrows .sf-with-ul:after {
+
+	content: '';
+
+	position: absolute;
+
+	top: 50%;
+
+	right: 1em;
+
+	margin-top: -3px;
+
+	height: 0;
+
+	width: 0;
+
+	/* order of following 3 rules important for fallbacks to work */
+
+	border: 5px solid transparent;
+
+	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+
+	border-top-color: rgba(255,255,255,.5);
+
+}
+
+.sf-arrows > li > .sf-with-ul:focus:after,
+
+.sf-arrows > li:hover > .sf-with-ul:after,
+
+.sf-arrows > .sfHover > .sf-with-ul:after {
+
+	border-top-color: white; /* IE8 fallback colour */
+
+}
+
+/* styling for right-facing arrows */
+
+.sf-arrows ul .sf-with-ul:after {
+
+	margin-top: -5px;
+
+	margin-right: -3px;
+
+	border-color: transparent;
+
+	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+
+	border-left-color: rgba(255,255,255,.5);
+
+}
+
+.sf-arrows ul li > .sf-with-ul:focus:after,
+
+.sf-arrows ul li:hover > .sf-with-ul:after,
+
+.sf-arrows ul .sfHover > .sf-with-ul:after {
+
+	border-left-color: white;
+
+}
+
+@media only screen 
+
+and (min-width: 240px) 
+
+and (max-width: 800px) 
+
+{
+
+	#mobnav-btn {
+		display: block;
+	}
+
+	ul.xactive li .mobnav-subarrow{
+		display: block;
+		background-color: #0f3975;
+		opacity: .3;
+		border-bottom: 1px solid white;
+		border-top: 1px solid black;
+		height: 20px;
+		width: 30px;
+		position: absolute;
+		top:10px;
+		right: 10px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		cursor: pointer;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		cursor: pointer;
+		-webkit-transition: all .1s ease-in-out;
+		-moz-transition: all .1s ease-in-out;
+		-ms-transition: all .1s ease-in-out;
+		-o-transition: all .1s ease-in-out;
+		transition: all .1s ease-in-out;
+		background-image:url(../img/menu-arrow-right.png);
+		background-repeat:no-repeat;
+		background-position:center;
+	}
+
+	ul.xactive li.xpopdrop .mobnav-subarrow{
+		background-image:url(../img/menu-arrow-down.png);
+	}
+	
+	.sf-menu, .sf-menu li, .sf-menu li.activeMe{
+		margin:0px;
+		padding:0px;
+		float:none;
+		width:auto;
+		bottom:0px;
+	}
+	.sf-menu li.activeMe, .sf-menu li:hover{
+		background-image:none;
+	}
+	.sf-menu {
+		background-color:#0CF;
+		display: none;
+		margin-bottom:0px;
+		margin:0px;
+		float:none;
+	}
+	.sf-menu.xactive{
+		display: block!important;
+	}
+	.sf-menu li {
+		float: none!important;
+		display: block!important;
+		width: 100%!important;
+		background-image:none !important;
+	}
+	.sf-menu li a {
+		float: none!important;
+		padding:10px 20px;
+	}
+	.sf-menu ul {
+		position:static!important;
+		display: none!important;
+	}
+
+	.xpopdrop ul {
+		display: block!important;
+	}
+	ul.dropdown3rd-menu{
+		background-color:#efefef;
+		background-image:none;
+	}
+
+	ul.dropdown3rd-menu li a{
+		color:#000;
+	}
+
+	ul.xactive li{
+		border-bottom:1px solid #c7c7c7;
+		border-right:none;
+	}
+	.sf-menu a {
+		color:#FFF;
+	}
+	.sf-menu li a{
+		padding:3%;
+		padding-bottom: 16px;
+		padding-top: 16px;
+	}	
+	.sf-menu li:hover{
+		border-top:none;
+		background:none;
+		margin-top:0%;
+	}
+	.sf-menu li:hover li{
+		background-color: #0f3975;
+	}
+
+	ul.xactive li a:hover {
+		color: #ffffff;
+		text-decoration: none;
+		/*background-color: #0081c2;*
+		background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+		background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+		background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+		background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+		background-repeat: repeat-x;*/
+	}
+	.navbar{
+		float:none;
+		width:auto;
+		margin:0 auto;
+	}
+	.navbar ul li{
+		margin-top:0px;	
+	}
+	.navbar li a{
+		font-size:16px;
+		color:#000;
+	}
+}
+
+@media only screen and (max-width: 1224px){
+	.navbar {
+		float:none;		
+	}
+}
+
+
+
