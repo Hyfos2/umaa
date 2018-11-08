@@ -13,15 +13,14 @@ use App\Sport;
 
 class SportService
 {
-
     public  function newSport($request)
     {
-
+        return Sport::create([
+                'name'=>$request->name
+            ]);
     }
-
     public  function  showSports()
     {
         return Sport::orderBy('name','asc')->get();
     }
-
 }

@@ -10,30 +10,33 @@ use App\PrimaryLevel;
 use App\StudentSport;
 use App\StudentSubject;
 use App\Student;
+use App\User;
+use App\ParentStudent;
 use Carbon\Carbon;
+
 
 class StudentDetailsService
 {
-    public  function getSports()
+    public function getSports()
     {
         return Sport::orderBy('name','asc')->get();
     }
-    public  function getPrimaryLevels()
+    public function getPrimaryLevels()
     {
         return   PrimaryLevel::orderBy('id','asc')->get();
     }
-    public  function getSecondaryLevels()
+    public function getSecondaryLevels()
     {
         return   Level::orderBy('id','asc')->get();
     }
-    public  function getSchoolLevel($name)
+    public function getSchoolLevel($name)
     {
         if(ucfirst($name) == "Primary")
             return SchoolLevel::where('name',$name)->first(['id']);
         if(ucfirst($name) == "Secondary")
             return SchoolLevel::where('name',$name)->first(['id']);
     }
-    public  function randomFourDigit()
+    public function randomFourDigit()
     {
         $number = "0123456789";
         $pass = array();
@@ -44,7 +47,7 @@ class StudentDetailsService
         }
         return implode($pass);
     }
-    public  function newStudent($request,$user)
+    public function newStudent($request,$user)
     {
         $student              =new Student();
         $student->userId      =$user->id;
@@ -61,6 +64,43 @@ class StudentDetailsService
         $student->address     =ucwords($request->address);
         $student->save();
         return $student;
+    }
+    public function userParent($request)
+    {
+        $pass        =$this->generateRandomString();
+        $parentName  =explode(' ',$request->parentname);
+        return User::create([
+            'name' => ucfirst($parentName[0]),
+            'email' => $request['parentemail'],
+            'surname'=>ucfirst($parentName[1]),
+            'userTypeId'=>$request['userTypeId'],
+            'gender'=>ucfirst($request['gender']),
+            'userName'=>$pass,
+            'imgUrl'=>'image/path',
+            'password' =>bcrypt($pass),
+        ]);
+    }
+    public function generateRandomString()
+    {
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+        $pass = array();
+        $alphaLength = strlen($alphabet) - 1;
+        for ($i = 0; $i < 5; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass);
+    }
+    public function newParent($parent,$student,$request)
+    {
+       return ParentStudent::create(
+            [
+                'userId'=>$parent->id,
+                'studentId'=>$student->id,
+                'address'=>$request->address,
+                'cellphone'=>$request->cellphone,
+            ]
+        );
     }
     public function newStudentZimsecSubjects($student,$request)
     {
@@ -96,7 +136,7 @@ class StudentDetailsService
         }
 
     }
-    public  function  getLoggedInStudentSubjects()
+    public function getLoggedInStudentSubjects()
     {
         $student  =Student::where('userId',\Auth::user()->id)->first(['id']);
         return \DB::table('student_subjects')
@@ -108,7 +148,5 @@ class StudentDetailsService
             "))
             ->where('student_subjects.teacherId','=',$student->id)
             ->get();
-
     }
-
 }

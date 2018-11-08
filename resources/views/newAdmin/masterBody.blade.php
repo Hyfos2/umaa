@@ -7,30 +7,14 @@
                 </div>
                 <div class="masonry-item w-100" style="position: absolute; left: 0%; top: 0px;">
                     <div class="row gap-20">
-                        <div class="col-md-4">
-                            <a href="{{url('tcher')}}">
-                                <div class="layers bd bgc-white p-20">
-                                    <div class="layer w-100 mB-10">
-                                        <h6 class="lh-1">Total Teachers</h6>
-                                    </div>
-                                    <div class="layer w-100">
-                                        <div class="peers ai-sb fxw-nw">
-                                            <div class="peer peer-greed">
-                                            </div>
-                                            <div class="peer">
-                                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{secondaryTeachers()}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
 
-                        </div>
-                        <div class="col-md-4">
-                            <a href="{{url('stdnts')}}">
+
+
+                        <div class="col-md-3">
+                            <a href="{{url('accounts-department')}}">
                                 <div class="layers bd bgc-white p-20">
                                     <div class="layer w-100 mB-10">
-                                        <h6 class="lh-1">Total Students</h6></div>
+                                        <h6 class="lh-1">Accounting Department</h6></div>
                                     <div class="layer w-100">
                                         <div class="peers ai-sb fxw-nw">
                                             <div class="peer peer-greed">
@@ -45,12 +29,35 @@
                             </a>
 
                         </div>
-                        <div class="col-md-4">
+                        @permission('view_teachers')
+                        <div class="col-md-3">
+                            <a href="{{url('tcher')}}">
+                                <div class="layers bd bgc-white p-20">
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">Total Teachers</h6></div>
+                                    <div class="layer w-100">
+                                        <div class="peers ai-sb fxw-nw">
+                                            <div class="peer peer-greed">
+
+                                            </div>
+                                            <div class="peer">
+                                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{students()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        @endpermission
+
+
+                        <div class="col-md-3">
                             <a href="{{url('addAdmin')}}">
 
                                 <div class="layers bd bgc-white p-20">
                                     <div class="layer w-100 mB-10">
-                                        <h6 class="lh-1">Total Admins</h6>
+                                        <h6 class="lh-1">Admins</h6>
                                     </div>
                                     <div class="layer w-100">
                                         <div class="peers ai-sb fxw-nw">
@@ -64,6 +71,46 @@
                                     </div>
                                 </div>
                             </a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a href="{{url('education-management')}}">
+                                <div class="layers bd bgc-white p-20">
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">Education Manager</h6>
+                                    </div>
+                                    <div class="layer w-100">
+                                        <div class="peers ai-sb fxw-nw">
+                                            <div class="peer peer-greed">
+                                            </div>
+                                            <div class="peer">
+                                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{secondaryTeachers()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <a href="{{url('communication')}}">
+                                <div class="layers bd bgc-white p-20">
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">Communicator</h6>
+                                    </div>
+                                    <div class="layer w-100">
+                                        <div class="peers ai-sb fxw-nw">
+                                            <div class="peer peer-greed">
+                                            </div>
+                                            <div class="peer">
+                                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{secondaryTeachers()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 </div>

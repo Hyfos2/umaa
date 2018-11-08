@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="bd p-15">
-                <h5 class="m-0">Add Teacher</h5>
+                <h5 class="m-0">ADD TEACHER</h5>
             </div>
             <div class="modal-body">
                 <form role="form"  method="POST" action ="{{route('register')}}">
@@ -33,20 +33,16 @@
                         </select>
                     </div>
 
+
                     <div class="form-group">
-                        <div class="timepicker-input input-icon form-group">
-                            <div class="input-group">
-                                <div class="input-group-addon bgc-white bd bdwR-0">
-                                    <i class="ti-calendar">
-                                    </i></div>
-                                <input type="text" class="form-control bdc-grey-200 start-date" name="dob" placeholder="Date of Birth" data-provide="datepicker" autocomplete="off">
-                            </div>
-                        </div>
+                        <input type ="text" class="form-control bdc-grey-200 selectionDate"  placeholder="Date of Birth" name="dob" autocomplete="off">
                     </div>
 
 
 
+
                     <div class="form-group">
+
                         <select name="level"  id ="level" class="form-control bdc-grey-200">
                             <option value="">Select Level</option>
                             @foreach($levels as $item)
@@ -62,8 +58,9 @@
                             <option value="">Select Class</option>
                         </select>
                     </div>
-
+                    <label><i>Zimsec</i></label>
                     <div class="form-group">
+
                         @foreach($zimsecsubjects as $item)
                             <label for="sports">
                                 {{$item->name}}
@@ -71,7 +68,7 @@
                             <input type="checkbox" name="zimsec[]" value="{{$item->id}}">
                         @endforeach
                     </div>
-
+                        <label><i>Cambridge</i></label>
                     <div class="form-group">
                         @foreach($cambridgesubjects as $item)
                             <label for="sports">

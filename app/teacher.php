@@ -15,4 +15,9 @@ class teacher extends Model
         return $this->belongsTo(User::class,'userId','id');
     }
 
+    public function work()
+    {
+        return $this->hasMany(teacherWork::class,'teacherId','id');
+    }
+
 }

@@ -10,8 +10,7 @@ class CreateStudentAttendancesTable extends Migration
     {
         Schema::create('student_attendances', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('present');
-            $table->string('absent');
+            $table->string('absenteeism');
             $table->string('reason')->nullable();
             $table->integer('studentId')->unsigned();
             $table->integer('subjectId')->unsigned();

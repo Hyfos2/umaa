@@ -10,10 +10,6 @@ class Student extends Model
     use SoftDeletes;
     protected $dates  =['deleted_at'];
     protected $guarded =[];
-//    public function subject()
-//    {
-//        return $this->hasManyThrough(Subject::class,StudentSubject::class,'studentId','id');
-//    }
     public function sport()
     {
         return $this->hasMany(StudentSport::class,'studentId','id');

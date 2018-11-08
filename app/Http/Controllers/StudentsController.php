@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\StudentService;
+use App\studentAttendance;
 use App\SubjectMark;
 use Illuminate\Http\Request;
 use App\Student;
 use App\StudentSubject;
 use App\Services\StudentsPerSubject;
+use Illuminate\Support\Facades\Crypt;
 
 
 class StudentsController extends Controller
 {
     protected  $allStudent;
-    public  function  __construct(StudentsPerSubject $allStudent)
+    protected $students;
+    public  function  __construct(StudentsPerSubject $allStudent ,StudentService $studentService)
     {
         $this->allStudent  = $allStudent;
+        $this->students  =$studentService;
     }
     public function male($id,$sub)
     {
@@ -286,5 +291,38 @@ class StudentsController extends Controller
 
         //return \Response::json($student)  ." " .\Response::json($studentSubjects)   ." " . \Response::json($studentSports);
 
+    }
+    public function formOneStudents()
+    {
+      return  $this->students->getFormOneStudents();
+    }
+    public function formTwoStudents()
+    {
+      return  $this->students->getFormTwoStudents();
+    }
+    public function formThreeStudents()
+    {
+      return  $this->students->getFormThreeStudents();
+    }
+    public function formFourStudents()
+    {
+      return  $this->students->getFormFourStudents();
+    }
+    public function studentRegister($id)
+    {
+        $stdntid = Crypt::decrypt($id);
+        $att   =studentAttendance::where('studentId',$stdntid)->get();
+        $pageName  ='Register';
+        $studentID  =$stdntid;
+        return view('internal.student.register',compact('att','pageName','studentID'));
+
+    }
+    public function studentendOfTerm($id)
+    {
+        $stdntid = Crypt::decrypt($id);
+        $att     =SubjectMark::where('studentId',$stdntid)->get();
+        $pageName  ='End-of-Term';
+        $studentID  =$stdntid;
+        return view('internal.student.endOfTerm',compact('att','pageName','studentID'));
     }
 }

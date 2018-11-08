@@ -2,7 +2,7 @@
 @section('content')
 <div>
     @include('newAdmin.newAside')
-    {{--@include('newAdmin.alertMessages')--}}
+    @include('newAdmin.alertMessages')
     <div class="page-container">
         @include('newAdmin.navHeader')
         <main class="main-content bgc-grey-100">
@@ -23,7 +23,6 @@
                             </div>
                         </div>
 
-
                         <div class="row gap-20">
                             <div class="masonry-item col-12" style="position: absolute; left: 0%;">
                                 <div class="bd bgc-white">
@@ -33,21 +32,92 @@
                                             <div id="tabs">
 
                                                 <ul class="nav nav-tabs">
-                                                    <li class="active"><a data-toggle="tab" href="#form-1">Form One</a></li>
-                                                    <li><a data-toggle="tab" href="#form-2">Form Two</a></li>
-                                                    <li><a data-toggle="tab" href="#form-3">Form Three</a></li>
-                                                    <li><a data-toggle="tab" href="#form-4">Form Four</a></li>
+                                                    <li class="active"><a data-toggle="tab" href="#formstudents-1">Form One</a></li>
+                                                    <li><a data-toggle="tab" href="#formstudents-2">Form Two</a></li>
+                                                    <li><a data-toggle="tab" href="#formstudents-3">Form Three</a></li>
+                                                    <li><a data-toggle="tab" href="#formstudents-4">Form Four</a></li>
                                                 </ul>
 
                                                 <div class="tab-content">
 
-                                                    {{--@include('newAdmin.secondary.levels.formOne')--}}
-                                                    {{--@include('newAdmin.secondary.levels.formTwo')--}}
-                                                    {{--@include('newAdmin.secondary.levels.formThree')--}}
-                                                    {{--@include('newAdmin.secondary.levels.formFour')--}}
-                                                    {{--@include('newAdmin.secondary.levels.formFive')--}}
-                                                    {{--@include('newAdmin.secondary.levels.formSix')--}}
-                                                    {{--@include('newAdmin.secondary.levels.formSeven')--}}
+                                                    <div id="formstudents-1" class="tab-pane fade in active">
+                                                        <div class="block-area grade" id="responsiveTable">
+                                                            <div class="table-responsive overflow">
+                                                                <table class="table tile table-striped" id="form-1studentTable">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Record Id</th>
+                                                                        <th>Student Name</th>
+                                                                        <th>Student Surname</th>
+                                                                        <th>Email</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    {{--@include('newAdmin.secondary.formOne')--}}
+                                                    <div id="formstudents-2" class="tab-pane fade in active">
+                                                        <div class="block-area grade" id="responsiveTable">
+                                                            <div class="table-responsive overflow">
+                                                                <table class="table tile table-striped" id="form-2studentTable">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Record Id</th>
+                                                                        <th>Student Name</th>
+                                                                        <th>Student Surname</th>
+                                                                        <th>Email</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    {{--@include('newAdmin.secondary.formTwo')--}}
+                                                    <div id="formstudents-3" class="tab-pane fade in active">
+                                                        <div class="block-area grade" id="responsiveTable">
+                                                            <div class="table-responsive overflow">
+                                                                <table class="table tile table-striped" id="form-3studentTable">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Record Id</th>
+                                                                        <th>Student Name</th>
+                                                                        <th>Student Surname</th>
+                                                                        <th>Email</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    {{--@include('newAdmin.secondary.formThree')--}}
+                                                    <div id="formstudents-4" class="tab-pane fade in active">
+                                                        <div class="block-area grade" id="responsiveTable">
+                                                            <div class="table-responsive overflow">
+                                                                <table class="table tile table-striped" id="form-4studentTable">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Record Id</th>
+                                                                        <th>Student Name</th>
+                                                                        <th>Student Surname</th>
+                                                                        <th>Email</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{--@include('newAdmin.secondary.formFour')--}}
                                                 </div>
                                             </div>
 

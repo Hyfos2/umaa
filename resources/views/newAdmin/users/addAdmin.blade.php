@@ -2,7 +2,7 @@
 @section('content')
     <div>
         @include('newAdmin.newAside')
-        {{--@include('newAdmin.alertMessages')--}}
+        @include('newAdmin.alertMessages')
         <div class="page-container">
             @include('newAdmin.navHeader')
             <main class="main-content bgc-grey-100">
@@ -46,8 +46,28 @@
                                                                     <th>Email</th>
                                                                     <th>Gender</th>
                                                                     <th>Action</th>
+
                                                                 </tr>
                                                                 </thead>
+                                                                <tbody>
+                                                               <!--  @foreach($admins  as $admin)
+                                                                <tr>
+                                                                    <td>{{$admin->id}}</td>
+                                                                    <td>{{$admin->user->name}}</td>
+                                                                    <td>{{$admin->user->surname}}</td>
+                                                                    <td>{{$admin->user->email}}</td>
+                                                                    <td>{{$admin->user->gender}}</td>
+                                                                    {{--onclick="location.href='{{url('set-permission/'.$admin->user->id)}}'"--}}
+                                                                    <td> <button class="edit-modal btn btn-info" data-toggle="modal"  data-info="{{$admin->user->id}}" data-target="#set-permissions">
+                                                                            set permission
+                                                                        </button>
+                                                                        <button class="edit-modal btn btn-info" data-toggle="modal"  data-info="{{$admin->user->id}}" onclick="location.href='{{url('view-permission/'.$admin-$>user->id)}}'">
+                                                                            view permission
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                    @endforeach -->
+                                                                </tbody>
                                                             </table>
 
                                                         </div>
@@ -65,6 +85,7 @@
 
             </main>
             @include('newAdmin.masterFooter')
+            @include('newAdmin.users.setPermissions')
         </div>
     </div>
 @stop

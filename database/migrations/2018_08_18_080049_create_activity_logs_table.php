@@ -13,6 +13,9 @@ class CreateActivityLogsTable extends Migration
             $table->string('name');
             $table->integer('userId')->unsigned();
             $table->datetime('date');
+            $table->string('deviceInfo');
+            $table->string('IpAddress');
+            $table->string('physicalLocation');
             $table->foreign('userId')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();

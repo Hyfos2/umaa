@@ -19,16 +19,10 @@ class EventServiceProvider extends ServiceProvider
         'Illuminate\Auth\Events\Login'=>
             [
                 'App\Listeners\lastLogin',
-            ],
-        'Illuminate\Auth\Events\logout'=>
-        [
-            'App\Listeners\lastLogout',
-        ]
+            ]
     ];
     public function boot()
     {
         parent::boot();
-
-
     }
 }

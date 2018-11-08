@@ -1,105 +1,130 @@
+{{--@extends('newAdmin.master')--}}
+{{--@section('content')--}}
+    {{--<div>--}}
+        {{--@include('newAdmin.newAside')--}}
+        {{--@include('newAdmin.alertMessages')--}}
+        {{--<div class="page-container">--}}
+            {{--@include('newAdmin.navHeader')--}}
+            {{--<main class="main-content bgc-grey-100">--}}
+                {{--<div id="mainContent">--}}
+                    {{--<div class="row gap-20 masonry pos-r" style="position: relative; height: 1855px;">--}}
+                        {{--<div class="masonry-sizer col-md-6">--}}
+
+                        {{--</div>--}}
+                        {{--<div class="masonry-item w-100" style="position: absolute; left: 0%; top: 0px;">--}}
+                            {{--<div class="row gap-20">--}}
+                                {{--<div class="col-md-12">--}}
+                                    {{--<div class="layers bd bgc-white p-20">--}}
+                                        {{--<div class="layer w-100 mB-10">--}}
+                                            {{--<button class="btn btn-primary" data-toggle="modal" data-target="#new-sport">Add Sport</button>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+
+                            {{--</div>--}}
+                        {{--</div>--}}
+
+                        {{--<div class="row gap-20">--}}
+                            {{--<div class="masonry-item col-12" style="position: absolute; left: 0%;">--}}
+                                {{--<div class="bd bgc-white">--}}
+                                    {{--<div class="peers fxw-nw@lg+ ai-s">--}}
+                                        {{--<div class="peer peer-greed w-70p@lg+ w-100@lg- p-20" style="height: 1600px;">--}}
+
+                                            {{--<div id="formteachers-1" class="tab-pane fade in active">--}}
+                                                {{--<div class="block-area grade" id="responsiveTable">--}}
+                                                    {{--<div id="MeetingNotification"><span class="badge">School Sports</span></div>--}}
+                                                    {{--<div class="table-responsive overflow">--}}
+                                                        {{--<table class="table tile table-striped" id="schoolSportTable">--}}
+                                                            {{--<thead>--}}
+                                                            {{--<tr>--}}
+                                                                {{--<th>Record Id</th>--}}
+                                                                {{--<th>Sport Name</th>--}}
+                                                                {{--<th>Created At</th>--}}
+                                                                {{--<th>Action</th>--}}
+                                                            {{--</tr>--}}
+                                                            {{--</thead>--}}
+                                                        {{--</table>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</main>--}}
+        {{--</div>--}}
+        {{--@include('newAdmin.sports.AddSport')--}}
+        {{--@include('newAdmin.masterFooter')--}}
+
+    {{--</div>--}}
+{{--@stop--}}
+
+
 
 @extends('newAdmin.master')
 @section('content')
+    <div>
+        @include('newAdmin.newAside')
+        @include('newAdmin.alertMessages')
+        <div class="page-container">
+            @include('newAdmin.navHeader')
+            <main class="main-content bgc-grey-100">
+                <div id="mainContent">
+                    <div class="row gap-20 masonry pos-r" style="position: relative; height: 1855px;">
+                        <div class="masonry-sizer col-md-6">
 
-    <div class="wrapper">
-        @include('newAdmin.header')
-        @include('newAdmin.aside')
-        <div class="content-wrapper">
-            <section class="content-header">
-                @include('newAdmin.alertMessages')
-            </section>
-            <div>
-                <div class="container-fluid container-fullw bg-white">
-                    <div class="row">
-                        <div class="col-md-12">
+                        </div>
+                        <div class="masonry-item w-100" style="position: absolute; left: 0%; top: 0px;">
 
-                            <div class="row margin-top-30">
-                                <div class="col-lg-8 col-md-12">
-                                    <div class="panel panel-white">
-                                        <div class="panel-heading">
-                                            <h5 class="label label-primary pull-left">New</h5>
-                                        </div>
-                                        <div class="panel-body">
-
-                                            <form role="form" name="adddoc" method="POST" action ="{{url('sport')}}">
-
-                                                {{ csrf_field() }}
-
-                                                <div class="form-group">
-
-                                                    <label for="fess">
-                                                    </label>
-                                                    <input type="text"  autocomplete="off" name="name" class="form-control"  placeholder="Sport Name">
-                                                </div>
-
-                                                <button type="submit"  class="btn btn-o btn-primary">
-                                                    Submit
-                                                </button>
-                                            </form>
+                            <div class="row gap-20">
+                                <div class="col-md-12">
+                                    <div class="layers bd bgc-white p-20">
+                                        <div class="layer w-100 mB-10">
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-sport">Add Sport</button>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid container-fullw bg-white">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h5 class="over-title margin-bottom-15 label label-primary pull-left">Manage Sports</h5>
 
-                        <div class='col-md-12'>
-                            <!-- DIRECT CHAT -->
-                            <div id="myDirectChat" class="box box-warning direct-chat direct-chat-warning">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"></h3>
-                                    <div class="box-tools pull-right">
-                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                        <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
-                                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            <div class="row gap-20">
+                                <div class="masonry-item col-12" style="position: absolute; left: 0%;">
+                                    <div class="bd bgc-white">
+                                        <div class="peers fxw-nw@lg+ ai-s">
+                                            <div class="peer peer-greed w-70p@lg+ w-100@lg- p-20" style="height: 1600px;">
+
+                                                <div class="block-area grade" id="responsiveTable">
+                                                    <div id="MeetingNotification"><span class="badge">School Sports</span></div>
+                                                    <div class="table-responsive overflow">
+                                                        <table class="table tile table-striped" id="schoolSportTable">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Record Id</th>
+                                                                <th>Sport Name</th>
+                                                                <th>Created At</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="box-body"  style="margin-top:-9px;">
-                                    <div class="direct-chat-messages">
-
-                                        <table class="table table-hover" id="sample-table-1">
-                                            <thead>
-                                            <tr>
-                                                <th class="center">Name</th>
-                                                <th>Creation Date</th>
-                                                <th>Action</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($data as $item)
-                                                <tr>
-                                                    <td class="center">{{$item->name}}</td>
-                                                    <td>{{$item->created_at->diffForHumans()}}</td>
-
-                                                    <td >
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                            </div>
 
 
-                                    </div>
-                                </div><!-- /.box-body -->
-                                <div class="box-footer">
-
-                                </div><!-- /.box-footer-->
-                            </div><!--/.direct-chat -->
                         </div>
-
                     </div>
                 </div>
-            </div>
+
+                @include('newAdmin.sports.AddSport')
+            </main>
+            @include('newAdmin.masterFooter')
         </div>
-        @include('newAdmin.footer')
     </div>
 @stop
+

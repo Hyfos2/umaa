@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\UserDeviceInformation;
 use Illuminate\Auth\Events\logout;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,14 +10,16 @@ use Carbon\Carbon;
 class lastLogout
 {
 
-    public function __construct()
+    public $user;
+    public function __construct($user)
     {
-
+        $this->user =$user;
     }
 
     public function handle(logout $event)
     {
-        $event->user->lastLogout   =Carbon::now('Africa/Harare');
-        $event->user->save();
+
+        $updateARecord             = UserDeviceInformation::where('userId',$this->user)->first();
+        $updateARecord->update(['logOut'=>Carbon::now()->tz("Africa/Harare")]);
     }
 }

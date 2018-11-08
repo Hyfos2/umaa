@@ -1,8 +1,8 @@
-<div id="cambridgeSubjects" class="tab-pane fade in active">
+
+<div id="zimsecSubjects" class="tab-pane fade in active">
     <div class="block-area grade" id="responsiveTable">
-        <div id="MeetingNotification"></div>
         <div class="table-responsive overflow">
-            <table class="table tile table-striped" id="cambridgeSubjectsTable">
+            <table class="table tile table-striped" id="zimsecSubjectsTable">
                 <thead>
                 <tr>
                     <th>Record Id</th>
@@ -15,13 +15,11 @@
             </table>
 
 
-            <p>
-            </p>
-
         </div>
     </div>
 
 </div>
+
 
 
 

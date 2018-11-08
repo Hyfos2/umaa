@@ -9,7 +9,7 @@
     <link href="{{asset('snackbar.css')}}" rel="stylesheet">
     {{--<link href="{{asset('css/chart.css')}}" rel="stylesheet">--}}
     <meta name="viewport" content="width=device-width">
-    <title>Wise Owl</title>
+    @include('title')
 </head>
 
 <body class="logged-in env-production">
@@ -124,5 +124,7 @@
 <script type="text/javascript" src="{{asset('bundle2.js.download')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 <script  type="text/javascript" src="{{asset('newAdmin/js/demo.js')}}" ></script>
+<script  type="text/javascript" src="{{asset('js/adminCalenderFramework.js')}}" ></script>
+<script type="text/javascript"  async="" src="{{asset('js/Chart.js')}}"></script>
 </body>
 </html>

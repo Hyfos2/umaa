@@ -38,5 +38,21 @@ class User extends Authenticatable
     {
         return $this->hasOne(Level::class);
     }
+    public function admin()
+    {
+        return $this->hasMany(Admin::class);
+    }
+    public function deviceInformation()
+    {
+        return $this->hasMany(UserDeviceInformation::class,'userId','id');
+    }
+    public function activity()
+    {
+        return $this->hasMany(activityLog::class,'id','userId');
+    }
+    public function urlroute()
+    {
+        return $this->hasMany(UserVisitedLink::class,'id','userId');
+    }
 
 }

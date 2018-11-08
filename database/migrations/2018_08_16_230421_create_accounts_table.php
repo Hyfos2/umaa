@@ -11,8 +11,12 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('studentId')->unsigned();
-            $table->decimal('debit')->default(0);
-            $table->decimal('credit')->default(0);
+            $table->decimal('debit')->nullable()->default(0);
+            $table->string('term')->nullable();
+            $table->string('description')->nullable();
+            $table->string('reference')->nullable();
+            $table->decimal('balance')->nullable();
+            $table->decimal('credit')->nullable()->default(0);
             $table->foreign('studentId')->references('id')->on('students');
             $table->softDeletes();
             $table->timestamps();

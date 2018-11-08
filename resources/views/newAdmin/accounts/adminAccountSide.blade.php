@@ -1,7 +1,72 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: LoardThomas
- * Date: 17/10/2018
- * Time: 15:38
- */
+@extends('newAdmin.master')
+@section('content')
+    <div>
+        @include('newAdmin.newAside')
+        <div class="page-container">
+            @include('newAdmin.alertMessages')
+            @include('newAdmin.navHeader')
+
+            <main class="main-content bgc-grey-100">
+                <div id="mainContent">
+                    <div class="row gap-20 masonry pos-r" style="position: relative; height: 1855px;">
+                        <div class="masonry-sizer col-md-6">
+                        </div>
+
+                        <div class="masonry-item col-md-6" style="position: absolute; left: 0%; top: 0;">
+                            <div class="bd bgc-white">
+                                <div class="layers">
+                                    <div class="layer w-100 pX-20 pT-20">
+                                        <h6 class="lh-1"> <span class="badge">Accountant Activity Logs</span></h6>
+                                    </div>
+                                    <div class="table-responsive overflow">
+                                    <table class="table" id="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Id</th>
+                                            <th class="text-center">Full name</th>
+                                            <th class="text-center">Log in</th>
+                                            <th class="text-center">Log out</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        @foreach($users AS $user)
+                                        <tr>
+                                            <td>{{$user->id}}</td>
+                                            <td>{{$user->user->name}} {{$user->user->surname}}</td>
+                                            <td> {{$user->logIn}}</td>
+                                            <td>{{$user->logOut}}</td>
+                                            <td>
+                                                <button class="edit-modal btn btn-info" onclick="location.href='{{url('accountant-profile/'.$user->user->id)}}'">
+                                                    <span class="glyphicon  glyphicon-eye-open"></span> view
+                                                </button>
+                                            </td>
+                                        </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="masonry-item col-md-6" style="position: absolute; left: 50%; top: 0;">
+                            <div class="bd bgc-white p-20">
+                                <div class="layers">
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="badge">Fees Payment Method Stats</h6>
+                                    </div>
+                                    <div class="layer w-100">
+                                        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            @include('newAdmin.masterFooter')
+        </div>
+    </div>
+@stop

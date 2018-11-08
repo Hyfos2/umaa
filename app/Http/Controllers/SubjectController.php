@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\SubjectService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\LevelErrors;
 use App\Subject;
 use App\ExaminationBoard;
+use App\Level;
 
 class SubjectController extends Controller
 {
+
+    protected $subject ;
+    public function __construct(SubjectService $subjectService)
+    {
+        $this->subject    =$subjectService;
+    }
+
     public function index()
     {
-
+        $levels= Level::orderBy('id','asc')->get();
+        return view('newAdmin.subjects.index',compact('levels'));
     }
     public  function newSubjects()
     {
@@ -20,9 +30,10 @@ class SubjectController extends Controller
 
         //toDo separate subjects based on school level.
         $data= Subject::with('board','schoollevel')->orderBy('name','asc')->get();
+      
         //return $data;
         //Secondary
-        return view('subjects.new',compact('data','board'));
+        return view('subjects.new',compact('data','board','levels'));
     }
     public function manageSubjects()
     {
@@ -30,19 +41,20 @@ class SubjectController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
 
-        $request->schoolLevel  =1;
-
-        //ToDo  remove hard coded values
+    //$this->validator($request->all())->validate();
+    //ToDo use service instead
+    //ToDo  remove hard coded values
 
         Subject::create([
             'name'=>ucfirst($request->name),
             'subjectCode'=>strtoupper($request->code)?:null,
-            'schoolLevel'=>$request->schoolLevel,//fk
+            'schoolLevel'=>2,//fk
+            'levelId'=>$request->level,
             'examinationBoard'=>$request->board?:3,//fk
         ]);
-        return redirect()->back()->with('alert','A subject was added');
+        
+    return redirect()->back()->with('alert','A subject was added');
     }
     protected function validator(array $data)
     {
@@ -74,5 +86,14 @@ class SubjectController extends Controller
     public function destroy($id)
     {
         $subjectDetails  =Subject::find($id)->delete();
+    }
+    public function getZimsecSubjects()
+    {
+
+        return $this->subject->getZimsecSubjects();
+    }
+    public function getCambridgeSubjects()
+    {
+        return $this->subject->getCambridgeSubjects();
     }
 }

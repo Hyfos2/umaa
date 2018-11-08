@@ -17,15 +17,18 @@ use App\Subject;
 use App\User;
 use Carbon\Carbon;
 use App\Services\CalendarService;
+use App\Services\AdminService;
+
 
 
 class AdminController extends Controller
 {
-    protected $calendarService,$activityService;
+    protected $calendarService,$activityService,$adminService;
 
-    public function __construct(CalendarService $calendarService)
+    public function __construct(CalendarService $calendarService,AdminService $adminService)
     {
         $this->calendarService =$calendarService;
+        $this->adminService   =$adminService;
     }
     public function index()
     {
@@ -45,7 +48,7 @@ class AdminController extends Controller
 
       //return view('newAdmin.master',compact('events'));
 
-        return view('newAdmin.main');
+       return view('admin.dashboard');
     }
     public function addTeacher()
     {
@@ -55,6 +58,7 @@ class AdminController extends Controller
 
         $zimsec  =[];
         $cambridge  =[];
+        
         foreach($subjects  as $item)
         {
             if($item->board->name =="Zimsec")
@@ -191,6 +195,35 @@ class AdminController extends Controller
     public function userActivities($id)
     {
         return activityLog::where('userId',$id)->orderBy('created_at','desc')->get();
+    }
+    public function newUserType(Request $request)
+    {
+        $this->adminService->newUserType($request);
+        return redirect()->back()->with('alert','record was saved');
+    }
+    public function assignAdminPermission(Request $request)
+    {
+        return $request;
+    }
+    public function educationManagement()
+    {
+        return view('newAdmin.educationManager.index');
+
+    }
+    public function communicator()
+    {
+        return view('newAdmin.communication.index');
+    }
+
+     public function schoolStaff()
+    {
+        
+        $admin   = $this->adminService->getAdmin();
+        $acc =    $this->adminService->getAccountants();
+        $edu=  $this->adminService->getEducationMngr();
+        $comm=   $this->adminService->getCommunicator();
+   
+        return view('admin.schoolStaff',compact('admin','acc','edu','comm'));
     }
 }
 

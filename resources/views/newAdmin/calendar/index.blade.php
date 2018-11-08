@@ -4,6 +4,7 @@
         @include('newAdmin.newAside')
         <div class="page-container">
             @include('newAdmin.navHeader')
+            @include('newAdmin.alertMessages')
             <main class="main-content bgc-grey-100">
                 <div id="mainContent">
                     <div class="container-fluid">
@@ -50,11 +51,11 @@
 
                                                         <div class="peers mR-15">
                                                             <div class="peer">
-                                                                <a href="javascript:void(0)" class="td-n c-deep-purple-500 cH-blue-500 fsz-md p-5" onclick="testFxn()">
-                                                                    <i class="ti-pencil">
+                                                                {{--<a href="javascript:void(0)" class="td-n c-deep-purple-500 cH-blue-500 fsz-md p-5" onclick="testFxn()">--}}
+                                                                    {{--<i class="ti-pencil">--}}
 
-                                                                    </i>
-                                                                </a>
+                                                                    {{--</i>--}}
+                                                                {{--</a>--}}
                                                             </div>
                                                             <div class="peer">
                                                                 <a href="javascript:void(0)" class="td-n c-red-500 cH-blue-500 fsz-md p-5" onclick="deleteEvent({{$event->id}})">
@@ -101,9 +102,10 @@
                                                                 <label class="fw-500">Start</label>
                                                                 <div class="timepicker-input input-icon form-group">
                                                                     <div class="input-group">
-                                                                        <div class="input-group-addon bgc-white bd bdwR-0">
-                                                                            <i class="ti-calendar">
-                                                                            </i></div>
+                                                                        {{--<div class="input-group-addon bgc-white bd bdwR-0">--}}
+                                                                            {{--<i class="ti-calendar">--}}
+                                                                            {{--</i>--}}
+                                                                        {{--</div>--}}
                                                                         <input type="text" class="form-control bdc-grey-200 start-date" name="start" placeholder="Datepicker" data-provide="datepicker" autocomplete="off">
                                                                     </div>
                                                                 </div>
@@ -112,9 +114,9 @@
                                                                 <label class="fw-500">End</label>
                                                                 <div class="timepicker-input input-icon form-group">
                                                                     <div class="input-group">
-                                                                        <div class="input-group-addon bgc-white bd bdwR-0">
-                                                                            <i class="ti-calendar"></i>
-                                                                        </div>
+                                                                        {{--<div class="input-group-addon bgc-white bd bdwR-0">--}}
+                                                                            {{--<i class="ti-calendar"></i>--}}
+                                                                        {{--</div>--}}
                                                                         <input type="text" class="form-control bdc-grey-200 end-date"  name ="end" placeholder="Datepicker" data-provide="datepicker" autocomplete="off">
                                                                     </div>
                                                                 </div>

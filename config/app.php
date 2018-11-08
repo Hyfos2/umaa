@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -166,6 +166,8 @@ return [
         Laratrust\LaratrustServiceProvider::class,
         DevMarketer\LaraFlash\LaraFlashServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -230,7 +232,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'LaraFlash' => DevMarketer\LaraFlash\LaraFlashFacade::class,
-
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
     ],
 
 ];

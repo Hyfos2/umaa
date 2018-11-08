@@ -2,7 +2,7 @@
 @section('content')
     <div>
         @include('newAdmin.newAside')
-        {{--@include('newAdmin.alertMessages')--}}
+        @include('newAdmin.alertMessages')
         <div class="page-container">
             @include('newAdmin.navHeader')
             <main class="main-content bgc-grey-100">
@@ -13,24 +13,32 @@
                         </div>
                         <div class="masonry-item w-100" style="position: absolute; left: 0%; top: 0px;">
                             <div class="row gap-20">
-                                <div class="col-md-4">
-                                    <div class="layers bd bgc-white p-20">
-                                        <div class="layer w-100 mB-10">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-student">Admin users log in statistics</button>
-                                        </div>
-                                    </div>
-                                </div> <div class="col-md-4">
-                                    <div class="layers bd bgc-white p-20">
-                                        <div class="layer w-100 mB-10">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-student">teacher statistics</button>
-                                        </div>
-                                    </div>
-                                </div> <div class="col-md-4">
-                                    <div class="layers bd bgc-white p-20">
-                                        <div class="layer w-100 mB-10">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-student">students statistics</button>
-                                        </div>
-                                    </div>
+
+                                {{--<div class="col-md-12">--}}
+                                    {{--<div class="layers bd bgc-white p-20">--}}
+                                        {{--<div class="layer w-100 mB-10">--}}
+                                            {{--<button class="btn btn-primary" data-toggle="modal" data-target="#new-student">User Logs</button>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-4">--}}
+                                    {{--<div class="layers bd bgc-white p-20">--}}
+                                        {{--<div class="layer w-100 mB-10">--}}
+                                            {{--<button class="btn btn-primary" data-toggle="modal" data-target="#new-student">Admin users log in statistics</button>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div> <div class="col-md-4">--}}
+                                    {{--<div class="layers bd bgc-white p-20">--}}
+                                        {{--<div class="layer w-100 mB-10">--}}
+                                            {{--<button class="btn btn-primary" data-toggle="modal" data-target="#new-student">teacher statistics</button>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div> <div class="col-md-4">--}}
+                                    {{--<div class="layers bd bgc-white p-20">--}}
+                                        {{--<div class="layer w-100 mB-10">--}}
+                                            {{--<button class="btn btn-primary" data-toggle="modal" data-target="#new-student">students statistics</button>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
 

@@ -14,7 +14,6 @@ class UsersTableSeeder extends Seeder
         	'userTypeId'=>1,
             'gender'=>'male',
             'userName'=>'zimbabwean',
-            'lastLogin'=>'2018-01-10',
             'imgUrl'=>'download.png'
         	]);
     }

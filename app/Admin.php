@@ -9,4 +9,10 @@ class Admin extends Model
 {
     use SoftDeletes;
     protected $dates  =['deleted_at'];
+    protected $guarded  =[];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'userId','id');
+    }
 }

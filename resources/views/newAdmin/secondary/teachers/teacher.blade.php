@@ -17,6 +17,7 @@
                                     <div class="layers bd bgc-white p-20">
                                         <div class="layer w-100 mB-10">
                                             <button class="btn btn-primary" data-toggle="modal" data-target="#new-student">Add Teacher</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-time-table">Create Time table</button>
                                         </div>
                                     </div>
                                 </div>
@@ -55,6 +56,7 @@
                 </div>
 
                 @include('newAdmin.secondary.teachers.addTeacher')
+                @include('newAdmin.secondary.teachers.timetable')
             </main>
             @include('newAdmin.masterFooter')
         </div>

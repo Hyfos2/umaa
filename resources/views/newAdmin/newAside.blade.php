@@ -29,40 +29,61 @@
         <ul class="sidebar-menu scrollable pos-r ps">
             <li class="nav-item mT-30 active">
                 <a class="sidebar-link" href="{{url('adminpnl')}}">
-                        <span class="icon-holder">
-                            <i class="c-blue-500 ti-home">
+                        {{--<span class="icon-holder">--}}
+                            {{--<i class="c-blue-500 ti-home">--}}
 
-                            </i> </span>
+                            {{--</i> </span>--}}
                     <span class="title">Home</span>
                 </a>
             </li>
 
             <li class="nav-item">
+                <a class="sidebar-link" href="{{url('accounts')}}">
+                        {{--<span class="icon-holder">--}}
+                            {{--<i class="c-brown-500 ti-book">--}}
+
+                            {{--</i>--}}
+                        {{--</span>--}}
+                    <span class="title">Accounts</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="sidebar-link" href="{{url('addAdmin')}}">
-                        <span class="icon-holder">
-                            <i class="c-deep-orange-500 ti-user">
-                            </i> </span>
+                        {{--<span class="icon-holder">--}}
+                            {{--<i class="c-deep-orange-500 ti-user">--}}
+                            {{--</i> </span>--}}
                     <span class="title">Admin Users</span>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="sidebar-link" href="{{url('accounts')}}">
-                        <span class="icon-holder">
-                            <i class="c-brown-500 ti-book">
 
-                            </i>
-                        </span>
-                    <span class="title">Accounts</span>
+            <li class="nav-item">
+                <a class="sidebar-link" href="{{url('calendar')}}">
+                        {{--<span class="icon-holder">--}}
+                            {{--<i class="c-deep-orange-500 ti-calendar">--}}
+
+                            {{--</i> </span>--}}
+                    <span class="title">Calendar</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="sidebar-link" href="{{url('subject')}}">
+                        {{--<span class="icon-holder">--}}
+                            {{--<i class="c-deep-orange-500 ti-calendar">--}}
+
+                            {{--</i> </span>--}}
+                    <span class="title">Subjects</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="sidebar-link" href="{{url('calendar')}}">
-                        <span class="icon-holder">
-                            <i class="c-deep-orange-500 ti-calendar">
+                <a class="sidebar-link" href="{{url('sport')}}">
+                        {{--<span class="icon-holder">--}}
+                            {{--<i class="c-deep-orange-500 ti-calendar">--}}
 
-                            </i> </span>
-                    <span class="title">Calendar</span>
+                            {{--</i> </span>--}}
+                    <span class="title">Sports</span>
                 </a>
             </li>
 
@@ -114,7 +135,7 @@
             {{--</li>--}}
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
-                    <span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i></span>
+                    {{--<span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i></span>--}}
                     <span class="title">Institute-Campuses</span>
                     <span class="arrow"><i class="ti-angle-right"></i></span></a>
                 <ul class="dropdown-menu">
@@ -129,7 +150,7 @@
                     {{--</li>--}}
                     <li class="nav-item dropdown"><a href="javascript:void(0);">
                             <span>Secondary School</span>
-                            <span class="arrow"><i class="ti-angle-right"></i></span>
+                            {{--<span class="arrow"><i class="ti-angle-right"></i></span>--}}
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{url('stdnts')}}">Students</a></li>
@@ -144,9 +165,9 @@
 
             <li class="nav-item">
                 <a class="sidebar-link" href="{{url('users')}}">
-                        <span class="icon-holder">
-                            <i class="c-deep-orange-500 ti-user">
-                            </i> </span>
+                        {{--<span class="icon-holder">--}}
+                            {{--<i class="c-deep-orange-500 ti-user">--}}
+                            {{--</i> </span>--}}
                     <span class="title">User Logs</span>
                 </a>
             </li>

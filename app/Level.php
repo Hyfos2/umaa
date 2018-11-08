@@ -27,5 +27,14 @@ class Level extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function dailyexercise()
+    {
+        return $this->hasMany(DailyExercise::class,'id','levelId');
+    }
+     public  function timetable()
+    {
+        return $this->hasMany(TimeTable::class);
+    }
+
 
 }

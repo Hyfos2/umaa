@@ -10,3 +10,7 @@
     </div>
 @endif
 
+<div id="dailyExercises">
+   Marks Saved..
+</div>
+

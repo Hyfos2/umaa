@@ -21,14 +21,12 @@ class DomitoryService
             'students'=>$request->students
         ]);
     }
-
     public function studentAccommodation()
     {
         return studentAccommodationDetail::with('student','hostel')
             ->orderBy('hostelName','asc')
             ->get();
     }
-
     public function allocateRoomsToStudents(Request $request)
     {
       return  studentAccommodationDetail::create([

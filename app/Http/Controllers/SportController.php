@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\SportService;
 use Illuminate\Http\Request;
 use App\Sport;
 use Illuminate\Support\Facades\Validator;
-use App\Rules\LevelErrors;
 
 class SportController extends Controller
 {
+    protected $sports;
+    public function __construct(SportService $sportService)
+    {
+        $this->sports  =$sportService;
+    }
     public function index()
     {
         $data   = Sport::orderBy('name','asc')->get();
-        return view('sports.new' ,compact('data'));
+        return view('newAdmin.sports.new' ,compact('data'));
     }
     public function create()
     {
@@ -20,7 +25,6 @@ class SportController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
         $sport          = new Sport();
         $sport->name    = ucfirst($request->name);
         $sport->save();
@@ -33,9 +37,9 @@ class SportController extends Controller
                  'name'=>'unique:sports',new LevelErrors
         ]);
     }
-    public function show($id)
+    public function allSports()
     {
-        //
+        return $this->sports->showSports();
     }
     public function edit($id)
     {

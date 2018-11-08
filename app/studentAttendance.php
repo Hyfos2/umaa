@@ -9,4 +9,8 @@ class studentAttendance extends Model
 {
     use SoftDeletes;
     protected $dates  =['deleted_at'];
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class,'subjectId','id');
+    }
 }

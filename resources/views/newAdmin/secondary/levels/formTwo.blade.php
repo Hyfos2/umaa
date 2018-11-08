@@ -3,7 +3,7 @@
     <div class="block-area" id="responsiveTable">
         <div id="MeetingNotification"></div>
         <div class="table-responsive overflow">
-            <table class="table tile table-striped" id="grade-5Table">
+            <table class="table tile table-striped" id="grade-2Table">
                 <thead>
                 <tr>
                     <th>Record Id</th>

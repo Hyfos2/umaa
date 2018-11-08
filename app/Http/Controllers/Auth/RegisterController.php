@@ -38,7 +38,22 @@ class RegisterController extends Controller
             'userTypeId'=>$data['userTypeId'],
             'gender'=>ucfirst($data['gender']),
             'userName'=>$pass,
-            'contactPoint'=>'190.0.0.1',
+            'imgUrl'=>'image/path',
+            'password' =>bcrypt($pass),
+        ]);
+    }
+
+    protected function createParentUser(array $data)
+    {
+        $pass  = $this->generateRandomString();
+
+        return User::create([
+            'name' => ucfirst($data['parentname']),
+            'email' => $data['parentemail'],
+            'surname'=>ucfirst($data['surname']),
+            'userTypeId'=>$data['userTypeId'],
+            'gender'=>ucfirst($data['gender']),
+            'userName'=>$pass,
             'imgUrl'=>'image/path',
             'password' =>bcrypt($pass),
         ]);

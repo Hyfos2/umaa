@@ -10,11 +10,14 @@ class SubjectTableSeeder extends Seeder
             'name'=>'Maths',
             'examinationBoard'=>'1',
             'schoolLevel'=>'1',
+            'levelId'=>'1',
             'created_at'=>'2019-01-12']);
+
         \App\Subject::create([  'id'=>2,
             'name'=>'Shona',
             'examinationBoard'=>'1',
             'schoolLevel'=>'2',
+            'levelId'=>'2',
             'created_at'=>'2013-01-13']);
     }
 }

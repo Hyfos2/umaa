@@ -13,11 +13,13 @@ class CreateDailyExercisesTable extends Migration
             $table->string('topic');
             $table->integer('subjectId')->unsigned();
             $table->integer('levelId')->unsigned();
+            $table->integer('subLevelId')->unsigned();
             $table->integer('total')->unsigned();
             $table->integer('teacherId')->unsigned();
             $table->date('date');
             $table->foreign('teacherId')->references('id')->on('teachers');
             $table->foreign('levelId')->references('id')->on('levels');
+            $table->foreign('subLevelId')->references('id')->on('sub_levels');
             $table->foreign('subjectId')->references('id')->on('subjects');
             $table->softDeletes();
             $table->timestamps();

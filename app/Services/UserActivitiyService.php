@@ -9,14 +9,17 @@
 namespace App\Services;
 
 use App\activityLog;
+use App\schoolCalendar;
 use App\User;
+use App\Admin;
+use App\UserDeviceInformation;
 use App\userTypes;
+use App\UserVisitedLink;
 use Carbon\Carbon;
 use Auth;
 
 class UserActivitiyService
 {
-
     public function userActivities($activity)
     {
        return activityLog::create([
@@ -36,15 +39,36 @@ class UserActivitiyService
         if(ucfirst($name) == "Supervisor")
             return userTypes::where('name',$name)->first(['id']);
     }
-
-    public  function  userLogs()
+    public  function  userLogs($id)
     {
-        return User::all();
+        return UserDeviceInformation::where('id',$id)->first();
     }
-
+    public  function  activityDetails($id)
+    {
+        return activityLog::where('id',$id)->first();
+    }
     protected function checkDateIfIsEmpty($date)
     {
         if(empty($date))
             return "ttr";
+    }
+    public  function  addNewAdmin($user,$request)
+    {
+        return Admin::create([
+                'userId'=>$user->id,
+                'dob'=>$request->dob
+        ]);
+    }
+    public function  getAdmins()
+    {
+        return Admin::with('user')->get();
+    }
+    public function  getUserActivities($id)
+    {
+        return activityLog::with('user')->where('userId',$id)->get();
+    }
+    public function  getUserVisitedUrls($id)
+    {
+        return UserVisitedLink::with('user')->where('userId',$id)->get();
     }
 }

@@ -4,6 +4,7 @@
     <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav  ">
         <div class="repohead-details-container clearfix container">
             @include('internal.teacher.breadcrumbs')
+            @include('newAdmin.alertMessages')
         </div>
 
         <nav class="reponav js-repo-nav js-sidenav-container-pjax container" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" data-pjax="#js-repo-pjax-container">

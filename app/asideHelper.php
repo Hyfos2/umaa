@@ -7,6 +7,8 @@
  */
 
 use App\User;
+use App\Admin;
+
 function primaryTeachers()
 {
     return User::where('userTypeId',2)->count();
@@ -19,6 +21,11 @@ function secondaryTeachers()
 function students()
 {
    return User::where('userTypeId',3)->count();
+}
+
+function admins()
+{
+   return Admin::count();
 }
 
 function sports()

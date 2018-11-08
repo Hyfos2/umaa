@@ -1,7 +1,7 @@
 <div class="footer container-lg px-3" role="contentinfo">
     <div class="position-relative d-flex flex-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
         <ul class="list-style-none d-flex flex-wrap ">
-            <li class="mr-3">© 2018 <span title="0.30078s from unicorn-8457864864-gwww7">Wise Owl</span> Group of Schools</li>
+            <li class="mr-3">© 2018 <span title="0.30078s from unicorn-8457864864-gwww7">Umma Institute</span></li>
             <li class="mr-3"><a data-ga-click="Footer, go to terms, text:terms" href="javascript:void(0);">Terms</a></li>
             <li class="mr-3"><a data-ga-click="Footer, go to privacy, text:privacy" href="javascript:void(0);">Privacy</a></li>
             <li class="mr-3"><a href="https://help.github.com/articles/github-security/" data-ga-click="Footer, go to security, text:security">Security</a></li>

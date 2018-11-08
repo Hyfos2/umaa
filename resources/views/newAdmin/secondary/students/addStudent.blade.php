@@ -36,9 +36,9 @@
                     <div class="form-group">
                         <div class="timepicker-input input-icon form-group">
                             <div class="input-group">
-                                <div class="input-group-addon bgc-white bd bdwR-0">
-                                    <i class="ti-calendar">
-                                    </i></div>
+                                {{--<div class="input-group-addon bgc-white bd bdwR-0">--}}
+                                    {{--<i class="ti-calendar">--}}
+                                    {{--</i></div>--}}
                                 <input type="text" class="form-control bdc-grey-200 start-date" name="dob" placeholder="Date of Birth" data-provide="datepicker" autocomplete="off">
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                     <div class="form-group">
                         <input type ="text" class="form-control bdc-grey-200"  placeholder="Parent Address" name="address" autocomplete="off">
                     </div>
-
+            <label><i>Sports</i></label>
                     <div class="form-group">
                         @foreach($sports as $item)
                             <label for="sports">
@@ -87,7 +87,7 @@
                             <input type="checkbox" name="sports[]" value="{{$item->id}}">
                         @endforeach
                     </div>
-
+<label><i>Zimsec</i></label>
                     <div class="form-group">
                         @foreach($zimsecsubjects as $item)
                             <label for="sports">
@@ -96,7 +96,7 @@
                             <input type="checkbox" name="zimsec[]" value="{{$item->id}}">
                         @endforeach
                     </div>
-
+<label><i>Cambridge</i></label>
                     <div class="form-group">
                         @foreach($cambridgesubjects as $item)
                             <label for="sports">

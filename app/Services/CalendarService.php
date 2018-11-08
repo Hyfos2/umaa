@@ -34,10 +34,15 @@ class CalendarService
     {
        return schoolCalendar::orderBy('created_at','desc')->take(5)->get();
     }
-
     public  function allCalendarEvents()
     {
         $events =schoolCalendar::all();
         return json_encode($events);
+    }
+    public function deleteEvent($id)
+    {
+         schoolCalendar::find($id)->delete();
+         return schoolCalendar::all();
+
     }
 }

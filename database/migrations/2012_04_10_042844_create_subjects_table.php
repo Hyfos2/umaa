@@ -13,9 +13,11 @@ class CreateSubjectsTable extends Migration
             $table->string('subjectCode')->unique()->nullable();
             $table->string('name');
             $table->integer('schoolLevel')->unsigned();
+            $table->integer('levelId')->unsigned();
             $table->integer('examinationBoard')->unsigned()->nullable();
             $table->foreign('examinationBoard')->references('id')->on('examination_boards');
             $table->foreign('schoolLevel')->references('id')->on('school_levels');
+            $table->foreign('levelId')->references('id')->on('levels');
             $table->softDeletes();
             $table->timestamps();
         });

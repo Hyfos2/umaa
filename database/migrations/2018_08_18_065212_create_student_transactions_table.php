@@ -15,6 +15,7 @@ class CreateStudentTransactionsTable extends Migration
             $table->string('reference')->nullable();
             $table->decimal('amountPaid');
             $table->string( 'description');
+            $table->string( 'paymentMethod');
             $table->foreign('studentId')->references('id')->on('students');
             $table->softDeletes();
             $table->timestamps();

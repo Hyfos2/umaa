@@ -36,8 +36,7 @@ class CalendarController extends Controller
     {
         $this->calendarService->newCalendarEvent($request);
         $this->activityService->userActivities("added an event called ".$request->event);
-
-        return "new event was created";
+        return redirect()->back()->with('alert','an event was created');
     }
 
     public function show($id)
@@ -54,9 +53,15 @@ class CalendarController extends Controller
     {
         //
     }
+    public function deleteEvent($id)
+    {
+        $eventTitle =schoolCalendar::find($id)->title;
+        $this->activityService->userActivities("deleted ".$eventTitle.' event');
+        return $this->calendarService->deleteEvent($id);
+    }
 
     public function destroy($id)
     {
-        //
+        return $id;
     }
 }
