@@ -36,6 +36,16 @@
                     <span class="title">Home</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="sidebar-link" href="{{url('addAdmin')}}">
+                        <span class="icon-holder">
+                            <i class="c-deep-orange-500 ti-user">
+                            </i> </span>
+                    <span class="title">Admin Users</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="sidebar-link" href="{{url('accounts')}}">
                         <span class="icon-holder">
@@ -129,11 +139,13 @@
                 </ul>
             </li>
 
+
+
+
             <li class="nav-item">
                 <a class="sidebar-link" href="{{url('users')}}">
                         <span class="icon-holder">
                             <i class="c-deep-orange-500 ti-user">
-
                             </i> </span>
                     <span class="title">User Logs</span>
                 </a>

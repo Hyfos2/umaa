@@ -10,7 +10,6 @@
                                 <div class="layers">
                                     <div class="layer w-100">
 
-
                                         <div id="tabs">
 
                                             <ul class="nav nav-tabs">
@@ -37,12 +36,9 @@
                                 <div class="card">
                                     <div class="card-body">
 
-
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

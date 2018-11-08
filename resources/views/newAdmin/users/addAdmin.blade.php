@@ -2,7 +2,7 @@
 @section('content')
     <div>
         @include('newAdmin.newAside')
-        @include('newAdmin.alertMessages')
+        {{--@include('newAdmin.alertMessages')--}}
         <div class="page-container">
             @include('newAdmin.navHeader')
             <main class="main-content bgc-grey-100">
@@ -11,12 +11,14 @@
                         <div class="masonry-sizer col-md-6">
 
                         </div>
+
                         <div class="masonry-item w-100" style="position: absolute; left: 0%; top: 0px;">
+
                             <div class="row gap-20">
                                 <div class="col-md-12">
                                     <div class="layers bd bgc-white p-20">
                                         <div class="layer w-100 mB-10">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-student">Add Teacher</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-admin">Add Admin</button>
                                         </div>
                                     </div>
                                 </div>
@@ -27,23 +29,30 @@
                                     <div class="bd bgc-white">
                                         <div class="peers fxw-nw@lg+ ai-s">
                                             <div class="peer peer-greed w-70p@lg+ w-100@lg- p-20" style="height: 1600px;">
-                                                <div id="MeetingNotification" style="margin-bottom: 10px"><span class="badge">School Teachers</span></div>
-                                                <div id="tabs">
 
-                                                    <ul class="nav nav-tabs">
-                                                        <li class="active"><a data-toggle="tab" href="#formteachers-1">Form One</a></li>
-                                                        <li><a data-toggle="tab" href="#formteachers-2">Form Two</a></li>
-                                                        <li><a data-toggle="tab" href="#formteachers-3">Form  Three</a></li>
-                                                        <li><a data-toggle="tab" href="#formteachers-4">Form Four</a></li>
-                                                    </ul>
+                                                <div id="formteachers-1" class="tab-pane fade in active">
+                                                    <div class="block-area grade" id="responsiveTable">
+                                                        <div id="MeetingNotification"><span class="badge">Admin Users information</span></div>
+                                                        <div class="table-responsive overflow">
 
-                                                    <div class="tab-content">
 
-                                                        @include('newAdmin.secondary.levels.formOne')
-                                                        @include('newAdmin.secondary.levels.formTwo')
-                                                        @include('newAdmin.secondary.levels.formThree')
-                                                        @include('newAdmin.secondary.levels.formFour')
+
+                                                            <table class="table tile table-striped" id="adminUsersTable">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Record Id</th>
+                                                                    <th>User Name</th>
+                                                                    <th>User Surname</th>
+                                                                    <th>Email</th>
+                                                                    <th>Gender</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                                </thead>
+                                                            </table>
+
+                                                        </div>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -54,7 +63,6 @@
                     </div>
                 </div>
 
-                @include('newAdmin.secondary.teachers.addTeacher')
             </main>
             @include('newAdmin.masterFooter')
         </div>

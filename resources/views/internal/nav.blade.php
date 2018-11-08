@@ -1,25 +1,3 @@
-{{--<nav id="secondNav">--}}
-
-    {{--@if(\Auth::user()->userTypeId ===2 || \Auth::user()->userTypeId ===3)--}}
-    {{--<a href="{{ url('welcome') }}">--}}
-        {{--Home--}}
-    {{--</a>--}}
-    {{--@endif--}}
-
-        {{--@if(\Auth::user()->userTypeId ===3)--}}
-     {{--<a href="{{ url('results')}}">--}}
-        {{--Results--}}
-    {{--</a>--}}
-        {{--@endif--}}
-
-            {{--@if(\Auth::user()->userTypeId ===2 || \Auth::user()->userTypeId ===3)--}}
-     {{--<a href="{{ url('settings') }}">--}}
-         {{--Settings--}}
-    {{--</a>--}}
-        {{--@endif--}}
-
-{{--</nav>--}}
-
 
 <nav class="reponav js-repo-nav js-sidenav-container-pjax container" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" data-pjax="#js-repo-pjax-container">
 

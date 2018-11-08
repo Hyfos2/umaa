@@ -6,7 +6,8 @@
     <link href="{{asset('css/secondWelcome.css')}}" rel="stylesheet">
     <link href="{{asset('css/display.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <link href="{{asset('css/chart.css')}}" rel="stylesheet">
+    <link href="{{asset('snackbar.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('css/chart.css')}}" rel="stylesheet">--}}
     <meta name="viewport" content="width=device-width">
     <title>Wise Owl</title>
 </head>
@@ -108,25 +109,20 @@
 </div>
 
 <div role="main" class="application-main ">
-    <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
         <div id="js-repo-pjax-container" data-pjax-container="">
             @yield('content')
         </div>
     </div>
 
 </div>
+
 @include('internal.footer')
+<script type="text/javascript" async="" src="{{asset('analytics.js.download')}}"></script>
+<script type="text/javascript" src="{{asset('vendor.js.download')}}"></script>
 <script type="text/javascript" src="{{asset('js/welcome.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/secondWelcome.js')}}"></script>
-<script type="text/javascript" src="{{asset('calendar.js.download')}}"></script>
+<script type="text/javascript" src="{{asset('bundle2.js.download')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 <script  type="text/javascript" src="{{asset('newAdmin/js/demo.js')}}" ></script>
-
-<template id="site-details-dialog"></template>
-<div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
-    <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large" style="width:360px;">
-    </div>
-</div>
-
 </body>
 </html>

@@ -8,7 +8,7 @@
                 <div id="mainContent">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4" id="calenderEvents">
                                 <div class="bdrs-3 ov-h bgc-white bd">
                                     <div class="bgc-deep-purple-500 ta-c p-30">
                                         <h1 class="fw-300 mB-5 lh-1 c-white">{{curreantDate()}}<span class="fsz-def"></span>
@@ -29,6 +29,7 @@
                                                 </li>
                                                     @else
                                                     <li class="bdB peers ai-c jc-sb fxw-nw">
+
                                                         <a class="td-n p-20 peers fxw-nw mR-20 peer-greed c-grey-900" href="javascript:void(0);">
                                                             <div class="peer mR-15">
                                                                 <i class="fa fa-fw fa-clock-o c-green-500">
@@ -44,6 +45,9 @@
                                                                 </div>
                                                             </div>
                                                         </a>
+                                                        <form action="" id="eventForm" name="eventForm">
+                                                           {{csrf_field()}}
+
                                                         <div class="peers mR-15">
                                                             <div class="peer">
                                                                 <a href="javascript:void(0)" class="td-n c-deep-purple-500 cH-blue-500 fsz-md p-5" onclick="testFxn()">
@@ -53,13 +57,19 @@
                                                                 </a>
                                                             </div>
                                                             <div class="peer">
-                                                                <a href="javascript:void(0)" class="td-n c-red-500 cH-blue-500 fsz-md p-5">
-                                                                    <i class="ti-trash">
+                                                                <a href="javascript:void(0)" class="td-n c-red-500 cH-blue-500 fsz-md p-5" onclick="deleteEvent({{$event->id}})">
 
-                                                                    </i>
+
+                                                                        <i class="ti-trash">
+                                                                        </i>
+
+
                                                                 </a>
                                                             </div>
                                                         </div>
+                                                        </form>
+
+
                                                     </li>
                                                 @endif
                                             @endforeach
@@ -136,6 +146,7 @@
             </main>
 
             @include('newAdmin.masterFooter')
+            <div id="snackbar">deleting an event...</div>
         </div>
     </div>
 @stop

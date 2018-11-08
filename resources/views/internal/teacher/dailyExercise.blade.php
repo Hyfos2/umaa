@@ -40,11 +40,6 @@
 
     <div class="js-repo-meta-container">
         <div class="repository-meta mb-0  js-repo-meta-edit js-details-container ">
-            <div class="repository-meta-content col-11 mb-1">
-          <span class="col-11 text-gray-dark mr-2" itemprop="about">
-               <strong>{{$subjectDetails->name}}</strong>
-          </span>
-            </div>
 
             <span class="edit-link">
         <button type="button" class="btn btn-sm float-right js-details-target js-edit-repo-meta-button js-edit-repo-meta-toggle" aria-expanded="false">Add Topic</button>
@@ -78,104 +73,61 @@
 
             <div class="commit-tease js-details-container Details d-flex">
 
-                <div class="AvatarStack flex-self-start ">
-                    <div class="AvatarStack-body" aria-label="hyfos2">
-
-                        <img src="{{asset('img/male.png')}}" width="20" height="20" class="avatar" alt="hyfos2">
-                    </div>
-                </div>
 
                 <div class="flex-auto f6 no-wrap mr-3">
                     <span class="commit-author user-mention">Students Names</span>
                 </div>
 
-                {{--<div class="no-wrap">--}}
-                {{--Latest commit--}}
-                {{--<a class="commit-tease-sha" href="https://github.com/Hyfos2/eps-system/commit/9a16981172d3a17d4397b5746236088481517e07" data-pjax="">--}}
-                {{--9a16981--}}
-                {{--</a>--}}
-                {{--<span itemprop="dateModified"><relative-time datetime="2018-05-11T03:43:12Z" title="May 11, 2018, 5:43 AM GMT+2">on May 11</relative-time></span>--}}
-                {{--</div>--}}
             </div>
 
             <div class="file-wrap">
-                <a class="d-none js-permalink-shortcut" data-hotkey="y" href="https://github.com/Hyfos2/eps-system/tree/9a16981172d3a17d4397b5746236088481517e07">Permalink</a>
 
-                <table class="files js-navigation-container js-active-navigation-container" data-pjax="">
+                <table class="files js-navigation-container js-active-navigation-container" data-pjax="" id="exercises">
 
-
+                    <form class="starred js-social-form" id="dailyExercises"  method="POST">
+                        {{csrf_field()}}
                     <tbody>
-                    <tr class="warning include-fragment-error">
-                        <td class="icon">
-                        </td>
-                        <td class="content" colspan="3">Failed to load latest commit information.</td>
-                    </tr>
-
-
 
                     @foreach($students as $student)
-                        <tr class="js-navigation-item">
-
+                        <tr class="js-navigation-item" id="studentNames">
 
                             <td class="icon">
-                                <svg class="octicon octicon-file-directory" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
-                                <img width="16" height="16" class="spinner" alt="" src="{{asset('img/octocat-spinner-32.gif')}}">
                             </td>
 
                             <td class="message">
                             <span class="css-truncate css-truncate-target">
-                                <a class="js-navigation-open" title="app" id="d2a57dc1d883fd21fb9951699df71cc7-465ec0896745a3dfb42d2a67ae3c11a5e49b3833" href="https://github.com/Hyfos2/eps-system/tree/master/app">{{$student->username}} {{$student->surname}}({{$student->gender}})</a></span>
+                                <a class="js-navigation-open" title="app"  href="java:void(0);">{{$student->username}} {{$student->surname}}({{$student->gender}})</a></span>
                             </td>
 
-                            <form class="starred js-social-form" id="register-form" action="{{url('recordExercise')}}" accept-charset="UTF-8" method="post">
-                                    {{csrf_field()}}
+
                                 <td class="content">
                                     <input   type="hidden" value="{{$levelId}}"    name="levelId" >
-                                    <input type="hidden" value="{{$subjectDetails->id}}" name="subjectId">
+                                    <input type="hidden" value="{{$subjectDetails->id}}" name="subjectId" id="subjectId">
                                     <input type="text" name="mark"  id="mark" placeholder="Enter mark" autocomplete="off">
                                     <input type="text" name="comment" id ="comment" placeholder="Enter comment" autocomplete="off">
                                     <input type="hidden" name="studentId" value="{{$student->studentId}}" id="student">
-
                                 </td>
                                 <td class="age">
-                                    <button type="submit"  onclick="event.preventDefault();document.getElementById('register-form').submit();" class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar Hyfos2/eps-system" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">Save</button>
+                                    <button   onclick=" event.preventDefault();" id="individualRecord"  class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">Save</button>
                                 </td>
 
-                            </form>
+
                         </tr>
                     @endforeach
 
                     </tbody>
+                    </form>
                 </table>
 
             </div>
 
+            <div id="readme" class="Box Box--condensed instapaper_body md">
+                <div class="Box-header px-2 clearfix">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <button  onclick=" event.preventDefault();"   id="allRecords" form ="dailyExercises" style="margin-right:65px;" class="btn btn-sm btn-with-count float-right" aria-label="Unstar this repository" title="Save All" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">Save</button>
+                </div>
+            </div>
 
         </div></div>
-
-
-
-
-
-
 
 @stop

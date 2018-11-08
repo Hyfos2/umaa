@@ -14,7 +14,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label class="text-normal text-dark">Email</label>
-                    <input  name ="email" type="email" class="form-control" placeholder="student@wiseowlschool.co.zw" autocomplete="off">
+                    <input  name ="email" type="email" class="form-control" placeholder="user@umaainstitute.com" autocomplete="off">
                     @if ($errors->has('email'))
                     <span>
                     <strong>{{ $errors->first('email') }}</strong>
