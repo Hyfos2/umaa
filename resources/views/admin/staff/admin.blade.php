@@ -19,7 +19,7 @@
                 <td>{{$item->gender}}</td>
                 <td>{{$item->email}}</td>
                 <td>
-                     <a class="edit-modal btn btn-info" href="{{url('student-class')}}">Delete</a>
+                     <a class="btn btn-outline-info" href="javascript:void(0);" onclick="deleteFxn();">Delete</a>
                  </td>
             </tr>
             @endforeach

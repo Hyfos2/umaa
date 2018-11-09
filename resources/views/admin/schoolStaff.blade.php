@@ -90,6 +90,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
+        <div id="snackbar">Coming soon.</div>
         @include('admin.footer')
         @include('admin.newStaff')
     </div>

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hyfos2
- * Date: 6/13/2018
- * Time: 4:28 PM
- */
+
 
 use App\User;
 use App\Admin;
@@ -21,6 +16,22 @@ function secondaryTeachers()
 function students()
 {
    return User::where('userTypeId',3)->count();
+}
+function accountants()
+{
+   return User::where('userTypeId',4)->count();
+}
+function communicators()
+{
+   return User::where('userTypeId',6)->count();
+}
+function educationManagers()
+{
+   return User::where('userTypeId',5)->count();
+}
+function parent()
+{
+   return User::where('userTypeId',7)->count();
 }
 
 function admins()

@@ -6,49 +6,127 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Umaa Institute</title>
+    @include('title')
     <meta name="description" content="Umaa Institute">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!--   <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png"> -->
-
+  
     <link rel="stylesheet" href="{{asset('admin/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('admin/css/font-awesome.min.css')}}">
-    <link href="{{asset('admin/css/datepicker.css')}}" rel="stylesheet" />
     <link href="{{asset('datatables/jquery.dataTables.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('niceCharts/export.css')}}" rel="stylesheet" type="text/css" media="all" />
+      <link href="{{asset('admin/css/datepicker.css')}}" rel="stylesheet" />
+   <!--  <link href="{{asset('niceCharts/export.css')}}" rel="stylesheet" type="text/css" media="all" /> -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" media="all" />
     <script src="{{asset('filemanager/webix.js')}}" type="text/javascript"></script>
-    <script type="text/javascript" src="{{asset('filemanager/treedata.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{asset('filemanager/webix.css')}}">
     <style>
-#userDevice {
-    width       : 100%;
-    height      : 500px;
-    font-size   : 11px;
-}                           
-</style>
+        #userDevice {
+            width       : 100%;
+            height      : 360px;
+            font-size   : 12px;
+        }          
+    </style>
 </head>
 <body>
   @include('admin.aside')
   @yield('content')
-    <script src="{{asset('admin/js/minified.js')}}"></script> 
-    <script src="{{asset('admin/js/jquery.simpleWeather.min.js')}}"></script>
-    <script src="{{asset('admin/js/init/weather-init.js')}}"></script>
-    <script src="{{asset('admin/js/moment.min.js')}}"></script>
-    <script src="{{asset('admin/js/fullcalendar.min.js')}}"></script>
-    <script src="{{asset('admin/js/init/fullcalendar-init.js')}}"></script>
-    <script src="{{asset('datatables/jquery-3.3.1.js')}}"></script>
-    <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('datatables/dataTables.buttons.min.js')}}"></script>
-  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-  <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script src="{{asset('admin/js/minified.js')}}"></script> 
+<script src="{{asset('admin/js/moment.min.js')}}"></script>
+<script src="{{asset('admin/js/fullcalendar.min.js')}}"></script>
+<script src="{{asset('admin/js/init/fullcalendar-init.js')}}"></script>
+<script src="{{asset('datatables/jquery-3.3.1.js')}}"></script>
+<script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('datatables/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('admin/js/axios.min.js')}}"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <script src="{{asset('flatpickr.js')}}"></script>
+@stack('scripts')
+
 <script type="text/javascript">
+
+    function deleteFxn(){
+    var notify = document.getElementById("snackbar");
+    notify.className = "show";
+    setTimeout(function(){ notify.className = notify.className.replace("show", ""); }, 2000);
+        }
+
+
+         jQuery(document).ready(function($) {
+
+        $(".selectionDate").flatpickr({});
+
+        $('#example').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+        $('#admins').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+        $('#communicators').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+        $('#userLogs').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+        $('#educator').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+        $('#accountant').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+        
+
+         $('#form1Teacher').DataTable({
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+    });
+
+     
+
+
         webix.ready(function(){
           webix.ui({
             container:"listA",
@@ -76,6 +154,7 @@
             { id: "m_3_1", type: "file", value: "Scheherazade"}
         ]}
     ]},
+
     { id:"2", type: "folder", value:"Images", data:[
         { id: "p_0", type: "folder", value: "01 - Christmas", data: [
             { id: "p_0_0", type: "file", value: "IMG_10034" },
@@ -135,59 +214,6 @@
 
     });
 
-         jQuery(document).ready(function($) {
-        $(".selectionDate").flatpickr({});
-
-        $('#example').DataTable(
-            {
-          
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-        $('#admins').DataTable(
-            {
-          
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-        $('#communicators').DataTable(
-            {
-          
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-        $('#educator').DataTable(
-            {
-          
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-        $('#accountant').DataTable(
-            {
-          
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-        
-
-         $('#form1Teacher').DataTable({
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-
-    });
 
           jQuery(document).ready(function($) {
             "use strict";

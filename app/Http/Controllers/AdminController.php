@@ -9,6 +9,7 @@ use App\Level;
 use App\Permission;
 use App\schoolFees;
 use App\SchoolLevel;
+use App\UserDeviceInformation;
 use App\Sport;
 use App\SubLevel;
 use App\userTypes;
@@ -17,6 +18,7 @@ use App\Subject;
 use App\User;
 use Carbon\Carbon;
 use App\Services\CalendarService;
+use App\Services\UserActivitiyService;
 use App\Services\AdminService;
 
 
@@ -25,10 +27,11 @@ class AdminController extends Controller
 {
     protected $calendarService,$activityService,$adminService;
 
-    public function __construct(CalendarService $calendarService,AdminService $adminService)
+    public function __construct(CalendarService $calendarService,AdminService $adminService,UserActivitiyService $activityService)
     {
         $this->calendarService =$calendarService;
         $this->adminService   =$adminService;
+        $this->activityService   =$activityService;
     }
     public function index()
     {
@@ -214,10 +217,18 @@ class AdminController extends Controller
     {
         return view('newAdmin.communication.index');
     }
-
-     public function schoolStaff()
+    public function userDevices()
     {
-        
+        return UserDeviceInformation::all();
+    }
+
+    public function usersLogs()
+    {
+        $user = $this->activityService->allUsersLogs();
+        return view('users.userLogs',compact('user'));
+    }
+     public function schoolStaff()
+    {   
         $admin   = $this->adminService->getAdmin();
         $acc =    $this->adminService->getAccountants();
         $edu=  $this->adminService->getEducationMngr();

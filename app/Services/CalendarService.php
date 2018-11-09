@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hyfos2
- * Date: 8/20/2018
- * Time: 11:36 AM
- */
 
 namespace App\Services;
 
@@ -18,10 +12,11 @@ class CalendarService
     {
         try{
             $calendarEvent              =new schoolCalendar();
-            $calendarEvent->title       =$request->event;
+            $calendarEvent->title       =$request->title;
             $calendarEvent->start   =date('Y-m-d',strtotime($request->start));
             $calendarEvent->end     =date('Y-m-d',strtotime($request->end));
             $calendarEvent->description =$request->description;
+            $calendarEvent->color =$request->color;
             $calendarEvent->save();
         }
         catch(MassAssignmentException $e)

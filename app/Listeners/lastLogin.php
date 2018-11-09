@@ -28,6 +28,3 @@ class lastLogin
        
     }
 }
-
-// $detect->setUserAgent($userAgent);
-// $detect->setHttpHeaders($httpHeaders);

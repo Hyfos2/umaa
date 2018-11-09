@@ -17,6 +17,7 @@ use App\userTypes;
 use App\UserVisitedLink;
 use Carbon\Carbon;
 use Auth;
+use Jenssegers\Agent\Agent;
 
 class UserActivitiyService
 {
@@ -25,6 +26,9 @@ class UserActivitiyService
        return activityLog::create([
             'name'=>$activity,
             'userId'=>\Auth::user()->id,
+            'deviceInfo'=>null,
+            'ipAddress'=>null,
+            'physicalLocation'=>null,
             'date'=>Carbon::now()
         ]);
     }
@@ -39,7 +43,7 @@ class UserActivitiyService
         if(ucfirst($name) == "Supervisor")
             return userTypes::where('name',$name)->first(['id']);
     }
-    public  function  userLogs($id)
+    public  function  userLogsActivities($id)
     {
         return UserDeviceInformation::where('id',$id)->first();
     }
@@ -71,4 +75,11 @@ class UserActivitiyService
     {
         return UserVisitedLink::with('user')->where('userId',$id)->get();
     }
+     public  function  allUsersLogs()
+    {
+           return UserDeviceInformation::with('user')->get();
+         // return array_unique((array)$data);
+    }
+
+
 }

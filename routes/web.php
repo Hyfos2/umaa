@@ -86,11 +86,13 @@ Route::group(['middleware'=>['auth']], function()
     Route::post('new-user-type','AdminController@newUserType');
     Route::get('manage-teachers','AdminController@manageTeachers');
     Route::get('education-management','AdminController@educationManagement');
+    Route::get('user-devices','AdminController@userDevices');
     Route::get('staffMembers','AdminController@schoolStaff');
     Route::get('manage-students','AdminController@manageStudents');
     Route::get('add-student','AdminController@addStudents');
     Route::get('add-teacher','AdminController@addTeacher');
     Route::get('student-logs','AdminController@studentLogs');
+    Route::get('userLogs','AdminController@usersLogs');
     Route::get('teacher-logs','AdminController@teacherLogs');
     Route::get('set-permission','AdminController@setPermission');
     Route::post('assgnmnt-admin-permission','AdminController@assignAdminPermission');
@@ -147,12 +149,13 @@ Route::group(['middleware'=>['auth']], function()
 
 //Users
 
-    Route::get('activityDetail/{id}','UsersController@activityDetails');
+    Route::get('user-activity-log/{id}','UsersController@activityDetails');
+    Route::get('activity-details/{id}','UsersController@userActivityDetails');
     Route::get('set-permission/{id}','UsersController@setPermission');
     Route::post('set-user-permission','UsersController@setUserPermission');
     Route::get('view-permission/{id}','UsersController@viewPermission');
     Route::post('editPermissions','UsersController@editPermissions');
-    Route::get('userLogs','UsersController@userLogs');
+   //Route::get('userLogs','UsersController@usersLogs');
     Route::get('userAdmins','UsersController@userAdmins');
     Route::get('adminprfl','UsersController@adminProfile');
     Route::get('addAdmin','UsersController@addAdmin');

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Services\UserActivitiyService;
 use Illuminate\Http\Request;
 use App\userTypes;
+use App\activityLog;
 use App\User;
+use App\UserDeviceInformation;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\LevelErrors;
 
@@ -30,8 +32,6 @@ class UsersController extends Controller
         $admins  = $this->userActivities->getAdmins();
         $permissions  =\App\Permission::orderBy('id','asc')->get();
         $userType  =userTypes::orderBy('id','asc')->get();
-        //return $admins;
-        //return $permissions;
         return view('newAdmin.users.addAdmin',compact('type','admins','permissions','userType'));
     }
     public function userAdmins()
@@ -42,6 +42,13 @@ class UsersController extends Controller
     {
         return "add an admin here";
     }
+    public function userActivityDetails($id)
+    {
+        $logs   =UserDeviceInformation::where('userId',$id)->get(['id', 'userId','logIn as value']);
+          $activities  =activityLog::where('userId',$id)->get(['id','userId','name as value']);
+        return $logs;
+    }
+
     public function userLogs($id)
     {
         return $this->userActivities->userLogs($id);
@@ -52,7 +59,8 @@ class UsersController extends Controller
     }
     public function activityDetails($id)
     {
-        return $this->userActivities->activityDetails($id);
+        $user   =User::find($id)->first(['name','surname']);
+        return view('users.userActivityDetails',compact('id','user'));
     }
     public function userActivities($id)
     {
@@ -71,10 +79,7 @@ class UsersController extends Controller
 
     public function setUserPermission(Request $request)
     {
-        //DB::insert('insert into users (id, name) values (?, ?)', [1, 'Dayle']);
         return $request->all();
-
-
         foreach($request->permission as $permission)
         {
           $data= \DB::table('permission_user')

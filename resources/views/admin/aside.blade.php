@@ -108,7 +108,7 @@
 
 @if(Auth::user()->userTypeId ===1)
 <li>
-                        <a href="{{url('student-account')}}"><i class="menu-icon fa fa-user"></i>User Logs</a>
+                        <a href="{{url('userLogs')}}"><i class="menu-icon fa fa-user"></i>User Logs</a>
                     </li>
                     @endif
                     @if(Auth::user()->userTypeId ===2)

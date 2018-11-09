@@ -12,8 +12,8 @@ class CreateSchoolCalendarsTable extends Migration
         Schema::create('school_calendars', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->date('start');
-            $table->date('end');
+            $table->date('start')->nullable();
+            $table->date('end')->nullable();
             $table->string('description');
             $table->softDeletes();
             $table->timestamps();

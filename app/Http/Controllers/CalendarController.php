@@ -35,13 +35,8 @@ class CalendarController extends Controller
     public function store(Request $request)
     {
         $this->calendarService->newCalendarEvent($request);
-        $this->activityService->userActivities("added an event called ".$request->event);
+        $this->calendarService->userActivities("created an event called".$request->title);
         return redirect()->back()->with('alert','an event was created');
-    }
-
-    public function show($id)
-    {
-        //
     }
 
     public function edit($id)

@@ -19,7 +19,7 @@
                                     </div> -->
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{accountants()}}</span></div>
                                             <div class="stat-heading">Accounting</div>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                                     </div> -->
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-text"><span class="count">{{communicators()}}</span></div>
                                             <div class="stat-heading">Communication</div>
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                                     </div> -->
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text"><span class="count">{{educationManagers()}}</span></div>
                                             <div class="stat-heading">Education</div>
                                         </div>
                                     </div>
@@ -69,19 +69,16 @@
                         </div>
                     </div>
                 </div>
-                <!-- /Widgets -->
-                <!--  Traffic  -->
-               
-                <!--  /Traffic -->
+                
                 <div class="clearfix"></div>
                 <!-- Orders -->
                 <div class="orders">
                     <div class="row">
 
-                        <div class="col-xl-8">
+                        <div class="col-xl-6">
                             <div class="card">
                                
-                                <div class="card-body">
+                                <div class="card-body" style="height: 360px;">
 
                                     <div class="list-group-items">
 
@@ -94,14 +91,12 @@
                             </div>
                         </div> 
 
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6 col-xl-12">
                                     <div class="card br-0">
-                                        <div class="card-body" style="height: 260px;">
-                                           
-                                           
-                            
+                                        <div class="card-body" style="height: 360px;">
+                                        <div id="userDevice"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -118,12 +113,12 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><strong>Add New Event</strong></h4>
+                                <h4 class="modal-title">Add New Event</h4>
                             </div>
                             <div class="modal-body"></div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
+                                <button type="button" class="btn btn-outline-info save-event waves-effect waves-light">Create event</button>
                                 <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
                             </div>
                         </div>
@@ -145,6 +140,12 @@
                                             <label class="control-label">Category Name</label>
                                             <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name"/>
                                         </div>
+
+                                         <div class="col-md-6">
+                                            <label class="control-label">Category Name</label>
+                                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name"/>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <label class="control-label">Choose Category Color</label>
                                             <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
@@ -178,3 +179,114 @@
     </div>
 
 @stop
+@push('scripts')
+<script type="text/javascript">
+  var chart;
+var legend;
+var selected;
+
+   var types=  "dataLoader": {
+                      "url": "/user-devices",
+                      "format": "json",
+                      "postProcess": function(data, config, chart) {
+                        console.log("USER DEVICES",data);
+                        return data.rows;
+                      }
+                    }
+
+// var types = [
+//                 {
+//                   type: "Fossil Energy",
+//                   percent: 70,
+//                   color: "#ff9e01",
+//                   subs: [{
+//                     type: "Oil",
+//                     percent: 15
+//                   }, 
+//                   {
+//                     type: "Coal",
+//                     percent: 35
+//                   },
+//                    {
+//                     type: "Nuclear",
+//                     percent: 20
+//                   }]
+//                 }, 
+
+//             {
+//                   type: "Green Energy",
+//                   percent: 30,
+//                   color: "#b0de09",
+//                   subs: [{
+//                     type: "Hydro",
+//                     percent: 15
+//                   }, {
+//                     type: "Wind",
+//                     percent: 10
+//                   }, {
+//                     type: "Other",
+//                     percent: 5
+//                   }]
+//             }
+// ];
+
+function generateChartData() {
+  var chartData = [];
+  for (var i = 0; i < types.length; i++) {
+    if (i == selected) {
+      for (var x = 0; x < types[i].subs.length; x++) {
+        chartData.push({
+          type: types[i].subs[x].type,
+          percent: types[i].subs[x].percent,
+          color: types[i].color,
+          pulled: true
+        });
+      }
+    } else {
+      chartData.push({
+        type: types[i].type,
+        percent: types[i].percent,
+        color: types[i].color,
+        id: i
+      });
+    }
+  }
+  return chartData;
+}
+
+AmCharts.makeChart("userDevice", {
+  "type": "pie",
+"theme": "light",
+
+  "dataProvider": generateChartData(),
+  "labelText": "[[title]]: [[value]]",
+  "balloonText": "[[title]]: [[value]]",
+  "titleField": "type",
+  "valueField": "percent",
+  "outlineColor": "#FFFFFF",
+  "outlineAlpha": 0.8,
+  "outlineThickness": 2,
+  "colorField": "color",
+  "pulledField": "pulled",
+  "titles": [{
+    "text": "Visitors Devices"
+  }],
+  "listeners": [{
+    "event": "clickSlice",
+    "method": function(event) {
+      var chart = event.chart;
+      if (event.dataItem.dataContext.id != undefined) {
+        selected = event.dataItem.dataContext.id;
+      } else {
+        selected = undefined;
+      }
+      chart.dataProvider = generateChartData();
+      chart.validateData();
+    }
+  }],
+  "export": {
+    "enabled": true
+  }
+});
+</script>
+@endpush

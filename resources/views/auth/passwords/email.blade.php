@@ -4,7 +4,7 @@
         <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(../img/05.jpg)">
             <div class="pos-a centerXY">
                 <div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px">
-                    <img class="pos-a centerXY" src="{{asset('img/logo.png')}}" alt="">
+                    <img class="pos-a centerXY" src="{{asset('images/logo.webp')}}" alt="">
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label class="text-normal text-dark">Email</label>
-                    <input  name ="email" type="email" class="form-control" placeholder="student@wiseowlschool.co.zw" autocomplete="off">
+                    <input  name ="email" type="email" class="form-control" placeholder="user@umaainstitute.com" autocomplete="off">
                     @if ($errors->has('email'))
                         <span>
                     <strong>{{ $errors->first('email') }}</strong>
@@ -48,7 +48,4 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{asset('vendor.js.download')}}">
-    </script>
-    <script type="text/javascript" src="{{asset('bundle.js.download')}}"></script>
 @stop

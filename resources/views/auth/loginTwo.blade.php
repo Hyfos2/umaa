@@ -1,10 +1,10 @@
 @extends('auth.master')
 @section('content')
     <div class="peers ai-s fxw-nw h-100vh">
-        <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(img/05.jpg)">
+        <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(../img/05.jpg)">
             <div class="pos-a centerXY">
                 <div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px">
-                    <img class="pos-a centerXY" src="{{asset('img/logo.png')}}" alt="">
+                    <img class="pos-a centerXY" src="{{asset('images/logo.webp')}}" alt="">
                 </div>
             </div>
         </div>
@@ -25,6 +25,11 @@
                     <label class="text-normal text-dark">Password</label>
                                               <span style="margin-left:9px;"><a href="{{ route('password.request') }}"><u>Forget Password?</u></a></span>
                     <input type="password" name="password" class="form-control" placeholder="Password">
+                     @if ($errors->has('password'))
+                    <span>
+                    <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <div class="peers ai-c jc-sb fxw-nw">
@@ -54,7 +59,4 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{asset('vendor.js.download')}}">
-    </script>
-    <script type="text/javascript" src="{{asset('bundle.js.download')}}"></script>
 @stop
