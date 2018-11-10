@@ -78,8 +78,9 @@
                         <div class="form-check-inline form-check">
                             @foreach($cambridge as $item)
                                                 <label for="inline-checkbox2" class="form-check-label ">
-                                                    <input type="checkbox"  name="cambridge[]" value="{{$item->id}}" class="form-check-input">{{$item->name}}
+                                                   {{$item->name}}
                                                 </label>
+                                                 <input type="checkbox"  name="cambridge[]" value="{{$item->id}}" class="form-check-input">
                                                 @endforeach
                                             </div>
                       
@@ -91,8 +92,9 @@
                          <div class="form-check-inline form-check">
                             @foreach($sports as $item)
                                                 <label for="inline-checkbox2" class="form-check-label ">
-                                                    <input type="checkbox"  name="sport[]" value="{{$item->id}}" class="form-check-input">{{$item->name}}
+                                                   {{$item->name}}
                                                 </label>
+                                                 <input type="checkbox"  name="sport[]" value="{{$item->id}}" class="form-check-input">
                                                 @endforeach
                                             </div>
 

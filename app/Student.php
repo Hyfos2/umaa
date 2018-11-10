@@ -28,11 +28,11 @@ class Student extends Model
     }
     public function subjectmark()
     {
-        return $this->morphToMany( SubjectMark::class,'subject_marks');
+        return $this->morphToMany(SubjectMark::class,'subject_marks');
     }
     public function accommodation()
     {
-        return $this->hasMany( studentAccommodationDetail::class);
+        return $this->hasMany(studentAccommodationDetail::class);
     }
 
 }

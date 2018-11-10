@@ -175,6 +175,8 @@ class EducationManagerController extends Controller
    public function studentClass($id)
    {
 
+    
+
    	 return view('education.students.studentsClassProfile');
    }
 
