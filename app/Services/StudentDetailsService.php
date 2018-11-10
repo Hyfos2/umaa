@@ -53,15 +53,15 @@ class StudentDetailsService
         $student->userId      =$user->id;
         $student->levelId     =$request->level;
         $student->allergies   =$request->allergy?:'nothing';
-        $student->dob         =date('Y-m-d',strtotime($request->dob));
+        $student->dob         =$request->dob;
         $student->schoolLevel =$request->schoolLevel;
         $student->regNumber   ="R".Carbon::now()->format('y').$this->randomFourDigit().strtoupper($user->name[0].$user->surname[0]);
-        $student->subLevelId  =$request->sublevel;
-        $student->parentName  =ucwords($request->parentname);
-        $student->parentEmail =$request->parentemail;
+        $student->subLevelId  =$request->sublevel?:null;
+        // $student->parentName  =ucwords($request->parentname);
+        // $student->parentEmail =$request->parentemail;
         $student->modeOfEntry =$request->moe?:2;
-        $student->parentPhone =$request->cellphone;
-        $student->address     =ucwords($request->address);
+        // $student->parentPhone =$request->cellphone;
+        // $student->address     =ucwords($request->address);
         $student->save();
         return $student;
     }
@@ -73,8 +73,8 @@ class StudentDetailsService
             'name' => ucfirst($parentName[0]),
             'email' => $request['parentemail'],
             'surname'=>ucfirst($parentName[1]),
-            'userTypeId'=>$request['userTypeId'],
-            'gender'=>ucfirst($request['gender']),
+            'userTypeId'=>7,
+            'gender'=>ucfirst($request['parentgender']),
             'userName'=>$pass,
             'imgUrl'=>'image/path',
             'password' =>bcrypt($pass),
@@ -104,6 +104,7 @@ class StudentDetailsService
     }
     public function newStudentZimsecSubjects($student,$request)
     {
+         if(!empty($request->zimsec)) {
         foreach($request->zimsec as $item)
         {
             StudentSubject::create([
@@ -113,8 +114,10 @@ class StudentDetailsService
             ]);
         }
     }
+    }
     public function newStudentCambridgeSubjects($student,$request)
     {
+         if(!empty($request->cambridge)) {
         foreach($request->cambridge as $item)
         {
             StudentSubject::create([
@@ -123,10 +126,12 @@ class StudentDetailsService
                 'edited'=>0
             ]);
         }
+    }
 
     }
     public function newStudentSports($student,$request)
     {
+         if(!empty($request->sports)) {
         foreach($request->sports as $item)
         {
             StudentSport::create([
@@ -134,6 +139,7 @@ class StudentDetailsService
                 'sportId'=>$item
             ]);
         }
+    }
 
     }
     public function getLoggedInStudentSubjects()

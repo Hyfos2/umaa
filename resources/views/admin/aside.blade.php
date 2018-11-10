@@ -4,23 +4,23 @@
                 <ul class="nav navbar-nav">
                     @if(Auth::user()->userTypeId ===1)
                     <li class="active">
-                        <a href="{{url('admin-dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard</a>
+                        <a href="{{url('admin-dashboard')}}"><i class="menu-icon fa fa-laptop"></i> My Dashboard</a>
                     </li> 
                     @endif
-                     @if(Auth::user()->userTypeId ===2)
+                     @if(Auth::user()->userTypeId ===4)
                     <li class="active">
-                        <a href="{{url('accounts-dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Account Dashboard</a>
+                        <a href="{{url('accounts-dashboard')}}"><i class="menu-icon fa fa-laptop"></i>My Dashboard</a>
                     </li>
                     @endif
-                     @if(Auth::user()->userTypeId ===2)
+                     @if(Auth::user()->userTypeId ===6)
 
                     <li class="active">
-                        <a href="{{url('communication-dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Comm Dashboard</a>
+                        <a href="{{url('communication-dashboard')}}"><i class="menu-icon fa fa-laptop"></i>My  Dashboard</a>
                     </li>
                     @endif
- @if(Auth::user()->userTypeId ===2)
+ @if(Auth::user()->userTypeId ===5)
                      <li class="active">
-                        <a href="{{url('education-dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Education Dashboard</a>
+                        <a href="{{url('education-dashboard')}}"><i class="menu-icon fa fa-laptop"></i>My  Dashboard</a>
                     </li>
                     @endif
 
@@ -42,7 +42,7 @@
                         </ul>
                     </li>
                     @endif
-@if(Auth::user()->userTypeId ===2)
+                    @if(Auth::user()->userTypeId ===4)
                       <li>
                         <a href="{{url('student-account')}}"><i class="menu-icon fa fa-laptop"></i>Student Accounts</a>
                     </li>
@@ -68,14 +68,14 @@
 
 
 
-@if(Auth::user()->userTypeId ===2)
+@if(Auth::user()->userTypeId ===6)
 
                     <li class="menu-item-has-children dropdown">
                         <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-email"></i>Messages</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="{{url('compose-message')}}">Compose</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="{{url('new-messages')}}">Inbox</a></li>
-                            <li><i class="fa fa-bars"></i><a href="{{url('sent-messages')}}">Sent</a></li>
+                            <li><i class="fa fa-edit"></i><a href="{{url('compose-message')}}">Compose</a></li>
+                            <li><i class="fa fa-inbox"></i><a href="{{url('new-messages')}}">Inbox</a></li>
+                            <li><i class="fa fa-mail-reply"></i><a href="{{url('sent-messages')}}">Sent</a></li>
                         </ul>
                     </li>
 @endif

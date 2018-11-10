@@ -2,7 +2,7 @@
                                              
 
 
-<table id="example" class="display" style="width:100%;margin-top:10px;">
+<table id="studentsF1" class="display" style="width:100%;margin-top:10px;">
         <thead>
             <tr>
                 <th>Name</th>
@@ -14,17 +14,18 @@
         </thead>
         
         <tbody>
-            @foreach($data  as $item)
+             @foreach($form1  as $item)
             <tr>
-                <td>{{$item->name}}</td>
-                <td>{{$item->surname}}</td>
-                <td>{{$item->gender}}</td>
-                <td>{{$item->email}}</td>
+                <td>{{$item->user->name}}</td>
+                <td>{{$item->user->surname}}</td>
+                <td>{{$item->user->gender}}</td>
+                <td>{{$item->user->email}}</td>
                 <td>
-                     <a class="edit-modal btn btn-info" href="{{url('student-class')}}">Classes</a>
+                     <a class="btn btn-outline-info" href="{{url('student-class/'.$item->id)}}">view more</a>
                  </td>
             </tr>
             @endforeach
+           
 
         </tbody>
 

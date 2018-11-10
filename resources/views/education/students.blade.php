@@ -8,16 +8,19 @@
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
+
+                            @if(Auth::user()->userTypeId ===1)
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1> Education Dashboard</h1>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="{{url('education-dashboard')}}">Dashboard</a></li>
+                                    <li><a href="{{url('education-dashboard')}}">Go Back</a></li>
                                     <li  class="active"><a href="javascript:void(0);">Students</a></li>
                                 </ol>
                             </div>
@@ -93,3 +96,95 @@
     </div>
 
 @stop
+@push('scripts')
+<script type="text/javascript">
+     $(document).ready(function()
+    {
+            $('#level').on('change', function () {
+            var id = this.value;
+            console.log("level",id," is selected");
+
+            if(id==1)
+            {
+                 $('#subLevel').removeClass('hidden');
+                 $('#subLevel').empty();
+                 $.get('getSubLevel/' + id, function (response) {
+                $('#subLevel').append("<option  selected disabled>Select Class</option>");
+                $.each(response, function (key, value) {
+                    $('#subLevel').append("<option  value=" + value.id + ">" + value.name + "</option>");
+                });
+            });
+            }
+            else{
+                  $('#subLevel').addClass('hidden');
+
+            }
+    });
+
+    }); 
+
+      jQuery(document).ready(function($) {
+
+        $('#studentsF1').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+            
+            $('#studentsF2').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+            $('#studentsF3').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+            $('#studentsF4').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+            $('#studentsF5').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+            $('#studentsF6').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+    });
+
+
+
+</script>
+@endpush

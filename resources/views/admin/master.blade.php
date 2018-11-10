@@ -31,7 +31,23 @@
         }  
         .hidden{
             display: none;
-        }        
+        }    
+         .rank{
+    float: left;
+    font-weight: bold;
+    padding: 0 5px;
+  }
+  .title{
+    width: 330px;
+    overflow: hidden;
+    float: left;
+  }
+  .buttons, .checkbox{
+    padding-left: 10px;
+    height: 60px;
+    padding-top:10px;
+    float:right;
+  }    
     </style>
 </head>
 <body>
@@ -389,49 +405,6 @@ function generateChartData() {
     }
     return chartData;
 }
-</script>
-<script type="text/javascript">
-      var timetable = new Timetable();
-
-     var mondayData  =JSON.parse(document.getElementById('monday').innerHTML);
-     var tuesdayData  =JSON.parse(document.getElementById('tuesday').innerHTML);
-     var wednesdayData  =JSON.parse(document.getElementById('wednesday').innerHTML);
-     var thursdayData  =JSON.parse(document.getElementById('thursday').innerHTML);
-     var fridayData  =JSON.parse(document.getElementById('friday').innerHTML);
-
-     
-     timetable.setScope(8,17)
-
-timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
-
-mondayData.forEach(function(item){
-timetable.addEvent(item.subName+'('+item.levelName+')','Monday',new Date(2016,10,28,item.startTime[0]+item.startTime[1]),new Date(2016,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
-
-      }); 
-      tuesdayData.forEach(function(item){
-
-        timetable.addEvent(item.subName+'('+item.levelName+')', 'Tuesday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
-
-      });
-
-       wednesdayData.forEach(function(item){
-
-        timetable.addEvent(item.subName+'('+item.levelName+')', 'Wednesday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
-
-      }); 
-       thursdayData.forEach(function(item){
-
-        timetable.addEvent(item.subName+'('+item.levelName+')', 'Thursday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
-
-      });
-       fridayData.forEach(function(item){
-
-        timetable.addEvent(item.subName+'('+item.levelName+')', 'Friday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
-
-      });
-    
-      var renderer = new Timetable.Renderer(timetable);
-      renderer.draw('.timetable');
 </script>
 
 

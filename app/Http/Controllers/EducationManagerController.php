@@ -8,8 +8,11 @@ use App\userTypes;
 use App\SchoolLevel;
 use App\ExaminationBoard;
 use App\teacher;
+use App\EntryType;
+use App\Sport;
 use App\teacherWork;
 use App\TimeTable;
+use App\Student;
 
 use Illuminate\Http\Request;
 
@@ -135,8 +138,33 @@ class EducationManagerController extends Controller
 
    public function schoolStudents()
    {
-   	 $data  =$this->allUsers();
-   return view('education.students',compact('data'));
+   	    //$data  =$this->allUsers();
+        $level       =$this->getAllLevel();
+        $schoolLevel  =SchoolLevel::where('name','Secondary')->first();
+        $subjects      = Subject::with('board')->where('schoolLevel',$schoolLevel->id)->orderBy('name','asc')->get();
+        $zimsec  =[];
+        $cambridge  =[];
+        foreach($subjects  as $item)
+        {
+            if($item->board->name =="Zimsec")
+                array_push($zimsec,$item);
+            if($item->board->name =="Cambridge")
+                array_push($cambridge,$item);
+        }
+        $sports         =Sport::orderBy('name','asc')->get();
+        $userType       =userTypes::where('name','Student')->first(['id']);
+        $userTypeId     =$userType->id;
+        $entype         =EntryType::orderBy('name','asc')->get();
+
+        $form1       =$this->studentsPerForm(1);
+        $form2       =$this->studentsPerForm(2);
+        $form3       =$this->studentsPerForm(3);
+        $form4       =$this->studentsPerForm(4);
+        $form5       =$this->studentsPerForm(5);
+        $form6       =$this->studentsPerForm(6);
+       
+       
+   return view('education.students',compact('data','entype','userTypeId','zimsec','cambridge','sports','level','schoolLevel','form1','form2','form3','form4','form5','form6'));
    }
 
    public function allUsers()
@@ -144,8 +172,9 @@ class EducationManagerController extends Controller
      return User::all();
    }
 
-   public function studentClass()
+   public function studentClass($id)
    {
+
    	 return view('education.students.studentsClassProfile');
    }
 
@@ -169,5 +198,15 @@ class EducationManagerController extends Controller
          $subjects = Subject::with('board','level')->where('schoolLevel',2)->orderBy('name')->get();
 
    		return view('education.subjects.index',compact('board','level','subjects'));
+   }
+
+   public function getAllLevel()
+   {
+    return Level::all();
+   }
+
+   public function studentsPerForm($id)
+   {
+      return Student::with('user','level')->where('levelId',$id)->get();
    }
 }

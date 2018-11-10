@@ -19,7 +19,7 @@ Route::group(['middleware'=>['auth']], function()
     Route::get('teacher-classes/{id}','EducationManagerController@teacherClass');
     Route::get('class-info/{id}','EducationManagerController@teacherInfo');
     Route::get('students','EducationManagerController@schoolStudents');
-    Route::get('student-class','EducationManagerController@studentClass');
+    Route::get('student-class/{id}','EducationManagerController@studentClass');
     Route::get('std-subject-perf','EducationManagerController@studentSubPerformance');
     Route::get('getStudnt','EducationManagerController@getStudents');
     Route::get('attendance-details','EducationManagerController@studentAttendanceDetails');
@@ -190,7 +190,7 @@ Route::group(['middleware'=>['auth']], function()
     Route::resource('calendar','CalendarController');
     //Communication
     Route::get('communicator-profile/{id}','CommunicationController@communicatorProfile');
-    Route::get('new-message','CommunicationController@createMessage');
+    Route::get('new-messages','CommunicationController@inbox');
     Route::get('communication-dashboard','CommunicationController@showDashboard');
     Route::get('online-parents','CommunicationController@onlineParent');
     Route::get('compose-message','CommunicationController@composeMessage');

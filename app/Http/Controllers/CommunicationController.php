@@ -66,8 +66,9 @@ class CommunicationController extends Controller
         ]);
     }
 
-    public function createMessage()
+    public function inbox()
     {
+          return view('communication.message');
         return view('communication.createMessage');
     }
 

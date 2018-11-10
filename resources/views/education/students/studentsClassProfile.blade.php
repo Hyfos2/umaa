@@ -8,16 +8,18 @@
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
+                            @if(Auth::user()->userTypeId ===1)
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1> Education Dashboard</h1>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="{{url('education-dashboard')}}">Dashboard</a></li>
+                                    <li><a href="{{url('education-dashboard')}}">Home</a></li>
                                     <li><a href="{{url('students')}}">Students</a></li>
                                        <li  class="active"><a href="javascript:void(0);">Student Profile</a></li>
                                 </ol>
@@ -68,12 +70,7 @@
                             </div>
 
                                       </li>
-                                      <li class="list-group-item">Second item</li>
-                                      <li class="list-group-item">Third item</li> 
-                                      <li class="list-group-item">Forth item</li> 
-                                      <li class="list-group-item">Fifth item</li> 
-                                      <li class="list-group-item">Sixth item</li> 
-                                      <li class="list-group-item">Seventh item</li>
+                                
                                     </ul>
                                 
                                     </div>
@@ -89,10 +86,13 @@
                         <div class="row"> 
                             <div class="col-lg-6 col-xl-12">
                                 <div class="card br-0"> 
+                                    <div class="card-header">
+                                        <strong>Attendance Per Week</strong>
+                                    </div>
                                     <div class="card-body">
-                                        <div class="chart-container ov-h">
-                                            <div id="flotPie1" class="float-chart"></div>
-                                        </div>
+                                       
+                                            <div id="carousel"></div>
+                                     
                                     </div> 
                                 </div><!-- /.card -->
                             </div>
@@ -117,3 +117,36 @@
     </div>
 
 @stop
+@push('scripts')
+<script type="text/javascript">
+    
+webix.ui({
+  view:"window",
+  body:{
+    view:"carousel",
+    id:"carousel",
+    width:464, height:275, 
+    cols:[
+      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image001.jpg"} },
+      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image002.jpg"} },
+      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image003.jpg"} },
+      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image004.jpg"} },
+      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image005.jpg"} },
+      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image006.jpg"} }
+    ]
+  },
+  head:{
+    view:"toolbar", type:"MainBar", elements:[
+      {view:"label", label: "Photobook", align:'left'}
+    ]
+  },
+  top:70,
+  left:70
+}).show();
+
+function img(obj){
+  return '<img src="'+obj.src+'" class="content" ondragstart="return false"/>'
+}
+
+</script>
+@endpush
