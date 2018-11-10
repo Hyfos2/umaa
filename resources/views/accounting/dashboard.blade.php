@@ -2,6 +2,35 @@
 @section('content')
 <div id="right-panel" class="right-panel">
        @include('admin.header')
+
+
+
+        @if(Auth::user()->userTypeId ===1)       
+       <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="{{url('admin-dashboard')}}">Go Back</a></li>
+                                    <li  class="active"><a href="javascript:void(0);">Accounting Dashboard</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
         <!-- Content -->
         <div class="content">
 
@@ -14,7 +43,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                       <i class="pe-7s-cart"></i>
+                                      <!--  <i class="pe-7s-cart"></i> -->
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -34,7 +63,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                      <!--   <i class="pe-7s-cart"></i> -->
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -96,17 +125,6 @@
                     </div>
 
             
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card weather-box">
-                            <h4 class="weather-title box-title">Weather</h4>
-                            <div class="card-body">
-                                <div class="weather-widget">
-                                    <div id="weather-one" class="weather-one"></div>
-                                </div>
-                            </div>
-                        </div><!-- /.card -->
-                    </div>
                 </div>
                 <!-- /Calender Chart Weather -->
                 <!-- Modal - Calendar - Add New Event -->

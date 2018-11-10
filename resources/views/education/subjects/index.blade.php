@@ -56,23 +56,32 @@
 
 
                                    
-<table id="example" class="display" style="width:100%;margin-top:10px;">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        
-                        <tbody>
-                           
+                                <table id="subjects" class="display" style="width:100%;margin-top:10px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Subject Name</th>
+                                                <th>Subject Code</th>
+                                                <th>Board</th>
+                                                <th>Level</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                            @foreach($subjects  as $i)
+                                        <tbody>
+                                            <tr>
+                                                <td>{{$i->name}}</td>
+                                                <td>{{$i->subjectCode}}</td>
+                                                <td>{{$i->board->name}}</td>
+                                                <td>{{$i->level->name}}</td>
+                                                <td>
+                                                      <a class="btn btn-outline-info" href="javascript:void(0);" onclick="deleteFxn();">edit</a>
+                                                </td>
+                                              
+                                            </tr>
+                                        </tbody>
+                            @endforeach
 
-                        </tbody>
-
-    </table>
+                        </table>
 
 
                                 </div>
@@ -84,8 +93,22 @@
             </div>
         </div>
         <div class="clearfix"></div>
+              <div id="snackbar">Coming soon.</div>
         @include('admin.footer')
         @include('education.subjects.new')
     </div>
 
 @stop
+@push('scripts')
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('#subjects').DataTable(
+            {
+              columnDefs: [],
+              "iDisplayLength": 10,
+               "aaSorting": [],
+               "processing": true,
+            });
+    });
+</script>
+@endpush

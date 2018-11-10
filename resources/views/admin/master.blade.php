@@ -26,7 +26,10 @@
             width       : 100%;
             height      : 360px;
             font-size   : 12px;
-        }          
+        }  
+        .hidden{
+            display: none;
+        }        
     </style>
 </head>
 <body>
@@ -69,6 +72,8 @@
            "aaSorting": [],
            "processing": true,
             });
+
+
         $('#admins').DataTable(
             {
           
@@ -87,16 +92,6 @@
            "processing": true,
             });
 
-        $('#userLogs').DataTable(
-            {
-          
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-
-
         $('#educator').DataTable(
             {
           
@@ -113,15 +108,6 @@
            "aaSorting": [],
            "processing": true,
             });
-        
-
-         $('#form1Teacher').DataTable({
-          columnDefs: [],
-          "iDisplayLength": 10,
-           "aaSorting": [],
-           "processing": true,
-            });
-
     });
 
      

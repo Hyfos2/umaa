@@ -18,6 +18,10 @@ class SubLevel extends Model
     {
         return $this->belongsTo(teacherWork::class);
     }
+    public function teacher()
+    {
+        return $this->hasMany(teacher::class);
+    }
      public  function timetable()
     {
         return $this->hasMany(TimeTable::class);

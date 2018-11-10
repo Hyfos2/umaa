@@ -14,14 +14,14 @@
         </thead>
         
         <tbody>
-            @foreach($data  as $item)
+            @foreach($formOneTrs  as $item)
             <tr>
-                <td>{{$item->name}}</td>
-                <td>{{$item->surname}}</td>
-                <td>{{$item->gender}}</td>
-                <td>{{$item->email}}</td>
+                <td>{{$item->user->name}}</td>
+                <td>{{$item->user->surname}}</td>
+                <td>{{$item->user->gender}}</td>
+                <td>{{$item->user->email}}</td>
                 <td>
-                     <a class="edit-modal btn btn-info" href="{{url('teacher-classes')}}">Classes</a>
+                     <a class="btn btn-outline-info" href="{{url('teacher-classes/'.$item->id)}}">Classes</a>
                  </td>
             </tr>
             @endforeach
@@ -30,7 +30,7 @@
 
     </table>
                                               
-                                            </div>
+</div>
 
 
                                             

@@ -12,9 +12,13 @@ class CreateTeachersTable extends Migration
             $table->increments('id');
             $table->integer('userId')->unsigned();
             $table->integer('schoolLevel')->unsigned();
+            $table->integer('levelId')->unsigned();
+            $table->integer('subLevelId')->unsigned();
             $table->date('dob');
             $table->foreign('userId')->references('id')->on('users');
             $table->foreign('schoolLevel')->references('id')->on('school_levels');
+            $table->foreign('levelId')->references('id')->on('levels');
+            $table->foreign('subLevelId')->references('id')->on('sub_levels');
             $table->softDeletes();
             $table->timestamps();
         });

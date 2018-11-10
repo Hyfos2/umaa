@@ -18,7 +18,7 @@
                                 <ol class="breadcrumb text-right">
                                     <li><a href="{{url('education-dashboard')}}">Dashboard</a></li>
                                     <li><a href="{{url('teachers')}}">Teachers</a></li>
-                                       <li><a href="{{url('teacher-classes')}}">Teacher Profile</a></li>
+                                       <li><a href="{{url('teacher-classes/'.$id)}}">Teacher Profile</a></li>
                                        <li  class="active"><a href="javascript:void(0);">Class Info</a></li>
                                 </ol>
                             </div>

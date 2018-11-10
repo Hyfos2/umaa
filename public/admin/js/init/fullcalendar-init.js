@@ -33,12 +33,13 @@
                 eventObj.remove();
             }
     },
+
     /* on click on event */
     CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
         var $this = this;
             var form = $("<form></form>");
-            form.append("<label>Change event name</label>");
-            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
+            form.append("<label>Update Event</label>");
+            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' style='margin-left:5px;' class='btn btn-outline-info  waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
             $this.$modal.modal({
                 backdrop: 'static'
             });
@@ -48,6 +49,7 @@
                 });
                 $this.$modal.modal('hide');
             });
+
             $this.$modal.find('form').on('submit', function () {
                 calEvent.title = form.find("input[type=text]").val();
                 $this.$calendarObj.fullCalendar('updateEvent', calEvent);
@@ -58,8 +60,9 @@
 
 
     /* on select */
-    CalendarApp.prototype.onSelect = function (start, end, allDay) {
+    CalendarApp.prototype.onSelect = function (start, end) {
         var $this = this;
+     //   console.log('allDay',allDay);
             $this.$modal.modal({
                 backdrop: 'static'
             });
@@ -78,15 +81,17 @@
                // alert('bth');
 
             var title  =form.find("input[name='title']").val();
-            var beginning = form.find("input[name='beginning']").val();
-            var ending = form.find("input[name='ending']").val();
             var description = form.find("textarea[name='description']").val();
             var categoryClass = form.find("select[name='category'] option:checked").val();
+
+            console.log('beginning',beginning);
                
                 axios.post('/calendar', {
                                     title: title,
                                     description: description,
-                                    color:categoryClass
+                                    color:categoryClass,
+                                    start:start._d,
+                                    end:end._d
                                   })
 
                                   .then(function (response) {
@@ -103,13 +108,18 @@
                 var ending = form.find("input[name='ending']").val();
                 var categoryClass = form.find("select[name='category'] option:checked").val();
                 if (title !== null && title.length != 0) {
-                    $this.$calendarObj.fullCalendar('renderEvent', {
+
+                    $this.$calendarObj.fullCalendar('renderEvent', 
+
+                    {
                         title: title,
                         start:start,
                         end: end,
                         allDay: false,
                         className: categoryClass
-                    }, true);  
+                    }
+
+                    , true);  
                     $this.$modal.modal('hide');
                 }
                 else{
@@ -148,22 +158,6 @@
         var y = date.getFullYear();
         var form = '';
         var today = new Date($.now());
-
-        var defaultEvents =  [{
-                title: 'Hey!',
-                start: new Date($.now() + 158000000),
-                className: 'bg-dark'
-            }, {
-                title: 'See John Deo',
-                start: today,
-                end: today,
-                className: 'bg-danger'
-            }, {
-                title: 'Buy a Theme',
-                start: new Date($.now() + 338000000),
-                className: 'bg-primary'
-            }];
-
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
@@ -177,9 +171,9 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: defaultEvents,
+            events: '/allCalendarEvents',
             editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
+            droppable: false, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
             selectable: true,
             drop: function(date) { $this.onDrop($(this), date); },

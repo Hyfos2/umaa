@@ -46,6 +46,8 @@ class SubjectController extends Controller
     //ToDo use service instead
     //ToDo  remove hard coded values
 
+        //return $request->all();
+
         Subject::create([
             'name'=>ucfirst($request->name),
             'subjectCode'=>strtoupper($request->code)?:null,

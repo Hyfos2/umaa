@@ -13,7 +13,15 @@ class Level extends Model
 
     public function sub()
     {
-    	return $this->hasMany(SubLevel::class,'levelId','id');
+        return $this->hasMany(SubLevel::class,'levelId','id');
+    } 
+    public function subject()
+    {
+        return $this->hasMany(Subject::class);
+    }
+    public function teacherlevel()
+    {
+        return $this->hasMany(teacher::class);
     }
     public function student()
     {

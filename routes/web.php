@@ -16,8 +16,8 @@ Route::group(['middleware'=>['auth']], function()
 
     Route::get('education-dashboard','EducationManagerController@dashboard');
     Route::get('teachers','EducationManagerController@schoolTeachers');
-    Route::get('teacher-classes','EducationManagerController@teacherClass');
-    Route::get('class-info','EducationManagerController@teacherInfo');
+    Route::get('teacher-classes/{id}','EducationManagerController@teacherClass');
+    Route::get('class-info/{id}','EducationManagerController@teacherInfo');
     Route::get('students','EducationManagerController@schoolStudents');
     Route::get('student-class','EducationManagerController@studentClass');
     Route::get('std-subject-perf','EducationManagerController@studentSubPerformance');
@@ -172,10 +172,8 @@ Route::group(['middleware'=>['auth']], function()
     Route::post('allocate-rooms','DomitoryController@allocateRooms');
     Route::resource('hostel','DomitoryController');
 //Subject level
-
     Route::resource('sbj-level','SubjectLevelsController');
 //Staff
-
     Route::post('new-working-area','StaffController@createWorkingArea');
     Route::get('get-roaster','StaffController@getRoaster');
     Route::post('new-roaster','StaffController@createRoaster');
@@ -186,13 +184,10 @@ Route::group(['middleware'=>['auth']], function()
 //StaffWork
     Route::resource('staff-work','StaffWorkController');
     //Calendar
-
     Route::get('calendarEvents','CalendarController@calendarEvents');
     Route::post('deleteEvent/{id}','CalendarController@deleteEvent');
     Route::get('allCalendarEvents','CalendarController@allCalendarEvents');
     Route::resource('calendar','CalendarController');
-
-
     //Communication
     Route::get('communicator-profile/{id}','CommunicationController@communicatorProfile');
     Route::get('new-message','CommunicationController@createMessage');

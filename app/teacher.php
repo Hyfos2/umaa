@@ -19,5 +19,13 @@ class teacher extends Model
     {
         return $this->hasMany(teacherWork::class,'teacherId','id');
     }
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+    public function sublevel()
+    {
+        return $this->belongsTo(SubLevel::class);
+    }
 
 }

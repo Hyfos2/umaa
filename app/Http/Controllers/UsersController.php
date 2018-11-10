@@ -59,7 +59,7 @@ class UsersController extends Controller
     }
     public function activityDetails($id)
     {
-        $user   =User::find($id)->first(['name','surname']);
+        $user   =User::where('id',$id)->first(['name','surname']);
         return view('users.userActivityDetails',compact('id','user'));
     }
     public function userActivities($id)

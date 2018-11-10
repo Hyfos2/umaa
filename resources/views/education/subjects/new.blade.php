@@ -6,7 +6,7 @@
                            
                         </div>
             <div class="modal-body">
-                <form role="form"  method="POST" action ="{{route('register')}}">
+                <form role="form"  method="POST" action ="{{url('subject')}}">
                     {{ csrf_field() }}
                    
                     <div class="form-group">
@@ -14,22 +14,29 @@
                     </div>
 
                     <div class="form-group">
-                        <input type ="text" class="form-control"  placeholder="HCS234" name="surname" autocomplete="off">
+                        <input type ="text" class="form-control"  placeholder="HCS234" name="code" autocomplete="off">
                     </div>
 
                     <div class="form-group">
-                        <input type ="text" class="form-control"  placeholder="Zimsec" name="board" autocomplete="off">
+                         <select name="board" class="form-control">
+                            <option value="">Select Examination Board</option>
+                            @foreach($board as $t)
+                            <option value="{{$t->id}}">
+                                {{$t->name}} 
+                            </option>
+                            @endforeach
+            
+                        </select>
                     </div>
 
                     <div class="form-group">
                         <select name="level" class="form-control">
                             <option value="">Select Level</option>
-                            <option value="Female">
-                                Form One 
+                             @foreach($level as $t)
+                            <option value="{{$t->id}}">
+                                {{$t->name}} 
                             </option>
-                            <option value="Male">
-                                Form Two
-                            </option>
+                            @endforeach
                         </select>
                     </div>
 

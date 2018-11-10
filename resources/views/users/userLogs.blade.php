@@ -87,7 +87,20 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div id="snackbar">Coming soon.</div>
         @include('admin.footer')
     </div>
 @stop
+@push('scripts')
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('#userLogs').DataTable(
+            {
+          
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+    });
+</script>
+@endpush

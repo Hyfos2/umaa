@@ -16,7 +16,7 @@ class CalendarService
             $calendarEvent->start   =date('Y-m-d',strtotime($request->start));
             $calendarEvent->end     =date('Y-m-d',strtotime($request->end));
             $calendarEvent->description =$request->description;
-            $calendarEvent->color =$request->color;
+            $calendarEvent->className =$request->color;
             $calendarEvent->save();
         }
         catch(MassAssignmentException $e)

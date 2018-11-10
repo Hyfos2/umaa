@@ -57,7 +57,9 @@ class TeacherService
     {
         $teacher               =new teacher();
         $teacher->userId       =$user->id;
-        $teacher->schoolLevel  =$request->schoolLevel;
+        $teacher->schoolLevel  =2;
+        $teacher->levelId  =$request->level;
+        $teacher->subLevelId  =$request->sublevel;
         $teacher->dob          =date('Y-m-d',strtotime($request->dob));
         $teacher->save();
         return $teacher;

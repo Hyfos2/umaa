@@ -2,6 +2,7 @@
 @section('content')
 <div id="right-panel" class="right-panel">
        @include('admin.header')
+       <!-- @include('newAdmin.alertMessages') -->
         <!-- Content -->
         <div class="content">
             <!-- Animated -->
@@ -117,7 +118,7 @@
                             </div>
                             <div class="modal-body"></div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-outline-info save-event waves-effect waves-light">Create event</button>
                                 <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
                             </div>
@@ -185,50 +186,28 @@
 var legend;
 var selected;
 
-   var types=  "dataLoader": {
-                      "url": "/user-devices",
-                      "format": "json",
-                      "postProcess": function(data, config, chart) {
-                        console.log("USER DEVICES",data);
-                        return data.rows;
-                      }
-                    }
+   // var types=  "dataLoader": {
+   //                    "url": "/user-devices",
+   //                    "format": "json",
+   //                    "postProcess": function(data, config, chart) {
+   //                      console.log("USER DEVICES",data);
+   //                      return data.rows;
+   //                    }
+   //                  }
 
-// var types = [
-//                 {
-//                   type: "Fossil Energy",
-//                   percent: 70,
-//                   color: "#ff9e01",
-//                   subs: [{
-//                     type: "Oil",
-//                     percent: 15
-//                   }, 
-//                   {
-//                     type: "Coal",
-//                     percent: 35
-//                   },
-//                    {
-//                     type: "Nuclear",
-//                     percent: 20
-//                   }]
-//                 }, 
-
-//             {
-//                   type: "Green Energy",
-//                   percent: 30,
-//                   color: "#b0de09",
-//                   subs: [{
-//                     type: "Hydro",
-//                     percent: 15
-//                   }, {
-//                     type: "Wind",
-//                     percent: 10
-//                   }, {
-//                     type: "Other",
-//                     percent: 5
-//                   }]
-//             }
-// ];
+var types = [{
+                  type: "Desktop(Windows)",
+                  percent: 85,
+                  color: "#ff9e01"
+                },{
+                  type: "Desktop(Linux)",
+                  percent: 20,
+                  color: "#b0de09"
+            },{
+                  type: "Desktop(MacOs)",
+                  percent: 5,
+                  color: "#b0de09"
+            }];
 
 function generateChartData() {
   var chartData = [];

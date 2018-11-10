@@ -8,16 +8,25 @@
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
+
+                           @if(Auth::user()->userTypeId ===1)
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Education Dashboard</h1>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="{{url('education-dashboard')}}">Dashboard</a></li>
+                                    @if(Auth::user()->userTypeId ===5)
+
+                                    <li><a href="{{url('education-dashboard')}}"> My Dashboard</a></li>
+                                    @endif
+                                    @if(Auth::user()->userTypeId ===1)
+                                     <li><a href="{{url('education-dashboard')}}">Home</a></li>
+                                    @endif
                                     <li><a href="{{url('teachers')}}">Teachers</a></li>
                                        <li  class="active"><a href="javascript:void(0);">Teacher Profile</a></li>
                                 </ol>
@@ -47,15 +56,20 @@
                                         
 
                             <ul class=" list-group ">
-                                <a href="{{url('class-info')}}">
-                                      <li class="list-group-item">
-                                        <h4 class="por-title">Maths</h4>
-                                
 
-                        
-                    
+                                @foreach($subjects  as $item) 
+
+
+                                  @foreach($item->subject  as $v)
+
+
+                                <a href="{{url('class-info/'.$id)}}">
+                                      <li class="list-group-item">
+                                        <h4 class="por-title">{{$v->name}}</h4>
                                       </li>
                                   </a>
+                                     @endforeach
+                                  @endforeach
                                     </ul>
                                 
                                     </div>

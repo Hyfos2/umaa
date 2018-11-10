@@ -2,6 +2,33 @@
 @section('content')
 <div id="right-panel" class="right-panel">
        @include('admin.header')
+
+
+        @if(Auth::user()->userTypeId ===1)       
+       <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                               <!--  <h1>Education Dashboard</h1> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="{{url('admin-dashboard')}}">Go Back</a></li>
+                                    <li  class="active"><a href="javascript:void(0);">Education Dashboard</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
         <!-- Content -->
         <div class="content">
             <!-- Animated -->
@@ -13,11 +40,11 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                       <!--  <i class="pe-7s-cart"></i> -->
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{secondaryTeachers()}}</span></div>
                                             <div class="stat-heading">Teachers</div>
                                         </div>
                                     </div>
@@ -33,11 +60,11 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                      <!--   <i class="pe-7s-cart"></i> -->
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{students()}}</span></div>
                                             <div class="stat-heading">Students</div>
                                         </div>
                                     </div>
@@ -53,11 +80,11 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                       <!--  <i class="pe-7s-cart"></i> -->
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{totalSubjects()}}</span></div>
                                             <div class="stat-heading">Subjects</div>
                                         </div>
                                     </div>
@@ -66,8 +93,6 @@
                         </div>
                     </a>
                     </div>
-
-    
                 </div>
                
                 <div class="clearfix"></div>

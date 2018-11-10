@@ -8,16 +8,23 @@
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
+                            @if(Auth::user()->userTypeId ===1)
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Education Dashboard</h1>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="{{url('education-dashboard')}}">Dashboard</a></li>
+                                    @if(Auth::user()->userTypeId  ===5)
+                                    <li><a href="{{url('education-dashboard')}}">My Dashboard</a></li>
+                                    @endif
+                                    @if(Auth::user()->userTypeId  ===1)
+                                    <li><a href="{{url('education-dashboard')}}">Go Back</a></li>
+                                    @endif
                                     <li  class="active"><a href="javascript:void(0);">Teachers</a></li>
                                 </ol>
                             </div>
@@ -94,3 +101,85 @@
     </div>
 
 @stop
+@push('scripts')
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+            $('#level').on('change', function () {
+            var id = this.value;
+            console.log("level",id," is selected");
+
+            if(id==1)
+            {
+                 $('#subLevel').removeClass('hidden');
+                 $('#subLevel').empty();
+                 $.get('getSubLevel/' + id, function (response) {
+                $('#subLevel').append("<option  selected disabled>Select Class</option>");
+                $.each(response, function (key, value) {
+                    $('#subLevel').append("<option  value=" + value.id + ">" + value.name + "</option>");
+                });
+            });
+            }
+            else{
+                  $('#subLevel').addClass('hidden');
+
+            }
+    });
+
+    }); 
+
+jQuery(document).ready(function($) {
+
+        
+         $('#form1Teacher').DataTable({
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+         $('#form2Teacher').DataTable({
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+
+         $('#form3Teacher').DataTable({
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+
+         $('#form4Teacher').DataTable({
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+         $('#form5Teacher').DataTable({
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+
+         $('#form6Teacher').DataTable({
+          columnDefs: [],
+          "iDisplayLength": 10,
+           "aaSorting": [],
+           "processing": true,
+            });
+
+    });
+</script>
+@endpush

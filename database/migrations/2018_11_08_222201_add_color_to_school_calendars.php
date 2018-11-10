@@ -10,7 +10,7 @@ class AddColorToSchoolCalendars extends Migration
     public function up()
     {
         Schema::table('school_calendars', function($table) {
-        $table->string('color')->nullable();
+        $table->string('className')->nullable();
     });
     }
 
@@ -18,7 +18,7 @@ class AddColorToSchoolCalendars extends Migration
     public function down()
     {
          Schema::table('school_calendars', function($table) {
-        $table->dropColumn('color')->nullable();
+        $table->dropColumn('className')->nullable();
     });
     }
 }
