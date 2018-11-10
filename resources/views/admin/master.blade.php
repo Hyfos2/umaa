@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" media="all" />
     <script src="{{asset('filemanager/webix.js')}}" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="{{asset('filemanager/webix.css')}}">
+     <link href="{{asset('time_table/timetablejs.css')}}" rel="stylesheet"> 
+       <link href="{{asset('time_table/demo.css')}}" rel="stylesheet">
     <style>
         #userDevice {
             width       : 100%;
@@ -49,6 +51,7 @@
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <script src="{{asset('flatpickr.js')}}"></script>
+<script src="{{asset('time_table/timetable.js')}}"></script>
 @stack('scripts')
 
 <script type="text/javascript">
@@ -112,93 +115,6 @@
 
      
 
-
-        webix.ready(function(){
-          webix.ui({
-            container:"listA",
-                view:"grouplist",
-                scroll:true,
-                width:950,
-                height:400,
-                data:[
-    { id: "1", type: "folder", value: "Music", data: [
-        { id: "m_0", type: "folder", value: "Jimi Hendrix", data: [
-            { id: "m_0_1", type: "file", value: "1967 - Are You Experienced?"},
-            { id: "m_0_2", type: "file", value: "1967 - Axis: Bold As Love"},
-            { id: "m_0_3", type: "file", value: "1968 - Electric Lady Land"}
-        ]},
-        { id: "m_1", type: "folder", value: "Georgy Sviridov", data: [
-            { id: "m_1_0", type: "file", value: "Petersburg a Vocal Poem"},
-            { id: "m_1_1", type: "file", value: "A Russia Flying Away"}
-        ]},
-        { id: "m_2", type: "folder", value: "God is an Astronaut", data: [
-            { id: "m_2_0", type: "file", value: "2005 - All Is Violent, All Is Bright"},
-            { id: "m_2_1", type: "file", value: "2007 - Far from Refuge"},
-            { id: "m_2_2", type: "file", value: "2010 - Age of the Fifth Sun"}
-        ]},
-        { id: "m_3", type: "folder", value: "Nikolai Rimsky-Korsakov", data: [
-            { id: "m_3_1", type: "file", value: "Scheherazade"}
-        ]}
-    ]},
-
-    { id:"2", type: "folder", value:"Images", data:[
-        { id: "p_0", type: "folder", value: "01 - Christmas", data: [
-            { id: "p_0_0", type: "file", value: "IMG_10034" },
-            { id: "p_0_1", type: "file", value: "IMG_10035" },
-            { id: "p_0_2", type: "file", value: "IMG_10036" },
-            { id: "p_0_3", type: "file", value: "IMG_10037" },
-            { id: "p_0_4", type: "file", value: "IMG_10038" },
-            { id: "p_0_5", type: "file", value: "IMG_10039" },
-            { id: "p_0_6", type: "file", value: "IMG_10040" },
-            { id: "p_0_7", type: "file", value: "IMG_10041" },
-            { id: "p_0_8", type: "file", value: "IMG_10042" }
-        ]},
-        { id: "p_1", type: "folder", value: "02 - New Year's Eve", data: [
-            { id: "p_1_0", type: "file", value: "DSC10384" },
-            { id: "p_1_1", type: "file", value: "DSC10385" },
-            { id: "p_1_2", type: "file", value: "DSC10386" },
-            { id: "p_1_3", type: "file", value: "DSC10387" },
-            { id: "p_1_4", type: "file", value: "DSC10388" },
-            { id: "p_1_5", type: "file", value: "DSC10389" },
-            { id: "p_1_6", type: "file", value: "DSC10390" }
-        ]},
-        { id: "p_2", type: "folder", value: "03 - Justin's Concert", data: [
-            { id: "p_2_0", type: "file", value: "IMG_14021" },
-            { id: "p_2_1", type: "file", value: "IMG_14022" },
-            { id: "p_2_2", type: "file", value: "IMG_14023" },
-            { id: "p_2_3", type: "file", value: "IMG_14024" },
-            { id: "p_2_4", type: "file", value: "IMG_14025" },
-            { id: "p_2_5", type: "file", value: "IMG_14026" },
-            { id: "p_2_6", type: "file", value: "IMG_14027" },
-            { id: "p_2_7", type: "file", value: "IMG_14028" },
-            { id: "p_2_8", type: "file", value: "IMG_14029" },
-            { id: "p_2_9", type: "file", value: "IMG_14030" }
-        ]}
-    ]},
-    { id: "3", type: "folder", value: "Video", data:[
-        { id: "v_0", type: "folder", value: "Fitness", data: [
-            { id: "v_0_0", type: "file", value: "Step Aerobics Routine" },
-            { id: "v_0_1", type: "file", value: "Tae Bo Training" },
-            { id: "v_0_2", type: "file", value: "Water Aerobics" }
-        ]},
-        { id: "v_1", type: "folder", value: "Workouts", data: [
-            { id: "v_1_0", type: "file", value: "01 - Pushups" },
-            { id: "v_1_1", type: "file", value: "02 - Incline Dumbbell Press" },
-            { id: "v_1_2", type: "file", value: "03 - Dips - Chest Version" },
-            { id: "v_1_3", type: "file", value: "04 - Dumbbell Bench Press" },
-            { id: "v_1_4", type: "file", value: "05 - Incline Cable Flye" }
-        ]},
-        { id: "v_2", type: "folder", value: "Yoga", data: [
-            { id: "v_2_0", type: "file", value: "01 - Bird of Paradise Pose"},
-            { id: "v_2_1", type: "file", value: "02 - Boat Pose"},
-            { id: "v_2_2", type: "file", value: "03 - Bow Pose"},
-            { id: "v_2_3", type: "file", value: "04 - Bridge Pose"}
-        ]}
-    ]}
-]
-                });
-
-    });
 
 
           jQuery(document).ready(function($) {
@@ -473,6 +389,49 @@ function generateChartData() {
     }
     return chartData;
 }
+</script>
+<script type="text/javascript">
+      var timetable = new Timetable();
+
+     var mondayData  =JSON.parse(document.getElementById('monday').innerHTML);
+     var tuesdayData  =JSON.parse(document.getElementById('tuesday').innerHTML);
+     var wednesdayData  =JSON.parse(document.getElementById('wednesday').innerHTML);
+     var thursdayData  =JSON.parse(document.getElementById('thursday').innerHTML);
+     var fridayData  =JSON.parse(document.getElementById('friday').innerHTML);
+
+     
+     timetable.setScope(8,17)
+
+timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
+
+mondayData.forEach(function(item){
+timetable.addEvent(item.subName+'('+item.levelName+')','Monday',new Date(2016,10,28,item.startTime[0]+item.startTime[1]),new Date(2016,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
+
+      }); 
+      tuesdayData.forEach(function(item){
+
+        timetable.addEvent(item.subName+'('+item.levelName+')', 'Tuesday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
+
+      });
+
+       wednesdayData.forEach(function(item){
+
+        timetable.addEvent(item.subName+'('+item.levelName+')', 'Wednesday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
+
+      }); 
+       thursdayData.forEach(function(item){
+
+        timetable.addEvent(item.subName+'('+item.levelName+')', 'Thursday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
+
+      });
+       fridayData.forEach(function(item){
+
+        timetable.addEvent(item.subName+'('+item.levelName+')', 'Friday', new Date(2018,10,28,item.startTime[0]+item.startTime[1]), new Date(2018,10,28,item.endTime[0]+item.endTime[1]), { url: '#' });
+
+      });
+    
+      var renderer = new Timetable.Renderer(timetable);
+      renderer.draw('.timetable');
 </script>
 
 

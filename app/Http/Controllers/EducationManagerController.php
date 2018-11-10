@@ -9,6 +9,7 @@ use App\SchoolLevel;
 use App\ExaminationBoard;
 use App\teacher;
 use App\teacherWork;
+use App\TimeTable;
 
 use Illuminate\Http\Request;
 
@@ -50,7 +51,6 @@ class EducationManagerController extends Controller
 
          // return $formOneTrs;
    return view('education.teachers',compact('zimsec','cambridge','classes','userTypeId','level','formOneTrs','formTwoTrs','formThreeTrs','formFourTrs','formFiveTrs','formSixTrs'));
-   	
    }
 
    public function teachersPerLevel($id)
@@ -60,8 +60,71 @@ class EducationManagerController extends Controller
    public function teacherClass($id)
    {
       $subjects  =teacherWork::with('subject')->where('teacherId',$id)->get();
+
+      $monday  =[];
+      $tue  =[];
+      $wed  =[];
+      $thur =[];
+      $fri =[];
+
+      $teacherTimeTables  =\DB::table('time_tables')
+                            ->join('subjects','subjects.id','=','time_tables.subjectId')
+                            ->join('levels','levels.id','=','time_tables.levelId')
+                            ->join('sub_levels','time_tables.subLevelId','=','sub_levels.id')
+                            ->select(\DB::raw(
+                                         "subjects.name  as subName,
+                                        levels.name as levelName,
+                                        sub_levels.name as subLevelName,
+                                        time_tables.day,
+                                        time_tables.startTime,
+                                        time_tables.endTime,
+                                        time_tables.color"
+                    
+                            ))
+                            ->where('teacherId','=',$id)
+                            ->get();
+
+                           
+       // $attendance  =studentAttendance::where('teacherId',$teacherDetails->teacherId)->get();
+
+        //return\Response::json( $teacherWork);
+        //$teacherWork    =teacherWork::with('teacher')->where('teacherId',$id)->get();
+
+        $mondayData  =[];
+        $tuesdayData  =[];
+        $wednesdayData  =[];
+        $thursdayData  =[];
+        $fridayData  =[];
+    
+        foreach($teacherTimeTables as $item)
+        {
+            if($item->day ==='Monday')
+            {
+                    array_push($mondayData,$item);
+            }
+            if($item->day ==='Tuesday')
+            {
+                    array_push($tuesdayData,$item);
+            }if($item->day ==='Wednesday')
+            {
+                    array_push($wednesdayData,$item);
+            }if($item->day ==='Thursday')
+            {
+                    array_push($thursdayData,$item);
+            }if($item->day ==='Friday')
+            {
+                    array_push($fridayData,$item);
+            }
+        }
+
+        $mondayData  =json_encode($mondayData);
+        $tuesdayData  =json_encode($tuesdayData);
+        $wednesdayData  =json_encode($wednesdayData);
+        $thursdayData  =json_encode($thursdayData);
+        $fridayData  =json_encode($fridayData);
+     
       //return $subjects;
-   	return view('education.teachers.tcherClasses',compact('subjects','id'));
+   	return view('education.teachers.tcherClasses',compact('subjects','id','mondayData','tuesdayData','wednesdayData','thursdayData','fridayData'));
    }
 
    public function teacherInfo($id)
@@ -72,8 +135,13 @@ class EducationManagerController extends Controller
 
    public function schoolStudents()
    {
-   	 $data  =User::all();
+   	 $data  =$this->allUsers();
    return view('education.students',compact('data'));
+   }
+
+   public function allUsers()
+   {
+     return User::all();
    }
 
    public function studentClass()

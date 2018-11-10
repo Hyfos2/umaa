@@ -11,7 +11,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use App\User;
 class newUsers extends Mailable
 {
-    use Queueable, SerializesModels;
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
 
@@ -27,7 +26,8 @@ class newUsers extends Mailable
             'name'=>$this->user->name,
             'surname'=>$this->user->surname,
             'email'=>$this->user->email,
-            'password'=>decrypt($this->user->password)
+            'password'=>$this->user->userName
+            // 'password'=>decrypt($this->user->password)
         ]);
     }
 }

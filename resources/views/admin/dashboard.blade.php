@@ -10,7 +10,7 @@
                 <!-- Widgets  -->
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="card">
                             <a href="{{url('accounts-dashboard')}}">
                             <div class="card-body">
@@ -30,15 +30,15 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                   <!--  <div class="col-lg-4 col-md-6">
                         <div class="card">
                              <a href="{{url('communication-dashboard')}}">
                             <div class="card-body">
                                 <div class="stat-widget-five">
-                                   <!--  <div class="stat-icon dib flat-color-3">
+                                    <div class="stat-icon dib flat-color-3">
                                         <i class="pe-7s-browser"></i>
                                     </div> -->
-                                    <div class="stat-content">
+                                   <!--  <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text"><span class="count">{{communicators()}}</span></div>
                                             <div class="stat-heading">Communication</div>
@@ -48,9 +48,9 @@
                             </div>
                         </a>
                         </div>
-                    </div>
+                    </div> --> 
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="card">
                              <a href="{{url('education-dashboard')}}">
                             <div class="card-body">

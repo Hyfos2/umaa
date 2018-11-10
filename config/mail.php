@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@umma.co.edu'),
-        'name' => env('MAIL_FROM_NAME', 'Umma Institute'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@allsolutionsoftwares.co.zw'),
+        'name' => env('MAIL_FROM_NAME', 'Umaa Team'),
     ],
 
     /*

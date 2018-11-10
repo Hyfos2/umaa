@@ -68,7 +68,7 @@
                             <tr>
                                 <td width="100%" style="font-family: helvetica, Arial, sans-serif; font-size: 18px; letter-spacing: 0px; color:#87919F;">
 
-                                    <small> Umma Institute Notifications</small>
+                                    <small> Umaa Group of Institutions Notifications</small>
                                 </td>
                             </tr>
 
@@ -116,7 +116,7 @@
                             <tr>
                                 <td width="100%" style="font-size: 14px; text-align: left; color:#2E363F; line-height: 24px; " height="20">
 
-                                  Thank you for signing up an account with Umma Institute School Management System.Below are your credentials;<br>
+                                  Thank you for signing up an account with  Umaa Group of Institutions School Management System.Below are your credentials;<br>
                                     - email :   {{$email}}<br>
                                     - password: <strong> {{$password}}</strong><br>
 
@@ -127,12 +127,19 @@
                                 <td width="100%"  height="25"></td>
                             </tr>
 
+                             <tr>
+                                <td width="100%" style="font-size: 12px; text-align: left; color:#2E363F; line-height: 24px; " height="10">
 
+                                  Now you are just one step away from accessing the system.Please do log in using the button below.Otherwise, if you face challenges using the button,you can log in using the link given at the bottom.
+                                   
+
+                                </td>
+                            </tr>
 
 
                             <tr>
-                                <td width="100%" style="font-size: 14px; text-align: center; color:#87919F; line-height: 24px; " height="20">
-                                    <button class="btn info"   href="http://localhost:8000">Log in</button>
+                                <td width="100%" style="font-size: 14px; text-align: center; color:#ffffff; line-height: 24px; " height="20">
+                                    <button class="btn info"><a target="_blank" href="http://allsolutionsoftwares.co.zw"><span style="color:#ffffff;">Log in</span></a></button>
 
                                 </td>
                             </tr>
@@ -142,7 +149,7 @@
 
                             <tr>
                                 <td width="100%" style="text-align: left; color:#2E363F; line-height: 19px;">
-                                    <small style="font-size: 14px">Thank you,<br >Umma Institute</small>
+                                    <small style="font-size: 14px">Thank you,<br > Umaa Team</small>
                                 </td>
                             </tr>
 
@@ -187,7 +194,7 @@
                     <td width="100%" height="35" width="560">
 
                         <p  style="height:90px; margin-bottom:8px; background-color:whitesmoke; padding:8px; color:#A3B5B5; text-align: center; font-size:10;">
-                            This message is intended for a registered  user ({{$email}}) to  Umma Institute School Management System.If you are not this person please delete this message.Else, if you are having a problem with the button above use this  link (http://localhost:8000) instead.All rights reserved.
+                            This message is intended for a registered  user ({{$email}}) to  Umaa Group of Institutions School Management System.If you are not this person please delete this message.Else, if you are having a problem with the button above use this  link (http://allsolutionsoftwares.co.zw) instead.All rights reserved.
 
                         </p>
 

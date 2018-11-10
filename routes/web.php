@@ -197,6 +197,7 @@ Route::group(['middleware'=>['auth']], function()
     Route::resource('communication','CommunicationController');
 });
 
+
 // Route::get('/test' , function()
 // {
 //    return view('client.master');
