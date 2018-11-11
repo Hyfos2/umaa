@@ -30,26 +30,7 @@
                         </div>
                     </div>
 
-                   <!--  <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                             <a href="{{url('communication-dashboard')}}">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-browser"></i>
-                                    </div> -->
-                                   <!--  <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{communicators()}}</span></div>
-                                            <div class="stat-heading">Communication</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    </div> --> 
-
+                 
                     <div class="col-lg-6 col-md-6">
                         <div class="card">
                              <a href="{{url('education-dashboard')}}">
@@ -97,7 +78,8 @@
                                 <div class="col-lg-6 col-xl-12">
                                     <div class="card br-0">
                                         <div class="card-body" style="height: 360px;">
-                                        <div id="userDevice"></div>
+                                        <div id="chartContainer"  style="height: 300px; width: 100%;"></div>
+                                        <button class="btn invisible" id="backButton">< Back</button>
                                         </div>
                                     </div>
                                 </div>
@@ -174,6 +156,11 @@
         </div>
         <!-- /.content -->
         <div class="clearfix"></div>
+        <div id="chrome" style="display: none">{{$windowsChromeUser}}</div>
+        <div id="edge" style="display: none">{{$windowsEdgeUser}}</div>
+        <div id="others" style="display: none">{{$others}}</div>
+        <div id="total" style="display: none">{{$total}}</div>
+        
       
         @include('admin.footer')
         <!-- /.site-footer -->
@@ -182,90 +169,135 @@
 @stop
 @push('scripts')
 <script type="text/javascript">
-  var chart;
-var legend;
-var selected;
 
-   // var types=  "dataLoader": {
-   //                    "url": "/user-devices",
-   //                    "format": "json",
-   //                    "postProcess": function(data, config, chart) {
-   //                      console.log("USER DEVICES",data);
-   //                      return data.rows;
-   //                    }
-   //                  }
+  var chrome  =document.getElementById("chrome").innerHTML;
+  var others  =document.getElementById("others").innerHTML;
+  var edge  =document.getElementById("edge").innerHTML;
+  var total  =document.getElementById("total").innerHTML;
 
-var types = [{
-                  type: "Desktop(Windows)",
-                  percent: 85,
-                  color: "#ff9e01"
-                },{
-                  type: "Desktop(Linux)",
-                  percent: 20,
-                  color: "#b0de09"
-            },{
-                  type: "Desktop(MacOs)",
-                  percent: 5,
-                  color: "#b0de09"
-            }];
+  window.onload = function () {
 
-function generateChartData() {
-  var chartData = [];
-  for (var i = 0; i < types.length; i++) {
-    if (i == selected) {
-      for (var x = 0; x < types[i].subs.length; x++) {
-        chartData.push({
-          type: types[i].subs[x].type,
-          percent: types[i].subs[x].percent,
-          color: types[i].color,
-          pulled: true
-        });
-      }
-    } else {
-      chartData.push({
-        type: types[i].type,
-        percent: types[i].percent,
-        color: types[i].color,
-        id: i
-      });
+var totalVisitors = total;
+var visitorsData = {
+  "Visitor Devices": [{
+    click: visitorsChartDrilldownHandler,
+    cursor: "pointer",
+    explodeOnClick: false,
+    innerRadius: "75%",
+    legendMarkerType: "square",
+    name: "Visitor Devices",
+    radius: "100%",
+    showInLegend: true,
+    startAngle: 90,
+    type: "doughnut",
+    dataPoints: [
+      { y: chrome, name: "Chrome Browser Visitors", color: "#E7823A" },
+      { y: edge, name: "Edge  Browser Visitors", color: "#546BC1" } ,
+      { y: others, name: "Other  Browsers Visitors", color: "#78AB46" }
+    ]
+  }],
+  "Chrome Browser Visitors": [{
+    color: "#E7823A",
+    name: "New Visitors",
+    type: "column",
+    dataPoints: [
+      { x: new Date("1 Jan 2015"), y: 33000 },
+      { x: new Date("1 Feb 2015"), y: 35960 },
+      { x: new Date("1 Mar 2015"), y: 42160 },
+      { x: new Date("1 Apr 2015"), y: 42240 },
+      { x: new Date("1 May 2015"), y: 43200 },
+      { x: new Date("1 Jun 2015"), y: 40600 },
+      { x: new Date("1 Jul 2015"), y: 42560 },
+      { x: new Date("1 Aug 2015"), y: 44280 },
+      { x: new Date("1 Sep 2015"), y: 44800 },
+      { x: new Date("1 Oct 2015"), y: 48720 },
+      { x: new Date("1 Nov 2015"), y: 50840 },
+      { x: new Date("1 Dec 2015"), y: 51600 }
+    ]
+  }],
+  "Returning Visitors": [{
+    color: "#546BC1",
+    name: "Returning Visitors",
+    type: "column",
+    dataPoints: [
+      { x: new Date("1 Jan 2015"), y: 22000 },
+      { x: new Date("1 Feb 2015"), y: 26040 },
+      { x: new Date("1 Mar 2015"), y: 25840 },
+      { x: new Date("1 Apr 2015"), y: 23760 },
+      { x: new Date("1 May 2015"), y: 28800 },
+      { x: new Date("1 Jun 2015"), y: 29400 },
+      { x: new Date("1 Jul 2015"), y: 33440 },
+      { x: new Date("1 Aug 2015"), y: 37720 },
+      { x: new Date("1 Sep 2015"), y: 35200 },
+      { x: new Date("1 Oct 2015"), y: 35280 },
+      { x: new Date("1 Nov 2015"), y: 31160 },
+      { x: new Date("1 Dec 2015"), y: 34400 }
+    ]
+  }]
+};
+
+var newVSReturningVisitorsOptions = {
+  animationEnabled: true,
+  theme: "light2",
+  title: {
+    text: "Visitors Device"
+  },
+    exportEnabled: true,
+  subtitles: [{
+    //text: "Click on Any Segment to Drilldown",
+    backgroundColor: "#2eacd1",
+    fontSize: 16,
+    fontColor: "white",
+    padding: 5
+  }],
+  legend: {
+    fontFamily: "calibri",
+    fontSize: 14,
+    itemTextFormatter: function (e) {
+      return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) + "%";  
     }
-  }
-  return chartData;
+  },
+  data: []
+};
+
+var visitorsDrilldownedChartOptions = {
+  animationEnabled: true,
+  theme: "light2",
+  axisX: {
+    labelFontColor: "#717171",
+    lineColor: "#a2a2a2",
+    tickColor: "#a2a2a2"
+  },
+  axisY: {
+    gridThickness: 0,
+    includeZero: false,
+    labelFontColor: "#717171",
+    lineColor: "#a2a2a2",
+    tickColor: "#a2a2a2",
+    lineThickness: 1
+  },
+  data: []
+};
+
+var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+chart.options.data = visitorsData["Visitor Devices"];
+chart.render();
+
+function visitorsChartDrilldownHandler(e) {
+  chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
+  chart.options.data = visitorsData[e.dataPoint.name];
+  chart.options.title = { text: e.dataPoint.name }
+  chart.render();
+  $("#backButton").toggleClass("invisible");
 }
 
-AmCharts.makeChart("userDevice", {
-  "type": "pie",
-"theme": "light",
+// $("#backButton").click(function() { 
+//   $(this).toggleClass("invisible");
+//   chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+//   chart.options.data = visitorsData["Visitor Devices"];
+//   chart.render();
+// });
 
-  "dataProvider": generateChartData(),
-  "labelText": "[[title]]: [[value]]",
-  "balloonText": "[[title]]: [[value]]",
-  "titleField": "type",
-  "valueField": "percent",
-  "outlineColor": "#FFFFFF",
-  "outlineAlpha": 0.8,
-  "outlineThickness": 2,
-  "colorField": "color",
-  "pulledField": "pulled",
-  "titles": [{
-    "text": "Visitors Devices"
-  }],
-  "listeners": [{
-    "event": "clickSlice",
-    "method": function(event) {
-      var chart = event.chart;
-      if (event.dataItem.dataContext.id != undefined) {
-        selected = event.dataItem.dataContext.id;
-      } else {
-        selected = undefined;
-      }
-      chart.dataProvider = generateChartData();
-      chart.validateData();
-    }
-  }],
-  "export": {
-    "enabled": true
-  }
-});
+}
 </script>
 @endpush

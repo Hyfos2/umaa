@@ -11,9 +11,7 @@
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
-                            <div class="page-title">
-                              
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -22,6 +20,30 @@
                                 <ol class="breadcrumb text-right">
                                     <li><a href="{{url('admin-dashboard')}}">Go Back</a></li>
                                     <li  class="active"><a href="javascript:void(0);">Accounting Dashboard</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
+
+        @if(Auth::user()->userTypeId ===5)       
+       <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                           
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="javascript:void(0);">My Dashboard</a></li>
                                 </ol>
                             </div>
                         </div>
@@ -47,7 +69,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{activated()}}</span></div>
                                             <div class="stat-heading">Activated Students</div>
                                         </div>
                                     </div>
@@ -67,7 +89,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{deactivated()}}</span></div>
                                             <div class="stat-heading">De-activated Students</div>
                                         </div>
                                     </div>
@@ -91,23 +113,31 @@
                                 </div>
                                 <div class="card-body--">
 
-                                    <div class="table-stats order-table ov-h">
-                                        <div id="paymentMethod"></div>
+                                    
+                                        <div id="paymentMethod" style="width : 100%; height: 300px;"></div>
 
                             
-                                    </div> <!-- /.table-stats -->
+                                   
                                 </div>
                             </div> <!-- /.card -->
                         </div> 
                          <!-- /.col-lg-8 -->
-                         <div class="col-xl-4">
-                        <div class="card ov-h">
-                            <div class="card-body bg-flat-color-2">
-                                <div id="flotBarChart" class="float-chart ml-4 mr-4"></div>
+                         <div class="col-xl-4 col-md-6">
+                            <div class="row">
+                                <div class="col-lg-6 col-xl-12">
+                                    <div class="card br-0">
+                                         <div class="card-body">
+                                    <h4 class="box-title">Revenue and Arrears</h4>
+                                </div>
+                                        <div class="card-body" style="height: 300px;">
+                                        <div id="revNArrears"  style="height: 300px; width: 100%;margin-top: -25px;"></div>
+                                        <button class="btn invisible" id="backButton">< Back</button>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div id="cellPaiChart" class="float-chart"></div>
-                        </div><!-- /.card -->
-                    </div>
+                        </div>
                     </div>
                 </div>
             
@@ -187,9 +217,161 @@
         </div>
         <!-- /.content -->
         <div class="clearfix"></div>
+        <div id="ecocash" style="display: none">{{$ecocash}}</div>
+        <div id="telecash" style="display: none">{{$telecash}}</div>
+        <div id="bank" style="display: none">{{$bankTransfer}}</div>
+        <div id="cash" style="display: none">{{$cash}}</div>
+        <div id="revenue" style="display:none">{{$revenue}}</div>
+        <div id="arrears" style="display: none">{{$arrears}}</div>
+        <div id="total" style="display: none">{{$total}}</div>
       
         @include('admin.footer')
         <!-- /.site-footer -->
     </div>
 
 @stop
+@push('scripts')
+<script type="text/javascript">
+
+ 
+
+    var ecocash  =document.getElementById('ecocash').innerHTML;
+    var telecash  =document.getElementById('telecash').innerHTML;
+    var bank  =document.getElementById('bank').innerHTML;
+    var cash  =document.getElementById('cash').innerHTML;
+    var revenue  =document.getElementById('revenue').innerHTML;
+    var arrears  =document.getElementById('arrears').innerHTML;
+    var total  =document.getElementById('total').innerHTML;
+
+    var chart = AmCharts.makeChart( "paymentMethod", {
+  "type": "serial",
+  "theme": "light",
+  "dataProvider": [ {
+    "country": "Ecocash",
+    "visits": ecocash
+  }, {
+    "country": "Telecash",
+    "visits": telecash
+  }, {
+    "country": "Bank Transfers",
+    "visits": bank
+  }, {
+    "country": "Cash",
+    "visits": cash
+  }],
+  "gridAboveGraphs": true,
+  "startDuration": 1,
+  "graphs": [ {
+    "balloonText": "[[category]]: <b>[[value]]</b>",
+    "fillAlphas": 0.8,
+    "lineAlpha": 0.2,
+    "type": "column",
+    "valueField": "visits"
+  } ],
+  "chartCursor": {
+    "categoryBalloonEnabled": false,
+    "cursorAlpha": 0,
+    "zoomable": false
+  },
+  "categoryField": "country",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "gridAlpha": 0,
+    "tickPosition": "start",
+    "tickLength": 20
+  },
+  "export": {
+    "enabled": true
+  }
+
+} );
+</script>
+<script>
+
+  window.onload = function () {
+
+var totalVisitors = total;
+var visitorsData = {
+  "Visitor Devices": [{
+    click: visitorsChartDrilldownHandler,
+    cursor: "pointer",
+    explodeOnClick: false,
+    innerRadius: "75%",
+    legendMarkerType: "square",
+    radius: "100%",
+    showInLegend: true,
+    startAngle: 90,
+    type: "doughnut",
+
+    dataPoints: [
+      { y: revenue, name: "Total Revenue", color: "#E7823A" },
+      { y: arrears, name: "Total Arrears", color: "#546BC1" } ,
+    ]
+  }],
+};
+
+var newVSReturningVisitorsOptions = {
+  animationEnabled: true,
+  theme: "light2",
+  exportEnabled: true,
+  // title: {
+  //   text: "Visitors Device"
+  // },
+  subtitles: [{
+    //text: "Click on Any Segment to Drilldown",
+    backgroundColor: "#2eacd1",
+    fontSize: 12,
+    fontColor: "white",
+    padding: 5
+  }],
+  legend: {
+    fontFamily: "calibri",
+    fontSize: 12,
+    itemTextFormatter: function (e) {
+      return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) + "%";  
+    }
+  },
+  data: []
+};
+
+var visitorsDrilldownedChartOptions = {
+  animationEnabled: true,
+  theme: "light2",
+  axisX: {
+    labelFontColor: "#717171",
+    lineColor: "#a2a2a2",
+    tickColor: "#a2a2a2"
+  },
+  axisY: {
+    gridThickness: 0,
+    includeZero: false,
+    labelFontColor: "#717171",
+    lineColor: "#a2a2a2",
+    tickColor: "#a2a2a2",
+    lineThickness: 1
+  },
+  data: []
+};
+
+var chart = new CanvasJS.Chart("revNArrears", newVSReturningVisitorsOptions);
+chart.options.data = visitorsData["Visitor Devices"];
+chart.render();
+
+function visitorsChartDrilldownHandler(e) {
+  chart = new CanvasJS.Chart("revNArrears", visitorsDrilldownedChartOptions);
+  chart.options.data = visitorsData[e.dataPoint.name];
+  chart.options.title = { text: e.dataPoint.name }
+  chart.render();
+  $("#backButton").toggleClass("invisible");
+}
+
+// $("#backButton").click(function() { 
+//   $(this).toggleClass("invisible");
+//   chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+//   chart.options.data = visitorsData["Visitor Devices"];
+//   chart.render();
+// });
+
+}
+</script>
+@endpush

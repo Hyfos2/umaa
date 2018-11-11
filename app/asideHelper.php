@@ -3,6 +3,7 @@
 
 use App\User;
 use App\Admin;
+use App\Student;
 
 function primaryTeachers()
 {
@@ -56,6 +57,16 @@ function curreantDate()
 {
     return Carbon\Carbon::now()->format('d');
 }
+function activated()
+{
+    return Student::where('activated',2)->count();
+}
+
+function deactivated()
+{
+     return Student::where('activated',1)->count();
+}
+
 function presentDay()
 {
     return Carbon\Carbon::now()->format('l');

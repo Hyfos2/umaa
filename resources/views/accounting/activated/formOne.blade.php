@@ -1,3 +1,31 @@
  <div class="tab-pane fade show active" id="custom-nav-form-1" role="tabpanel" aria-labelledby="custom-nav-form-1-tab">
-                                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, irure terry richardson ex sd. Alip placeat salvia cillum iphone. Seitan alip s cardigan american apparel, butcher voluptate nisi .</p>
+ 	<table id="f1" class="display" style="width:100%;margin-top:10px;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+             @foreach($form1  as $item)
+            <tr>
+                <td>{{$item->user->name}}</td>
+                <td>{{$item->user->surname}}</td>
+                <td>{{$item->user->gender}}</td>
+                <td>{{$item->user->email}}</td>
+                <td>
+                     <a class="btn btn-outline-info" href="{{url('student-account/'.$item->id)}}">view transactions</a>
+                 </td>
+            </tr>
+            @endforeach
+           
+
+        </tbody>
+
+    </table>
+                                            
                                             </div>

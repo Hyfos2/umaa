@@ -13,6 +13,7 @@ class CreateAccountsTable extends Migration
             $table->integer('studentId')->unsigned();
             $table->decimal('debit')->nullable()->default(0);
             $table->string('term')->nullable();
+            $table->string('paymentMethod')->nullable();
             $table->string('description')->nullable();
             $table->string('reference')->nullable();
             $table->decimal('balance')->nullable();

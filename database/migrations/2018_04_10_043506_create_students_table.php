@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('allergies')->nullable();
             $table->integer('modeOfEntry')->unsigned()->nullable();
             $table->integer('schoolLevel')->unsigned();
+            $table->integer('activated')->default(1);
             $table->string('regNumber')->unique(); // year of registration and
             $table->date('dob');
             // $table->string('address');

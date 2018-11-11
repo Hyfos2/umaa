@@ -35,23 +35,34 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $latestUsers  =[];
-        foreach(User::orderBy('created_at','DESC')->get()  AS $value)
-        {
-               $diff =  strtotime(Carbon::now("Africa/Harare")) - strtotime($value->created_at);
-              // return $diff;
-               if($diff  >= 0 && $diff<=86400)
-               {
-                   array_push($latestUsers,$value);
-               }//86400
-        }
 
-        $newUsers   =count($latestUsers);
-        //$events  =$this->calendarService->showSchoolCalenderEvents();
+        $userDevices   =UserDeviceInformation::all();
 
-      //return view('newAdmin.master',compact('events'));
+        $windowsChrome  =[];
+        $windowsEdge  =[];
+        $windowsFirefox  =[];
+          foreach ($userDevices as $key) {
 
-       return view('admin.dashboard');
+            if($key->deviceInformation ==="Windows(Chrome)")
+            {
+                 array_push($windowsChrome,$key);
+            } 
+            else if($key->deviceInformation ==="Windows(Edge)")
+            {
+                 array_push($windowsEdge,$key);
+            }
+            else{
+                 array_push($windowsFirefox,$key);
+            }
+          }
+
+        $windowsChromeUser  =count($windowsChrome);
+        $windowsEdgeUser  =count($windowsEdge);
+        $others =count($windowsFirefox);
+
+        $total  =$windowsEdgeUser+$windowsChromeUser+$others;
+
+       return view('admin.dashboard',compact('windowsEdgeUser','windowsChromeUser','others','total'));
     }
     public function addTeacher()
     {

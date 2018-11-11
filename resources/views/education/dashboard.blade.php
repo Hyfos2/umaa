@@ -99,30 +99,19 @@
                 <!-- Orders -->
                 <div class="orders">
                     <div class="row">
-                        <div class="col-xl-8">
+                        <div class="col-xl-12">
                             <div class="card">
+                                <div class="card-header">Performance Per Level (Females vs Males)</div>
                                 <div class="card-body">
-                                    <h4 class="box-title">Payment Methods</h4>
-                                </div>
-                                <div class="card-body--">
 
-                                    <div class="table-stats order-table ov-h">
-                                        <div id="paymentMethod"></div>
+                                    <div id="performance" style="width: 100%;height: 400px;  margin-top:0px;"></div>
 
-                            
-                                    </div> <!-- /.table-stats -->
+
                                 </div>
-                            </div> <!-- /.card -->
+                            </div>
                         </div> 
                          <!-- /.col-lg-8 -->
-                         <div class="col-xl-4">
-                        <div class="card ov-h">
-                            <div class="card-body bg-flat-color-2">
-                                <div id="flotBarChart" class="float-chart ml-4 mr-4"></div>
-                            </div>
-                            <div id="cellPaiChart" class="float-chart"></div>
-                        </div><!-- /.card -->
-                    </div>
+                         
                     </div>
                 </div>
             
@@ -208,3 +197,110 @@
     </div>
 
 @stop
+@push('scripts')
+<script type="text/javascript">
+    var chart = AmCharts.makeChart("performance", {
+  "type": "serial",
+  "theme": "light",
+  "rotate": true,
+  "marginBottom": 45,
+  "dataProvider": [{
+    "age": "6",
+    "male": -5.6,
+    "female": 5.1
+  }, {
+    "age": "5",
+    "male": -5.1,
+    "female": 5.1
+  }, {
+    "age": "4",
+    "male": -3.8,
+    "female": 3.8
+  }, {
+    "age": "3",
+    "male": -3.2,
+    "female": 3.4
+  }, {
+    "age": "2",
+    "male": -4.4,
+    "female": 4.1
+  }, {
+    "age": "1",
+    "male": -5.0,
+    "female": 4.8
+  }],
+  "startDuration": 1,
+  "graphs": [{
+    "fillAlphas": 0.5,
+    "lineAlpha": 0.1,
+    "type": "column",
+    "valueField": "male",
+    "title": "Male",
+    "labelText": "[[value]]",
+    "clustered": false,
+    "labelFunction": function(item) {
+      return Math.abs(item.values.value);
+    },
+    "balloonFunction": function(item) {
+      return item.category + ": " + Math.abs(item.values.value) + "%";
+    }
+  }, {
+    "fillAlphas": 0.5,
+    "lineAlpha": 0.1,
+    "type": "column",
+    "valueField": "female",
+    "title": "Female",
+    "labelText": "[[value]]",
+    "clustered": false,
+    "labelFunction": function(item) {
+      return Math.abs(item.values.value);
+    },
+    "balloonFunction": function(item) {
+      return item.category + ": " + Math.abs(item.values.value) + "%";
+    }
+  }],
+  "categoryField": "age",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "gridAlpha": 0.2,
+    "axisAlpha": 0
+  },
+  "valueAxes": [{
+    "gridAlpha": 0,
+    "ignoreAxisWidth": true,
+    "labelFunction": function(value) {
+      return Math.abs(value) + '%';
+    },
+    "guides": [{
+      "value": 0,
+      "lineAlpha": 0.2
+    }]
+  }],
+  "balloon": {
+    "fixedPosition": true
+  },
+  "chartCursor": {
+    "valueBalloonsEnabled": false,
+    "cursorAlpha": 0.05,
+    "fullWidth": true
+  },
+  "allLabels": [{
+    "text": "Male",
+    "x": "28%",
+    "y": "97%",
+    "bold": true,
+    "align": "middle"
+  }, {
+    "text": "Female",
+    "x": "75%",
+    "y": "97%",
+    "bold": true,
+    "align": "middle"
+  }],
+ "export": {
+    "enabled": true
+  }
+
+});
+</script>
+@endpush

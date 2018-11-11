@@ -41,7 +41,7 @@ Route::group(['middleware'=>['auth']], function()
     //Accounts
     Route::get('pay-fees','AccountsController@payFees');
     Route::get('accounts-dashboard','AccountsController@dashboard');
-    Route::get('student-account','AccountsController@studentAccount');
+    Route::get('student-account/{id}','AccountsController@studentAccount');
     Route::get('activated-student','AccountsController@activatedStudents');
     Route::get('deactivated-student','AccountsController@deactivatedStudents');
     Route::get('balance-statement','AccountsController@viewBalanceStatement');

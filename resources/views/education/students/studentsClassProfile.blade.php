@@ -49,27 +49,29 @@
                                         
 
                             <ul class=" list-group ">
+                              @foreach($subjects  as $item)
                                       <li class="list-group-item">
-                                        <h4 class="por-title">Maths</h4>
+                                        <h4 class="por-title">{{$item->subject->name}}</h4>
                                         <hr>
 
                              <div class="progress-box progress-1">
-                                    
-                                    <a href="{{url('std-subject-perf')}}"><div class="por-txt">Daily Exercises (90%)</div></a>
+                                    <!-- href="{{url('std-subject-perf')}}" -->
+                                    <a ><div class="por-txt">Daily Exercises (90%)</div></a>
                                     <div class="progress mb-2" style="height: 5px;">
                                         <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                             </div>
                             <hr>
                             <div class="progress-box progress-1">
-                                    
-                                    <a href="{{url('std-subject-perf')}}"><div class="por-txt">End of Term (40%)</div></a>
+                                 <!--    href="{{url('std-subject-perf')}}" -->
+                                    <a ><div class="por-txt">End of Term (40%)</div></a>
                                     <div class="progress mb-2" style="height: 5px;">
                                         <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                             </div>
 
                                       </li>
+                                      @endforeach
                                 
                                     </ul>
                                 
@@ -90,8 +92,15 @@
                                         <strong>Attendance Per Week</strong>
                                     </div>
                                     <div class="card-body">
-                                       
-                                            <div id="carousel"></div>
+
+                                      <div id="absentiesm" style="width   :100%;
+                                                              height    : 350px;
+                                                              font-size : 11px;">
+    
+  </div>
+
+                                    
+                                  
                                      
                                     </div> 
                                 </div><!-- /.card -->
@@ -119,34 +128,133 @@
 @stop
 @push('scripts')
 <script type="text/javascript">
-    
-webix.ui({
-  view:"window",
-  body:{
-    view:"carousel",
-    id:"carousel",
-    width:464, height:275, 
-    cols:[
-      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image001.jpg"} },
-      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image002.jpg"} },
-      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image003.jpg"} },
-      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image004.jpg"} },
-      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image005.jpg"} },
-      { css: "image", template:img, data:{src:"http://docs.webix.com/samples/26_carousel/imgs/image006.jpg"} }
-    ]
-  },
-  head:{
-    view:"toolbar", type:"MainBar", elements:[
-      {view:"label", label: "Photobook", align:'left'}
-    ]
-  },
-  top:70,
-  left:70
-}).show();
+var chart = AmCharts.makeChart("absentiesm", {
+    "type": "serial",
+    "theme": "light",
+    "marginRight": 40,
+    "marginLeft": 40,
+    "autoMarginOffset": 20,
+    "mouseWheelZoomEnabled":true,
+    "dataDateFormat": "YYYY-MM-DD",
+    "valueAxes": [{
+        "id": "v1",
+        "axisAlpha": 0,
+        "position": "left",
+        "ignoreAxisWidth":true
+    }],
+    "balloon": {
+        "borderThickness": 1,
+        "shadowAlpha": 0
+    },
+    "graphs": [{
+        "id": "g1",
+        "balloon":{
+          "drop":true,
+          "adjustBorderColor":false,
+          "color":"#ffffff"
+        },
+        "bullet": "round",
+        "bulletBorderAlpha": 1,
+        "bulletColor": "#FFFFFF",
+        "bulletSize": 5,
+        "hideBulletsCount": 50,
+        "lineThickness": 2,
+        "useLineColorForBulletBorder": true,
+        "valueField": "value" 
+    }],
+    "chartScrollbar": {
+        "graph": "g1",
+        "oppositeAxis":false,
+        "offset":30,
+        "scrollbarHeight": 80,
+        "backgroundAlpha": 0,
+        "selectedBackgroundAlpha": 0.1,
+        "selectedBackgroundColor": "#888888",
+        "graphFillAlpha": 0,
+        // "graphLineAlpha": 0.5,
+        "selectedGraphFillAlpha": 0,
+        "selectedGraphLineAlpha": 1,
+        "autoGridCount":true,
+        "color":"#AAAAAA"
+    },
+    "chartCursor": {
+        "pan": true,
+        "valueLineEnabled": true,
+        "valueLineBalloonEnabled": true,
+        "cursorAlpha":1,
+        "cursorColor":"red",
+        "limitToGraph":"g1",
+        "valueZoomable":true
+    },
+    "valueScrollbar":{
+      "oppositeAxis":false,
+      "offset":50,
+      "scrollbarHeight":10
+    },
+    "categoryField": "date",
+    "categoryAxis": {
+        "parseDates": true,
+       // "dashLength": 1,
+        "minorGridEnabled": true
+    },
+    "export": {
+        "enabled": true
+    },
+    "dataProvider": [{
+        "date": "2018-10-27",
+        "value": 2
+    }, {
+        "date": "2018-10-28",
+        "value": 1
+    }, {
+        "date": "2018-10-29",
+        "value": 1
+    }, {
+        "date": "2018-10-30",
+        "value": 1
+    }, {
+        "date": "2018-10-31",
+        "value": 1
+    }, {
+        "date": "2018-11-01",
+        "value": 2
+    }, {
+        "date": "2018-11-02",
+        "value": 1
+    }, {
+        "date": "2018-11-03",
+        "value": 2
+    }, {
+        "date": "2018-11-04",
+        "value": 2
+    }, {
+        "date": "2018-11-05",
+        "value": 1
+    }, {
+        "date": "2018-11-06",
+        "value": 1
+    }, {
+        "date": "2018-11-07",
+        "value": 1
+    }, {
+        "date": "2018-11-08",
+        "value": 2
+    }, {
+        "date": "2018-11-09",
+        "value": 1
+    }, {
+        "date": "2018-11-10",
+        "value": 2
+    }]
+});
 
-function img(obj){
-  return '<img src="'+obj.src+'" class="content" ondragstart="return false"/>'
+chart.addListener("rendered", zoomChart);
+
+zoomChart();
+
+function zoomChart() {
+    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
 }
-
+  
 </script>
 @endpush

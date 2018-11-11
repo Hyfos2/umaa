@@ -33,12 +33,11 @@ class AccountsController extends Controller
 
       $totalCredit  =$credit[0]->credit_total;
       $totalDebit  =$debit[0]->debt_total;
-        return view('newAdmin.accounts.index',compact('totalCredit','totalDebit'));
+
+    return view('newAdmin.accounts.index',compact('totalCredit','totalDebit'));
+
     }
 
-    public function create()
-    {
-    }
     public function viewBalanceStatement()
     {
         $pageName  ='Balance-Statement';
@@ -47,11 +46,13 @@ class AccountsController extends Controller
         $balance      =StudentAccount::where('studentId',$studentId)->latest()->first();
         return view('newAdmin.accounts.balanceStatement',compact('pageName','studentAccount','balance'));
     }
+
     public function payFees()
     {
         $pageName   ='Pay-Fees';
        return view('newAdmin.accounts.payFees',compact('pageName'));
     }
+
     public function store(Request $request)
     {
         //return $request->all();
@@ -59,18 +60,7 @@ class AccountsController extends Controller
         $this->account->calculateBalance();
         return redirect()->back()->with('alert','the transaction was successful');
     }
-    public function show($id)
-    {
-        //
-    }
-    public function edit($id)
-    {
-        //
-    }
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
     public function communicationDepartment()
     {
 
@@ -113,23 +103,112 @@ class AccountsController extends Controller
         return view('newAdmin.accounts.accountantProfile',compact('id','userDetails','latestActivities','oldActivities'));
     }
 
+    protected function paymentMethodUsed($str)
+    {
+        return Account::where('paymentMethod',$str)->get();
+    }
+
+    protected function accountsInfo()
+    {
+        return Account::all();
+    } 
+
+    protected function arrears()
+    {
+        $total  =0;
+        foreach($this->accountsInfo() as $item)
+        {
+            $total+=$item->balance;
+        }
+        return $total;
+    } 
+
+    protected function totalRevenuePerMethod($str)
+    {
+        $totalRev  =0;
+         foreach($this->paymentMethodUsed($str) as $item)
+                {
+                    $totalRev+=$item->credit;
+                }
+                return $totalRev;
+    }
+
      public function dashboard()
     {
-             return view('accounting.dashboard');
+          $ecocash =$this->totalRevenuePerMethod('Ecocash');
+          $telecash =$this->totalRevenuePerMethod('Telecash');
+          $bankTransfer =$this->totalRevenuePerMethod('Bank');
+          $cash =$this->totalRevenuePerMethod('Cash');
+          $revenue   =$ecocash+$telecash+$bankTransfer+$cash;
+          $arrears  =$this->arrears();
+          $total  =$arrears+$revenue;
+        return view('accounting.dashboard',compact('ecocash','telecash','bankTransfer','cash','revenue','arrears','total'));
     }
-     public function studentAccount()
+     public function studentAccount($id)
     {
-        return view('accounting.studentAccount');
 
+            $transactionHistory   =Account::where('studentId',$id)->get();
+        return view('accounting.studentAccount',compact('transactionHistory'));
     }
      public function activatedStudents()
     {
-         return view('accounting.activatedStudent');
+               
+        $form1   =$this->activatedStudentsPerLevel(1);
+        $form2   =$this->activatedStudentsPerLevel(2);
+        $form3   =$this->activatedStudentsPerLevel(3);
+        $form4   =$this->activatedStudentsPerLevel(4);
+        $form5   =$this->activatedStudentsPerLevel(5);
+        $form6   =$this->activatedStudentsPerLevel(6);
+         return view('accounting.activatedStudent', compact('form1','form2','form3','form4','form5','form6'));
+    } 
+
+    public function activatedStudentsPerLevel($level)
+    {
+        $levelArray  =[];
+        foreach($this->allActivatedStudents() as $item)
+        {
+            if($item->levelId ===$level)
+            {
+                array_push($levelArray,$item);
+            }
+        }
+        return $levelArray;
 
     } 
+
+    public function deactivatedStudentsPerLevel($level)
+    {
+        $levelArray  =[];
+        foreach($this->allDeactivatedStudents() as $item)
+        {
+            if($item->levelId ===$level)
+            {
+                array_push($levelArray,$item);
+            }
+        }
+        return $levelArray;
+
+    }
+
+    public function allActivatedStudents()
+    {
+         return Student::with('user')->where('activated',2)->get();
+    }
+    public function allDeactivatedStudents()
+    {
+         return Student::with('user')->where('activated',1)->get();
+    }
     public function deactivatedStudents()
     {
-             return view('accounting.deactivated');
+                
+        $form1   =$this->deactivatedStudentsPerLevel(1);
+        $form2   =$this->deactivatedStudentsPerLevel(2);
+        $form3   =$this->deactivatedStudentsPerLevel(3);
+        $form4   =$this->deactivatedStudentsPerLevel(4);
+        $form5   =$this->deactivatedStudentsPerLevel(5);
+        $form6   =$this->deactivatedStudentsPerLevel(6);
+
+         return view('accounting.deactivated', compact('form1','form2','form3','form4','form5','form6'));
     }
 
 

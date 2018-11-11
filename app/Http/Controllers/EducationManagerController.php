@@ -13,6 +13,7 @@ use App\Sport;
 use App\teacherWork;
 use App\TimeTable;
 use App\Student;
+use App\StudentSubject;
 
 use Illuminate\Http\Request;
 
@@ -175,9 +176,9 @@ class EducationManagerController extends Controller
    public function studentClass($id)
    {
 
-    
-
-   	 return view('education.students.studentsClassProfile');
+      $subjects  =StudentSubject::with('subject')->where('studentId',$id)->get();
+       //return $subjects;
+   	 return view('education.students.studentsClassProfile',compact('subjects'));
    }
 
    public function studentSubPerformance()
