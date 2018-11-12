@@ -148,7 +148,7 @@ class AccountsController extends Controller
     {
 
             $transactionHistory   =Account::where('studentId',$id)->get();
-        return view('accounting.studentAccount',compact('transactionHistory'));
+        return view('accounting.studentAccount',compact('transactionHistory','id'));
     }
      public function activatedStudents()
     {
@@ -209,6 +209,12 @@ class AccountsController extends Controller
         $form6   =$this->deactivatedStudentsPerLevel(6);
 
          return view('accounting.deactivated', compact('form1','form2','form3','form4','form5','form6'));
+    }
+
+    public function recordTransaction(Request $request)
+    {
+        return $request->all();
+
     }
 
 

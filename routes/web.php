@@ -39,7 +39,8 @@ Route::group(['middleware'=>['auth']], function()
     Route::resource('secondary','SecondaryController');
 
     //Accounts
-    Route::get('pay-fees','AccountsController@payFees');
+  //  Route::get('pay-fees','AccountsController@payFees');
+    Route::post('pay-fees','AccountsController@recordTransaction');
     Route::get('accounts-dashboard','AccountsController@dashboard');
     Route::get('student-account/{id}','AccountsController@studentAccount');
     Route::get('activated-student','AccountsController@activatedStudents');

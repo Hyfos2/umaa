@@ -47,6 +47,11 @@
                         <a href="{{url('student-account')}}"><i class="menu-icon fa fa-laptop"></i>Student Accounts</a>
                     </li>
                     @endif
+                     @if(Auth::user()->userTypeId ===4)
+                      <li>
+                        <a href="{{url('fees')}}"><i class="menu-icon fa fa-dollar"></i>Fee Structure</a>
+                    </li>
+                    @endif
                     @if(Auth::user()->userTypeId ===2)
 
                      <li class="menu-item-has-children dropdown">

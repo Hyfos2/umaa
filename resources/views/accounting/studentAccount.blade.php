@@ -68,7 +68,7 @@
                 <div class="row m-0">
                     <div class="col-sm-12" style="padding:3px;">
                         
-                           <input class="btn btn-outline-info" type="button" value="Add Transaction">
+                    <input class="btn btn-outline-info" type="button"  data-toggle="modal" data-target="#add-transaction" value="Add Transaction">
                     
                     </div>
                 </div>
@@ -119,9 +119,9 @@
 
                                    
                                 </div>
-                            </div> <!-- /.card -->
+                            </div> 
                         </div> 
-                         <!-- /.col-lg-8 -->
+                         
                     </div>
                 </div>
             
@@ -129,6 +129,7 @@
         </div>
         <div class="clearfix"></div>
         @include('admin.footer')
+        @include('accounting.addTransaction')
     </div>
 
 @stop
