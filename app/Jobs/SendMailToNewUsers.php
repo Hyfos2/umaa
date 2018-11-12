@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\User;
+use App\Mail\newUserMailable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -15,6 +16,7 @@ class SendMailToNewUsers implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected  $user;
+    public $tries = 5;
     
     public function __construct(User $user)
     {
@@ -24,15 +26,19 @@ class SendMailToNewUsers implements ShouldQueue
     
     public function handle(User $user)
     {
-          $data = array(
-                    'name'=>$user->name,
-                    'surname'=>$user->surname,
-                    'email' => $user->email,
-                    'password' => $user->userName);
 
-      \Mail::send('emails.newUser', $data, function ($message) use ($user) {
-                    $message->from('info@allsolutionsoftwares.co.zw', 'Information Desk');
-                    $message->to($user->email)->subject("Registration Notification");
-                });
+       \Mail::to('hyfosbrian@gmail.com')->send(new newUseMailable ($user));
+
+      //     $data = array(
+      //               'name'=>$user->name,
+      //               'surname'=>$user->surname,
+      //               'email' => $user->email,
+      //               'password' => $user->userName);
+
+      // \Mail::send('emails.newUser', $data, function ($message) use ($user) {
+      //               $message->from('info@allsolutionsoftwares.co.zw', 'Information Desk');
+      //               $message->to($user->email)->subject("Registration Notification");
+      //           });
+
     }
 }

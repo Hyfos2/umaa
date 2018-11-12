@@ -38,7 +38,7 @@
                 
                     <div class="text-right">
                         <button class="btn btn-outline-info" data-dismiss="modal">Close</button>
-                        <button type="submit"  class="btn btn-outline-info">Save</button>
+                        <button data-dismiss="modal"  class="btn btn-outline-info">Save</button>
                     </div>
                 </form>
             </div>
